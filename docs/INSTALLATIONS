@@ -1,0 +1,76 @@
+=======================================
+INSTALLATION / CONFIGURATION DES OUTILS
+=======================================
+
+Installation PostGreSQL
+-----------------------
+Un peu plus compliqué. 
+- installer les paquets nécessaires (moteur de la base et pilote PGSL pour QT4)
+	sudo apt-get install postgresql libqt4-sql libqt4-sql-psql
+
+Par défaut, PostgreSQL est installée avec un utilisateur nommé postgres. On va faire ce qu'il faut pour créer un nouvel utilisateur et une base. Évidemment, dans les commandes ci-dessous, vous remplacez habilement ce qui doit être remplacé par...ce que vous voulez (VOTRE_USER, NOM_DE_LA_NOUVELL_BASE...). En pratique, je vous conseille d'utiliser quelque chose de simple comme : 
+USER : votre user Unix (pour moi gcoulais)
+Nom de la base : votre user Unix (pour moi gcoulais)
+- se connecter avec l'utilisateur postgres  
+	$ sudo -s -u postgres (résultat attendu: changement de prompt : postgres@VOTRE_MACHINE:~/)
+- lancer le client PostGreSQL
+	postgres@VOTRE_MACHINE:~/psql
+	psql (8.4.11)
+	Type "help" for help.
+	postgres=# 
+- créer un nouvel utilisateur
+	CREATE USER VOTRE_USER ;
+- donner des droits de création de base au nouveau utilisateur
+	ALTER ROLE gcoulais with createdb ;
+- créer une base pour ce nouvel utilisateur
+	CREATE DATABASE NOM_DE_LA_NOUVELLE_BASE OWNER VOTRE_USER ;
+- donner un mot de passe au nouvel utilisateur
+	ALTER USER VOTRE_USER with encrypted password VOTRE_MOT_DE_PASSE ;
+- quitter l'application
+	\q
+- se déconnecter de l'utilisateur postgres
+	exit
+- vérifier que le nouvel utilisateur fonctionne
+	psql NOM_DE_LA_NOUVELLE_BASE
+- quitter l'application
+	\q	
+
+Installation QT et outils associés
+----------------------------------
+- installer le paquet qtcreator
+- L'application se lance depuis le dash : QTCreator
+
+On va maintenant créer un petit programme simplissime permettant de vérifier que l'accès à la base de données est OK.
+Lancez QTCreator puis Fichier -> Nouveau fichier ou projet...
+	Dans le cadre Projets choisir "Autre projet"
+	Dans le cadre de droite choisir "Projet Qt Vide"
+Dans la fenêtre suivante, donnez lui un nom et choisissez son emplacement de sauvegarde
+Dans "Gestion de projet", pour ce test là, assurez vous que "ajouter au gestionnaire de version" soit sur <aucun>
+Puis cliquez sur Terminer
+
+Il n'existe qu'un seul et unique fichier dans le projet dont l'extension est .pro. Ouvez ce fichier et modifiez en le contenu pour y mettre ce qui suit:
+QT       += sql # Utiliser SQL
+QT       -= gui # Pas d'interface graphique
+TARGET = test # La cible de compilation, le résultat
+CONFIG   += console # On rajoute la console
+TEMPLATE = app # On veut une application, oui
+SOURCES += main.cpp # La liste des fichiers de source
+
+On va maintenant créer le main
+	Fichier -> Nouveau fichier ou projet...
+	Dans le cadre Fichiers et classes choisir "C++"
+	Dans le cadre de droite choisir fichier source C++
+	Cliquez sur choisir, donnez lui le nom main.cpp, puis boutons [suivant] et [terminer]
+
+Il ne vous reste plus qu'à coller le code kivabien dans le nouveau main.cpp
+<http://pastebin.com/kYJ99HG8>
+Remplacer les variables suivantes par les informations issues de PostGreSQL:
+DATABASE_NAME -> Le nom de votre base
+DATABASE_USER_NAME -> Le nom de l'utilisateur de la base
+DATABASE_USER_PASSWORD -> Le mot de passe de l'utilisateur
+
+Compilez, exécutez. Si tout va bien, la console doit vous dire "Connecté" :)
+
+Installer git
+=============
+A FAIRE
