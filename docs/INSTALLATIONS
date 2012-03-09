@@ -2,6 +2,7 @@
 INSTALLATION / CONFIGURATION DES OUTILS
 =======================================
 
+-----------------------
 Installation PostGreSQL
 -----------------------
 Un peu plus compliqué. 
@@ -11,6 +12,9 @@ Un peu plus compliqué.
 Par défaut, PostgreSQL est installée avec un utilisateur nommé postgres. On va faire ce qu'il faut pour créer un nouvel utilisateur et une base. Évidemment, dans les commandes ci-dessous, vous remplacez habilement ce qui doit être remplacé par...ce que vous voulez (VOTRE_USER, NOM_DE_LA_NOUVELL_BASE...). En pratique, je vous conseille d'utiliser quelque chose de simple comme : 
 USER : votre user Unix (pour moi gcoulais)
 Nom de la base : votre user Unix (pour moi gcoulais)
+
+Lors de l'exécution des commandes, PostGreSql doit vous répondre. Si ce n'est pas le cas, c'est que la commande n'a pas été prise en compte. Vérifiez que vous n'avez pas oublié un point virgule, un espace quelque part...
+
 - se connecter avec l'utilisateur postgres  
 	$ sudo -s -u postgres (résultat attendu: changement de prompt : postgres@VOTRE_MACHINE:~/)
 - lancer le client PostGreSQL
@@ -25,7 +29,7 @@ Nom de la base : votre user Unix (pour moi gcoulais)
 - créer une base pour ce nouvel utilisateur
 	CREATE DATABASE NOM_DE_LA_NOUVELLE_BASE OWNER VOTRE_USER ;
 - donner un mot de passe au nouvel utilisateur
-	ALTER USER VOTRE_USER with encrypted password VOTRE_MOT_DE_PASSE ;
+	ALTER USER VOTRE_USER with encrypted password 'VOTRE_MOT_DE_PASSE' ;
 - quitter l'application
 	\q
 - se déconnecter de l'utilisateur postgres
@@ -35,6 +39,7 @@ Nom de la base : votre user Unix (pour moi gcoulais)
 - quitter l'application
 	\q	
 
+----------------------------------
 Installation QT et outils associés
 ----------------------------------
 - installer le paquet qtcreator
@@ -71,6 +76,7 @@ DATABASE_USER_PASSWORD -> Le mot de passe de l'utilisateur
 
 Compilez, exécutez. Si tout va bien, la console doit vous dire "Connecté" :)
 
+-------------
 Installer git
-=============
+-------------
 A FAIRE
