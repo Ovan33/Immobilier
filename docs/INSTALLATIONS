@@ -49,23 +49,24 @@ On va maintenant créer un petit programme simplissime permettant de vérifier q
 Lancez QTCreator puis Fichier -> Nouveau fichier ou projet...
 	Dans le cadre Projets choisir "Autre projet"
 	Dans le cadre de droite choisir "Projet Qt Vide"
+Cliquer sur Choisir...
 Dans la fenêtre suivante, donnez lui un nom et choisissez son emplacement de sauvegarde
 Dans "Gestion de projet", pour ce test là, assurez vous que "ajouter au gestionnaire de version" soit sur <aucun>
 Puis cliquez sur Terminer
-
-Il n'existe qu'un seul et unique fichier dans le projet dont l'extension est .pro. Ouvez ce fichier et modifiez en le contenu pour y mettre ce qui suit:
-QT       += sql # Utiliser SQL
-QT       -= gui # Pas d'interface graphique
-TARGET = test # La cible de compilation, le résultat
-CONFIG   += console # On rajoute la console
-TEMPLATE = app # On veut une application, oui
-SOURCES += main.cpp # La liste des fichiers de source
 
 On va maintenant créer le main
 	Fichier -> Nouveau fichier ou projet...
 	Dans le cadre Fichiers et classes choisir "C++"
 	Dans le cadre de droite choisir fichier source C++
 	Cliquez sur choisir, donnez lui le nom main.cpp, puis boutons [suivant] et [terminer]
+
+QT crée et utilise un fichier .pro pour décrire le projet. Ouvrez ce fichier et modifiez en le contenu pour y mettre ce qui suit:
+QT       += sql # Utiliser SQL
+QT       -= gui # Pas d'interface graphique
+TARGET = test # La cible de compilation, le résultat
+CONFIG   += console # On rajoute la console
+TEMPLATE = app # On veut une application, oui
+SOURCES += main.cpp # La liste des fichiers de source
 
 Il ne vous reste plus qu'à coller le code kivabien dans le nouveau main.cpp
 <http://pastebin.com/kYJ99HG8>
