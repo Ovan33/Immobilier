@@ -7,6 +7,8 @@
 --      Projet : AgImmo
 --      Auteur : Gilles Coulais
 --      Date de dernière modification : 12/3/2012 13:57:57
+-- 		Testé avec succès sous
+--		- PostGreSQL
 -- -----------------------------------------------------------------------------
 
 -- -----------------------------------------------------------------------------
@@ -108,7 +110,7 @@ CREATE  INDEX I_FK_SOUHAITS_CLIENTS ON SOUHAITS (NUM_C) ;
 CREATE TABLE AGENTS
 (
 	NUM_A serial NOT NULL  ,
-	PRÉNOM_A varchar(20) NOT NULL  ,
+	PRENOM_A varchar(20) NOT NULL  ,
 		CONSTRAINT PK_AGENTS PRIMARY KEY (NUM_A)
 ) ;
 
@@ -209,6 +211,13 @@ ALTER TABLE VILLES_SOUHAITEES ADD
           FOREIGN KEY (NUM_S)
                REFERENCES SOUHAITS (NUM_S);
 
+-- -----------------------------------------------------------------------------
+--       Insertion de données
+-- -----------------------------------------------------------------------------
+INSERT INTO AGENTS VALUES(default, 'GEORGES') ;
+INSERT INTO AGENTS VALUES(default, 'PAUL') ;
+INSERT INTO AGENTS VALUES(default, 'RINGO') ;
+INSERT INTO AGENTS VALUES(default, 'JOHN') ;
 
 -- -----------------------------------------------------------------------------
 --                FIN DE GENERATION
