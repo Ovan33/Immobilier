@@ -79,4 +79,12 @@ Compilez, exécutez. Si tout va bien, la console doit vous dire "Connecté" :)
 -------------
 Installer git
 -------------
-A FAIRE
+
+-----------------------------------
+Créer la base de données PostGreSQL
+-----------------------------------
+
+psql -f /chemin/vers/le/script/IMMO_.SQL 
+
+2. Si les règles ont été générées, taper
+      psql -f  C:\USERS\GCOULAIS.INFO-FITZ\IMMOBILIER\SRC\SQL\
