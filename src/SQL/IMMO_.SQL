@@ -7,6 +7,15 @@
 --      Projet : AgImmo
 --      Auteur : Gilles Coulais
 --      Date de dernière modification : 12/3/2012 13:57:57
+-- 		Testé avec succès sur PostGreSQL 8.4.11
+--		
+--		Ce script crée les tables et contraintes associées
+--		La base doit préalablement exister
+--
+--		/!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
+--			 		Si vous avez déjà exécuté ce script
+-- 		Toutes les données présentes dans la base seront effacées
+--		/!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 -- -----------------------------------------------------------------------------
 
 -- -----------------------------------------------------------------------------
@@ -37,12 +46,12 @@ drop table souhaits CASCADE ;
 drop table villes CASCADE ;
 drop table villes_SOUHAITEES CASCADE ;
 
-drop database IMMO ;
+-- drop database IMMO ;
 
 -- -----------------------------------------------------------------------------
 --       CREATION DE LA BASE 
 -- -----------------------------------------------------------------------------
-CREATE DATABASE IMMO ;
+-- CREATE DATABASE IMMO ;
 
 -- -----------------------------------------------------------------------------
 --       TABLE : VISITES
@@ -108,7 +117,7 @@ CREATE  INDEX I_FK_SOUHAITS_CLIENTS ON SOUHAITS (NUM_C) ;
 CREATE TABLE AGENTS
 (
 	NUM_A serial NOT NULL  ,
-	PRÉNOM_A varchar(20) NOT NULL  ,
+	PRENOM_A varchar(20) NOT NULL  ,
 		CONSTRAINT PK_AGENTS PRIMARY KEY (NUM_A)
 ) ;
 
@@ -208,7 +217,6 @@ ALTER TABLE VILLES_SOUHAITEES ADD
      CONSTRAINT FK_VILLES_SOUHAITEES_SOUHAITS
           FOREIGN KEY (NUM_S)
                REFERENCES SOUHAITS (NUM_S);
-
 
 -- -----------------------------------------------------------------------------
 --                FIN DE GENERATION
