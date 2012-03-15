@@ -7,12 +7,17 @@
 	<body>
 		<!-- Création de la connection et des variables -->
 		<?php
-			$dbHost = "localhost"; 	// En principe rien à modifier
-			$dbName = "nom_base";		// le nom de la base
-			$dbUser = "user_base";	// le user PostGreSQL à utiliser
-			$dbPass = "pass_base";	// le mot de passe du user
-			$dbQuery =  "select * from TABLE ;"; // la requête que vous souhaitez exécuter.
-			$connectDB 		= pg_connect("host=$dbHost dbname=$dbName user=$dbUser password=$dbPass");			
+			// Adapter les valeurs ci-dessous
+			function connectionBase($dbHost="localhost",$dbName="BASE", $dbUser="USER", $dbPass="PASS") 
+			{
+				return pg_connect("host=$dbHost dbname=$dbName user=$dbUser password=$dbPass");
+			}
+		?>
+		
+		<?php
+			// la requête que vous souhaitez exécuter.
+			$dbQuery =  "select * from villes ;"; 
+			$connectDB 		= connectionBase();			
 			if (!$connectDB) {
 				print("Connection failed.");
 				exit;
