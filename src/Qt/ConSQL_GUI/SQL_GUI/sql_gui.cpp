@@ -61,6 +61,7 @@ void SQL_GUI::RemplissageTV()
     model->setHeaderData(0, Qt::Horizontal, tr("Nom"));
     model->setHeaderData(1, Qt::Horizontal, tr("CP"));
     ui->tableView->setModel(model);
+    ui->tableView->setSortingEnabled(true);
 
 
 }
