@@ -1,7 +1,7 @@
 #include "sql_gui.h"
 #include "ui_sql_gui.h"
 
-#include <QtSql>
+
 
 SQL_GUI::SQL_GUI(QWidget *parent) :
     QMainWindow(parent),
@@ -10,7 +10,8 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     ui->setupUi(this);
     ui->FenetreInfo->append("Connexion a la base de donnees...");
     ConnexionBDD();
-    RequeteVille();
+   // RequeteVille();
+    RemplissageTV();
 }
 
 SQL_GUI::~SQL_GUI()
@@ -22,7 +23,7 @@ void SQL_GUI::ConnexionBDD()
 {
 
 	
-    QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
+    db = QSqlDatabase::addDatabase("QPSQL");
     db.setHostName("localhost");
     db.setDatabaseName("immo");
     db.setUserName("isirat");
@@ -47,6 +48,19 @@ void SQL_GUI::RequeteVille()
            QString result = query.value(0).toString();
            // que j'affiche dans la FenetreRequete
            ui->FenetreRequete->append(result);
-           
+
         }
+}
+void SQL_GUI::RemplissageTV()
+{
+    QSqlTableModel *model = new QSqlTableModel(this, db);
+    model->setTable("villes");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    model->select();
+    model->removeColumn(0); // don't show the ID
+    model->setHeaderData(0, Qt::Horizontal, tr("Nom"));
+    model->setHeaderData(1, Qt::Horizontal, tr("CP"));
+    ui->tableView->setModel(model);
+
+
 }

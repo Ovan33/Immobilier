@@ -1,7 +1,12 @@
 #ifndef SQL_GUI_H
 #define SQL_GUI_H
 
+#include <QtSql>
+#include <QTableView>
+
 #include <QMainWindow>
+
+
 
 namespace Ui {
     class SQL_GUI;
@@ -20,8 +25,11 @@ private slots:
 private:
     Ui::SQL_GUI *ui;
 
+    QSqlDatabase db;
+
     void ConnexionBDD();
     void RequeteVille();
+    void RemplissageTV();
 
 };
 
