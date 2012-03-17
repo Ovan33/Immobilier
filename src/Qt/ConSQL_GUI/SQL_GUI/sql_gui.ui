@@ -6,41 +6,41 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>422</width>
-    <height>366</height>
+    <width>511</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>SQL_GUI</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTextEdit" name="FenetreInfo">
+   <widget class="QTextEdit" name="FenetreRequete">
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>230</y>
-      <width>411</width>
-      <height>71</height>
+      <x>9</x>
+      <y>9</y>
+      <width>256</width>
+      <height>144</height>
      </rect>
     </property>
    </widget>
    <widget class="QTableView" name="tableView">
     <property name="geometry">
      <rect>
-      <x>244</x>
-      <y>10</y>
-      <width>171</width>
-      <height>192</height>
+      <x>271</x>
+      <y>1</y>
+      <width>219</width>
+      <height>339</height>
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="FenetreRequete">
+   <widget class="QTextEdit" name="FenetreInfo">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>221</width>
-      <height>191</height>
+      <x>7</x>
+      <y>350</y>
+      <width>489</width>
+      <height>109</height>
      </rect>
     </property>
    </widget>
@@ -50,7 +50,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>422</width>
+     <width>511</width>
      <height>25</height>
     </rect>
    </property>
