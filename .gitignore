@@ -3,7 +3,9 @@
 # - le main compilé
 # - les fichiers temporaires
 # - les fichiers objets
+# - 
 #--------------------------------
 *.o
 *.*~
 *.autosave
+*.bak
