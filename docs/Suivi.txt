@@ -3,3 +3,12 @@ Choix du langage : QT / C++
 Diagramme classe
 - lister les classes, identification des attributs des classes
 - identification des méthodes pour les classes Client, Agent, Acheteur, Propriétaire
+
+## 22/03
+- identification des méthodes pour les classes Souhait, Ville, Bien, Visite
+À faire 
+	- Modélisation des interfaces graphiques / navigation avec UML ?
+	- Diagramme des cas d'utilisation
+	- Fonctionnement des composants Date / Heure / calendrier de Qt
+	- Classes et méthodes liées à la base
+
