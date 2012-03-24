@@ -118,8 +118,8 @@ void SQL_GUI::requeteNewClient(){
     QSqlQuery query;
     query.prepare("INSERT INTO clients (id, nom, prenom) VALUES (?, ?, ?)");
     query.bindValue(0, "monId");          // le 1 param. se refere à la position dans la table
-    query.bindValue(1, "nomClient");    // on peut remplacer le 2 param par un string que l'utilisateur à rentrer
-    query.bindValue(2, "prenomClient"); // idem
-    query.exec();                       // l'execution peut aussi etre fonctionnel apres l'appui d'un bouton ok par ex.
+    query.bindValue(1, "nomClient");      // on peut remplacer le 2 param par un string que l'utilisateur à rentrer
+    query.bindValue(2, "prenomClient");   // idem
+    query.exec();                         // l'execution peut aussi etre fonctionnel apres l'appui d'un bouton ok par ex.
 
 }
