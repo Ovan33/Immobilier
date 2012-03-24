@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sql_gui.ui'
 **
-** Created: Fri Mar 16 17:00:41 2012
+** Created: Sat Mar 24 10:09:48 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,6 +14,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenuBar>
@@ -21,6 +22,7 @@
 #include <QtGui/QTableView>
 #include <QtGui/QTextEdit>
 #include <QtGui/QToolBar>
+#include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -30,7 +32,11 @@ class Ui_SQL_GUI
 public:
     QWidget *centralWidget;
     QTextEdit *FenetreRequete;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
     QTableView *tableView;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
     QTextEdit *FenetreInfo;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -45,13 +51,33 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         FenetreRequete = new QTextEdit(centralWidget);
         FenetreRequete->setObjectName(QString::fromUtf8("FenetreRequete"));
-        FenetreRequete->setGeometry(QRect(9, 9, 256, 144));
-        tableView = new QTableView(centralWidget);
+        FenetreRequete->setGeometry(QRect(10, -40, 256, 144));
+        verticalLayoutWidget = new QWidget(centralWidget);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(270, 0, 231, 341));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        tableView = new QTableView(verticalLayoutWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(271, 1, 219, 339));
-        FenetreInfo = new QTextEdit(centralWidget);
+
+        verticalLayout->addWidget(tableView);
+
+        horizontalLayoutWidget = new QWidget(centralWidget);
+        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(0, 390, 511, 80));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        FenetreInfo = new QTextEdit(horizontalLayoutWidget);
         FenetreInfo->setObjectName(QString::fromUtf8("FenetreInfo"));
-        FenetreInfo->setGeometry(QRect(7, 350, 489, 109));
+
+        horizontalLayout->addWidget(FenetreInfo);
+
         SQL_GUI->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(SQL_GUI);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));

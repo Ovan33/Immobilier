@@ -5,7 +5,8 @@
 #include <QTableView>
 
 #include <QMainWindow>
-
+#include <QMenu>
+#include <QMenuBar>
 
 
 namespace Ui {
@@ -22,14 +23,18 @@ public:
 
 private slots:
 
+
 private:
     Ui::SQL_GUI *ui;
-
     QSqlDatabase db;
 
-    void ConnexionBDD();
-    void RequeteVille();
-    void RemplissageTV();
+    void connexionBDD();
+    void requeteVille();
+    void remplissageTV();
+    void requeteClient();
+    void TVClient();
+    void requeteNewClient();
+
 
 };
 
