@@ -7,10 +7,11 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     ui(new Ui::SQL_GUI)
 {
     ui->setupUi(this);
+    connect(ui->actionNouveau_Client,SIGNAL(clicked()),this,SLOT(actionNouveau_Client()));
+
 
     // Création barre menu
     QMenuBar* menuBar = new QMenuBar(this); // création barre de menu
-
     // Menu Fichier
     QMenu* menuFile = new QMenu("Fichier"); // menu fichier
     menuBar->addMenu(menuFile); // ajout du menu fichier à la barre menu
@@ -19,7 +20,6 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     menuFile->addSeparator();
     menuFile->addAction("Quitter", this, SLOT(close())); // Item Quitter
     setMenuBar(menuBar); // mettre la barre sur la fenetre principale
-
     //Menu Edition
     menuFile = new QMenu("Edition"); // menu Edition
     menuBar->addMenu(menuFile);
@@ -116,10 +116,19 @@ void SQL_GUI::remplissageTV()
 void SQL_GUI::requeteNewClient(){
    // Requete avec des bindValue afin d'etre serialisables
     QSqlQuery query;
-    query.prepare("INSERT INTO clients (id, nom, prenom) VALUES (?, ?, ?)");
-    query.bindValue(0, "monId");          // le 1 param. se refere à la position dans la table
-    query.bindValue(1, "nomClient");      // on peut remplacer le 2 param par un string que l'utilisateur à rentrer
-    query.bindValue(2, "prenomClient");   // idem
-    query.exec();                         // l'execution peut aussi etre fonctionnel apres l'appui d'un bouton ok par ex.
+    query.prepare("INSERT INTO clients (num_c, num_v, num_a, nom_c, adresse_c, tel_c) VALUES (?, ?, ?, ?, ?, ?)");
+    query.bindValue(0, "num_c");
+    query.bindValue(1, "num_v");
+    query.bindValue(2, "num_a");
+    query.bindValue(3, "nom_c");
+    query.bindValue(4, "adresse_c");
+    query.bindValue(5, "tel_c"),
+    query.exec();
 
+}
+
+void SQL_GUI::actionNouveau_Client()
+{
+    QDialog *dialog = new QDialog(this);
+    dialog->show();
 }

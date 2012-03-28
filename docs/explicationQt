@@ -1,0 +1,50 @@
+[Classe BDD]
+
+Cette classe permet la connexion avec notre base de données.
+-BDD()
+Le constructeur prend 4 paramètres:
+	- host -> localhost ou adresse serveur
+	- database -> nom de la bdd
+	- user -> proprio de la bdd
+	- password -> mdp du proprio
+- bool testConnextion()
+Cette méthode renvoie "true" si la connexion est établie. Elle utilise 
+la méthode open() instanciée dans QSqlDatabase.
+
+------------------------------------------------------------------------
+
+[Classe Parametre]
+
+Permet d'aller charger des paramètres (ici de connection SQL) dans un 
+fichier XML.
+-Parametre()
+Ce constructeur instancie les variables privées host, databaseName, 
+user, et password avec les variables présentes dans le fichier XML.
+Déroulement de cette méthode:
+déclaration d'un QDomDocument : 
+	ce type permet à Qt de lire un fichier XML
+déclaration d'un QFile : 
+	c'est notre fichier XML (nous lui passons en 
+parametre le chemin du fichier)
+QFile.open() : 
+	paramètre d'ouverture (ici en lecture seule)
+QDomDocument.setContent(avec en parametre le fichier) : 
+	Permet à Qt de charger le fichier XML à partir du fichier donné en parametre. 
+Attention, Qt ne verifie pas encore la structure du fichier XML (balise 
+mal fermée ou autre). Donc il faut supposer que le fichier est dans un 
+état correct.
+QDomDocument.documentElement() : 
+	Permet de chercher la premiere balise présente dans le QDomDoc...
+QDomDocument.tagName() :
+	Permet de connaitre le nom de notre balise
+QDomDocument.firstChild() :
+	Aller chercher le fils de notre premiere balise
+Declaration d'un QDomNode :
+	Permet d'aller chercher les noeuds dans notre balise
+QDomNode.nextSibling():
+	Aller chercher le prochain noeud
+QDomDocument.text():
+	Prendre la valeur comprise entre les noeuds
+	
+------------------------------------------------------------------------
+	
