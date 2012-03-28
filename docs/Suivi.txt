@@ -12,3 +12,10 @@ Diagramme classe
 	- Fonctionnement des composants Date / Heure / calendrier de Qt
 	- Classes et méthodes liées à la base
 
+##27/03
+- ajout des classes Bdd et Result
+- recherche et tests sur implémentation de fichiers XML pour stocker les paramètres de l'application
+
+##28/03
+- Modélisation UMl et croquis de la navigation et de l'interface utilisateur pour les écrans Connexion, accueil et recherche client, fiche client
+- Développement et tests de la classe Paramètre (ajout à faire dans le diagramme des classes) et de la classe BDD (Documentation à faire)
