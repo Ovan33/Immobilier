@@ -11,12 +11,19 @@ Immo::Immo(QWidget *parent) :
     ui->setupUi(this);
 
     Parametre* test = new Parametre();
-    QString s = test->getHost();
+    QString s = test->getTypeConnection();
     ui->textEdit->append(s);
 
-    BDD* m_bdd = new BDD(test->getHost(), test->getDataBaseName(), test->getUser(), test->getPassword());
-    if (m_bdd->testConnection())
-        ui->textEdit->append("Connection établie");
+
+    BDD* m_bdd = new BDD(test->getTypeConnection(), test->getHost(), test->getDataBaseName(), test->getUser(), test->getPassword());
+
+    if (m_bdd->isValid())
+    {
+        ui->textEdit->append("Connection valide");
+        if (m_bdd->isConnectionActive())
+            ui->textEdit->append("Connection etablie");
+    }
+    m_bdd->close();
 }
 
 Immo::~Immo()

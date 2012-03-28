@@ -7,9 +7,6 @@ Le constructeur prend 4 paramètres:
 	- database -> nom de la bdd
 	- user -> proprio de la bdd
 	- password -> mdp du proprio
-- bool testConnextion()
-Cette méthode renvoie "true" si la connexion est établie. Elle utilise 
-la méthode open() instanciée dans QSqlDatabase.
 
 ------------------------------------------------------------------------
 
