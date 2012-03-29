@@ -37,6 +37,7 @@ private:
     void requeteClient();
     void TVClient();
     void requeteNewClient();
+    void requeteNewClient2();
 
 
 };
