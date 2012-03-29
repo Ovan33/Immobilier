@@ -19,3 +19,9 @@ Diagramme classe
 ##28/03
 - Modélisation UMl et croquis de la navigation et de l'interface utilisateur pour les écrans Connexion, accueil et recherche client, fiche client
 - Développement et tests de la classe Paramètre (ajout à faire dans le diagramme des classes) et de la classe BDD (Documentation à faire)
+
+##29/03
+- Qt/C++ : Implémentation et tests de requête d'insertion de nouveau client dans la base de données
+- Conception de la fiche client et définition des classes d'interface associées
+- Conception de la liste des souhaits et définition des classes d'interface associées
+- À faire : conception des interfaces et classes liées aux biens
