@@ -10,20 +10,19 @@ Immo::Immo(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Aller chercher les parametres dans le fichier XML
     Parametre* test = new Parametre();
-    QString s = test->getTypeConnection();
-    ui->textEdit->append(s);
 
-
+    // Création de la connexion
     BDD* m_bdd = new BDD(test->getTypeConnection(), test->getHost(), test->getDataBaseName(), test->getUser(), test->getPassword());
-
+    // Test connexion et affichage du test
     if (m_bdd->isValid())
     {
         ui->textEdit->append("Connection valide");
         if (m_bdd->isConnectionActive())
             ui->textEdit->append("Connection etablie");
     }
-    m_bdd->close();
+    m_bdd->close(); // Fermeture connexion
 }
 
 Immo::~Immo()

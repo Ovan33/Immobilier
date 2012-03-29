@@ -33,8 +33,10 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     //requeteVille();
     //remplissageTV();
     //requeteClient();
+    //TVClient();
+    requeteNewClient();
+    //requeteNewClient2();
     TVClient();
-
 }
 
 SQL_GUI::~SQL_GUI()
@@ -114,18 +116,44 @@ void SQL_GUI::remplissageTV()
 }
 
 void SQL_GUI::requeteNewClient(){
-   // Requete avec des bindValue afin d'etre serialisables
-    QSqlQuery query;
-    query.prepare("INSERT INTO clients (num_c, num_v, num_a, nom_c, adresse_c, tel_c) VALUES (?, ?, ?, ?, ?, ?)");
-    query.bindValue(0, "num_c");
-    query.bindValue(1, "num_v");
-    query.bindValue(2, "num_a");
-    query.bindValue(3, "nom_c");
-    query.bindValue(4, "adresse_c");
-    query.bindValue(5, "tel_c"),
-    query.exec();
+    // requete serialisable test OK
 
+    ui->FenetreInfo->append("Preparation requete");
+    QString error;
+    QSqlQuery query;
+    QString nomC = "Simpson Omer";
+    QString adresseC = "3 rue de Springfield";
+    QString telC = "0123456789";
+    QString numA = "1";
+    QString numV = "3";
+
+    query.prepare("INSERT INTO clients(num_c, num_v, num_a, nom_c, adresse_c, tel_c)"
+                  "VALUES (default, :num_v, :num_a, :nom_c, :adresse_c, :tel_c)");
+    query.bindValue(":num_v", numV);
+    query.bindValue(":num_a", numA);
+    query.bindValue(":nom_a", nomC);
+    query.bindValue(":adresse_c", adresseC);
+    query.bindValue(":tel_c", telC);
+    if (query.exec())
+    {
+        error = query.lastError().text();
+        ui->FenetreInfo->append(error);
+        ui->FenetreInfo->append("Requete ok");
+    }
 }
+
+void SQL_GUI::requeteNewClient2()
+{   // Requete de test -> ok
+
+    QString error;
+    ui->FenetreInfo->append("Preparation requete");
+    QSqlQuery q;
+    q.exec("INSERT INTO clients(num_c, num_v, num_a, nom_c, adresse_c, tel_c) VALUES (default, 3, 1, 'Tintin3', '14 rue de lespace', '0101010101')");
+    error = q.lastError().text();
+    ui->FenetreInfo->append(error);
+        ui->FenetreInfo->append("Requete ok");
+}
+
 
 void SQL_GUI::actionNouveau_Client()
 {
