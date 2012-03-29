@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'immo.ui'
 **
-** Created: Wed Mar 28 11:04:08 2012
+** Created: Wed Mar 28 14:41:18 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

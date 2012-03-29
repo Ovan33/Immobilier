@@ -25,7 +25,13 @@ Parametre::Parametre()
       QDomElement e = n.toElement();
         if( !e.isNull() )
         {
-            if( e.tagName() == "Host" )
+            if( e.tagName() == "TypeConnection" )
+            {
+                typeConnection = e.text();
+                n = n.nextSibling();
+            }
+
+            else if( e.tagName() == "Host" )
             {
                 host = e.text();
                 n = n.nextSibling();
@@ -47,6 +53,11 @@ Parametre::Parametre()
             }
          }
     }
+}
+
+QString Parametre::getTypeConnection()
+{
+    return typeConnection;
 }
 
 QString Parametre::getHost()
