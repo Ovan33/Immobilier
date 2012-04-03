@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sql_gui.ui'
 **
-** Created: Tue Apr 3 12:01:10 2012
+** Created: Tue Apr 3 15:12:02 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,7 +27,6 @@ QT_BEGIN_NAMESPACE
 class Ui_SQL_GUI
 {
 public:
-    QAction *actionNouveau_Client;
     QAction *actionQuitter;
     QWidget *centralWidget;
     QTableView *tableView;
@@ -41,9 +40,6 @@ public:
         if (SQL_GUI->objectName().isEmpty())
             SQL_GUI->setObjectName(QString::fromUtf8("SQL_GUI"));
         SQL_GUI->resize(582, 494);
-        actionNouveau_Client = new QAction(SQL_GUI);
-        actionNouveau_Client->setObjectName(QString::fromUtf8("actionNouveau_Client"));
-        actionNouveau_Client->setIconVisibleInMenu(false);
         actionQuitter = new QAction(SQL_GUI);
         actionQuitter->setObjectName(QString::fromUtf8("actionQuitter"));
         centralWidget = new QWidget(SQL_GUI);
@@ -74,7 +70,6 @@ public:
     void retranslateUi(QMainWindow *SQL_GUI)
     {
         SQL_GUI->setWindowTitle(QApplication::translate("SQL_GUI", "SQL_GUI", 0, QApplication::UnicodeUTF8));
-        actionNouveau_Client->setText(QApplication::translate("SQL_GUI", "Nouveau Client", 0, QApplication::UnicodeUTF8));
         actionQuitter->setText(QApplication::translate("SQL_GUI", "Quitter", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

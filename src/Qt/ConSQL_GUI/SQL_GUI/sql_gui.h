@@ -7,7 +7,7 @@
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
-#include <QMessageBox>
+//#include <QMessageBox>
 
 
 namespace Ui {
@@ -23,7 +23,7 @@ public:
     ~SQL_GUI();
 
 private slots:
-    void actionNouveau_Client();
+  //  void actionNouveau_Client();
 
 
 

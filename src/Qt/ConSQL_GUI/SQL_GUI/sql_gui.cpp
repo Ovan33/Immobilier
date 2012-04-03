@@ -7,7 +7,7 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     ui(new Ui::SQL_GUI)
 {
     ui->setupUi(this);
-    connect(ui->actionNouveau_Client,SIGNAL(clicked()),this,SLOT(actionNouveau_Client()));
+//    connect(ui->actionNouveau_Client,SIGNAL(clicked()),this,SLOT(actionNouveau_Client()));
 
 
     // Création barre menu
@@ -24,8 +24,8 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     menuFile = new QMenu("Edition"); // menu Edition
     menuBar->addMenu(menuFile);
     // Items
-    menuFile->addAction("Nouveau Client", this, SLOT(ajoutNewClient()));
-    menuFile->addSeparator();
+//    menuFile->addAction("Nouveau Client", this, SLOT(ajoutNewClient()));
+//    menuFile->addSeparator();
 
 
     ui->FenetreInfo->append("Connexion a la base de donnees...");
@@ -176,11 +176,4 @@ void SQL_GUI::requeteNewClient2()
     error = q.lastError().text();
     ui->FenetreInfo->append(error);
         ui->FenetreInfo->append("Requete ok");
-}
-
-
-void SQL_GUI::actionNouveau_Client()
-{
-    QDialog *dialog = new QDialog(this);
-    dialog->show();
 }
