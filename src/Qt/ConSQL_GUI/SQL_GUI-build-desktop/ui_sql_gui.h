@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sql_gui.ui'
 **
-** Created: Thu Mar 29 11:36:50 2012
+** Created: Tue Apr 3 12:01:10 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,7 +40,7 @@ public:
     {
         if (SQL_GUI->objectName().isEmpty())
             SQL_GUI->setObjectName(QString::fromUtf8("SQL_GUI"));
-        SQL_GUI->resize(496, 494);
+        SQL_GUI->resize(582, 494);
         actionNouveau_Client = new QAction(SQL_GUI);
         actionNouveau_Client->setObjectName(QString::fromUtf8("actionNouveau_Client"));
         actionNouveau_Client->setIconVisibleInMenu(false);
@@ -50,14 +50,14 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(150, 0, 311, 341));
+        tableView->setGeometry(QRect(110, 0, 461, 341));
         FenetreInfo = new QTextEdit(centralWidget);
         FenetreInfo->setObjectName(QString::fromUtf8("FenetreInfo"));
-        FenetreInfo->setGeometry(QRect(10, 350, 451, 71));
+        FenetreInfo->setGeometry(QRect(10, 350, 561, 71));
         FenetreInfo->setLayoutDirection(Qt::LeftToRight);
         FenetreRequete = new QTextEdit(centralWidget);
         FenetreRequete->setObjectName(QString::fromUtf8("FenetreRequete"));
-        FenetreRequete->setGeometry(QRect(10, 210, 131, 121));
+        FenetreRequete->setGeometry(QRect(10, 210, 91, 121));
         SQL_GUI->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(SQL_GUI);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));

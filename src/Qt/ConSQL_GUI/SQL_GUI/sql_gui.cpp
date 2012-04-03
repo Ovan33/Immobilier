@@ -88,18 +88,42 @@ void SQL_GUI::requeteClient()
 
 void SQL_GUI::TVClient()
 {
-    QSqlTableModel *model = new QSqlTableModel(this, db);
+    // Version 1 sans Relation
+//    QSqlTableModel *model = new QSqlTableModel(this, db);
+//    model->setTable("clients");
+//    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+//    model->select();
+//    model->removeColumn(0); // don't show the ID
+//    model->setHeaderData(0, Qt::Horizontal, tr("Villes"));
+//    model->setHeaderData(1, Qt::Horizontal, tr("Agent"));
+//    model->setHeaderData(2, Qt::Horizontal, tr("Nom"));
+//    model->setHeaderData(3, Qt::Horizontal, tr("Adresse"));
+//    model->setHeaderData(4, Qt::Horizontal, tr("Tel"));
+
+//    ui->tableView->setModel(model);
+//    ui->tableView->setSortingEnabled(true); // fonction trie des colonnes
+
+    // Version 2 avec Relation
+
+    QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this, db);
     model->setTable("clients");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    model->select();
-    model->removeColumn(0); // don't show the ID
+
+    model->removeColumn(0); // enlever le numero client
+
     model->setHeaderData(0, Qt::Horizontal, tr("Villes"));
     model->setHeaderData(1, Qt::Horizontal, tr("Agent"));
     model->setHeaderData(2, Qt::Horizontal, tr("Nom"));
     model->setHeaderData(3, Qt::Horizontal, tr("Adresse"));
     model->setHeaderData(4, Qt::Horizontal, tr("Tel"));
+    // Jointures
+    model->setRelation(0, QSqlRelation("villes", "num_v", "nom_v"));    // table villes
+    model->setRelation(1, QSqlRelation("agents", "num_a", "prenom_a")); // table agents
+
+    model->select();
     ui->tableView->setModel(model);
-    ui->tableView->setSortingEnabled(true); // fonction trie des colonnes
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(this));
+    ui->tableView->setSortingEnabled(true);
 }
 
 void SQL_GUI::remplissageTV()
