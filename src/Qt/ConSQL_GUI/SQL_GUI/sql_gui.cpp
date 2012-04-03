@@ -33,8 +33,10 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     //requeteVille();
     //remplissageTV();
     //requeteClient();
+    //TVClient();
+    requeteNewClient();
+    //requeteNewClient2();
     TVClient();
-
 }
 
 SQL_GUI::~SQL_GUI()
@@ -86,18 +88,42 @@ void SQL_GUI::requeteClient()
 
 void SQL_GUI::TVClient()
 {
-    QSqlTableModel *model = new QSqlTableModel(this, db);
+    // Version 1 sans Relation
+//    QSqlTableModel *model = new QSqlTableModel(this, db);
+//    model->setTable("clients");
+//    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+//    model->select();
+//    model->removeColumn(0); // don't show the ID
+//    model->setHeaderData(0, Qt::Horizontal, tr("Villes"));
+//    model->setHeaderData(1, Qt::Horizontal, tr("Agent"));
+//    model->setHeaderData(2, Qt::Horizontal, tr("Nom"));
+//    model->setHeaderData(3, Qt::Horizontal, tr("Adresse"));
+//    model->setHeaderData(4, Qt::Horizontal, tr("Tel"));
+
+//    ui->tableView->setModel(model);
+//    ui->tableView->setSortingEnabled(true); // fonction trie des colonnes
+
+    // Version 2 avec Relation
+
+    QSqlRelationalTableModel *model = new QSqlRelationalTableModel(this, db);
     model->setTable("clients");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    model->select();
-    model->removeColumn(0); // don't show the ID
+
+    model->removeColumn(0); // enlever le numero client
+
     model->setHeaderData(0, Qt::Horizontal, tr("Villes"));
     model->setHeaderData(1, Qt::Horizontal, tr("Agent"));
     model->setHeaderData(2, Qt::Horizontal, tr("Nom"));
     model->setHeaderData(3, Qt::Horizontal, tr("Adresse"));
     model->setHeaderData(4, Qt::Horizontal, tr("Tel"));
+    // Jointures
+    model->setRelation(0, QSqlRelation("villes", "num_v", "nom_v"));    // table villes
+    model->setRelation(1, QSqlRelation("agents", "num_a", "prenom_a")); // table agents
+
+    model->select();
     ui->tableView->setModel(model);
-    ui->tableView->setSortingEnabled(true); // fonction trie des colonnes
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(this));
+    ui->tableView->setSortingEnabled(true);
 }
 
 void SQL_GUI::remplissageTV()
@@ -114,18 +140,44 @@ void SQL_GUI::remplissageTV()
 }
 
 void SQL_GUI::requeteNewClient(){
-   // Requete avec des bindValue afin d'etre serialisables
-    QSqlQuery query;
-    query.prepare("INSERT INTO clients (num_c, num_v, num_a, nom_c, adresse_c, tel_c) VALUES (?, ?, ?, ?, ?, ?)");
-    query.bindValue(0, "num_c");
-    query.bindValue(1, "num_v");
-    query.bindValue(2, "num_a");
-    query.bindValue(3, "nom_c");
-    query.bindValue(4, "adresse_c");
-    query.bindValue(5, "tel_c"),
-    query.exec();
+    // requete serialisable test OK
 
+    ui->FenetreInfo->append("Preparation requete");
+    QString error;
+    QSqlQuery query;
+    QString nomC = "Simpson Omer";
+    QString adresseC = "3 rue de Springfield";
+    QString telC = "0123456789";
+    QString numA = "1";
+    QString numV = "3";
+
+    query.prepare("INSERT INTO clients(num_c, num_v, num_a, nom_c, adresse_c, tel_c)"
+                  "VALUES (default, :num_v, :num_a, :nom_c, :adresse_c, :tel_c)");
+    query.bindValue(":num_v", numV);
+    query.bindValue(":num_a", numA);
+    query.bindValue(":nom_a", nomC);
+    query.bindValue(":adresse_c", adresseC);
+    query.bindValue(":tel_c", telC);
+    if (query.exec())
+    {
+        error = query.lastError().text();
+        ui->FenetreInfo->append(error);
+        ui->FenetreInfo->append("Requete ok");
+    }
 }
+
+void SQL_GUI::requeteNewClient2()
+{   // Requete de test -> ok
+
+    QString error;
+    ui->FenetreInfo->append("Preparation requete");
+    QSqlQuery q;
+    q.exec("INSERT INTO clients(num_c, num_v, num_a, nom_c, adresse_c, tel_c) VALUES (default, 3, 1, 'Tintin3', '14 rue de lespace', '0101010101')");
+    error = q.lastError().text();
+    ui->FenetreInfo->append(error);
+        ui->FenetreInfo->append("Requete ok");
+}
+
 
 void SQL_GUI::actionNouveau_Client()
 {

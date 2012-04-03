@@ -3,15 +3,10 @@
 BDD::BDD(QString typeConnection ,QString host, QString database, QString user, QString password)
 {
     db = QSqlDatabase::addDatabase(typeConnection);
-
-    //db.addDatabase(typeConnection);
-
     db.setHostName(host);
     db.setDatabaseName(database);
     db.setUserName(user);
     db.setPassword(password);
-
-
 }
 
 bool BDD::isConnectionActive()
