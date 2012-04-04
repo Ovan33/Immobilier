@@ -3,10 +3,23 @@
 #################################
 - Fonctionnement des composants Date / Heure / calendrier de Qt
 - À faire : conception des interfaces et classes liées aux biens
+- Classe abstraite pour les composants liés aux biens et souhaits (listes de résultats)
+- Classe abstraite pour les fiches client/bien/souhait
+- ??? adresses dans la classe Bien ??? WTF ???
+- Conception de l'écran d'ajout de bien et définition des classes associées
+- Recherche logos souhaits / listeSouhaits / listBiens
 
 #########################
 ##   Suivi quotidien   ##
 #########################
+
+##04/04
+- mise à jour de liste des souhaits et de la liste des classes d'interface associées (ajout de la possibilité de créer un nouveau souhait)
+- Conception de la liste des biens et définition des classes d'interface associées
+- Conception de l'écran d'ajout de souhait et définition des classes associées
+
+##03/04
+- tests de création d'un widget Qt/C++ personnalisé et intégration de ce widget dans un écran
 
 ##29/03
 - Qt/C++ : Implémentation et tests de requête d'insertion de nouveau client dans la base de données
