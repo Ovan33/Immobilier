@@ -8,6 +8,8 @@
 - ??? adresses dans la classe Bien ??? WTF ???
 - Conception de l'écran d'ajout de bien et définition des classes associées
 - Recherche logos souhaits / listeSouhaits / listBiens
+- Documenter la classe BDD
+- ajouter la classe Paramètre dans le diagramme des classes
 
 #########################
 ##   Suivi quotidien   ##
