@@ -1,5 +1,6 @@
 #include "sql_gui.h"
 #include "ui_sql_gui.h"
+#include "client.h"
 
 
 SQL_GUI::SQL_GUI(QWidget *parent) :
@@ -34,9 +35,15 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     //remplissageTV();
     //requeteClient();
     //TVClient();
-    requeteNewClient();
+    //requeteNewClient();
     //requeteNewClient2();
     TVClient();
+
+    // Interface Client
+    Client *cl = new Client(this);
+    cl->setParent(ui->widget);
+    cl->show();
+
 }
 
 SQL_GUI::~SQL_GUI()
