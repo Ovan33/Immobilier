@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'sql_gui.ui'
 **
-** Created: Tue Apr 3 12:01:10 2012
+** Created: Mon Apr 9 15:40:43 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,12 +27,12 @@ QT_BEGIN_NAMESPACE
 class Ui_SQL_GUI
 {
 public:
-    QAction *actionNouveau_Client;
     QAction *actionQuitter;
     QWidget *centralWidget;
     QTableView *tableView;
     QTextEdit *FenetreInfo;
     QTextEdit *FenetreRequete;
+    QWidget *widget;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -40,24 +40,24 @@ public:
     {
         if (SQL_GUI->objectName().isEmpty())
             SQL_GUI->setObjectName(QString::fromUtf8("SQL_GUI"));
-        SQL_GUI->resize(582, 494);
-        actionNouveau_Client = new QAction(SQL_GUI);
-        actionNouveau_Client->setObjectName(QString::fromUtf8("actionNouveau_Client"));
-        actionNouveau_Client->setIconVisibleInMenu(false);
+        SQL_GUI->resize(585, 526);
         actionQuitter = new QAction(SQL_GUI);
         actionQuitter->setObjectName(QString::fromUtf8("actionQuitter"));
         centralWidget = new QWidget(SQL_GUI);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(110, 0, 461, 341));
+        tableView->setGeometry(QRect(110, 0, 461, 221));
         FenetreInfo = new QTextEdit(centralWidget);
         FenetreInfo->setObjectName(QString::fromUtf8("FenetreInfo"));
-        FenetreInfo->setGeometry(QRect(10, 350, 561, 71));
+        FenetreInfo->setGeometry(QRect(20, 410, 561, 71));
         FenetreInfo->setLayoutDirection(Qt::LeftToRight);
         FenetreRequete = new QTextEdit(centralWidget);
         FenetreRequete->setObjectName(QString::fromUtf8("FenetreRequete"));
-        FenetreRequete->setGeometry(QRect(10, 210, 91, 121));
+        FenetreRequete->setGeometry(QRect(10, 10, 91, 121));
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(10, 270, 571, 121));
         SQL_GUI->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(SQL_GUI);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -74,7 +74,6 @@ public:
     void retranslateUi(QMainWindow *SQL_GUI)
     {
         SQL_GUI->setWindowTitle(QApplication::translate("SQL_GUI", "SQL_GUI", 0, QApplication::UnicodeUTF8));
-        actionNouveau_Client->setText(QApplication::translate("SQL_GUI", "Nouveau Client", 0, QApplication::UnicodeUTF8));
         actionQuitter->setText(QApplication::translate("SQL_GUI", "Quitter", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>582</width>
-    <height>494</height>
+    <width>585</width>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,15 +20,15 @@
       <x>110</x>
       <y>0</y>
       <width>461</width>
-      <height>341</height>
+      <height>221</height>
      </rect>
     </property>
    </widget>
    <widget class="QTextEdit" name="FenetreInfo">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>350</y>
+      <x>20</x>
+      <y>410</y>
       <width>561</width>
       <height>71</height>
      </rect>
@@ -41,8 +41,18 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>210</y>
+      <y>10</y>
       <width>91</width>
+      <height>121</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>571</width>
       <height>121</height>
      </rect>
     </property>
@@ -57,14 +67,6 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionNouveau_Client">
-   <property name="text">
-    <string>Nouveau Client</string>
-   </property>
-   <property name="iconVisibleInMenu">
-    <bool>false</bool>
-   </property>
-  </action>
   <action name="actionQuitter">
    <property name="text">
     <string>Quitter</string>
