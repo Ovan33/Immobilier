@@ -12,4 +12,4 @@
 */WidgetPerso-build-desktop/*
 
 # fichiers .user de Qt
-*.user
+*/*.user
