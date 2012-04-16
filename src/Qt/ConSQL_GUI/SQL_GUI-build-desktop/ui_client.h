@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'client.ui'
 **
-** Created: Mon Apr 9 15:40:25 2012
+** Created: Fri Apr 13 14:34:46 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -48,7 +48,7 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         SouhaitBouton = new QPushButton(horizontalLayoutWidget);
         SouhaitBouton->setObjectName(QString::fromUtf8("SouhaitBouton"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(SouhaitBouton->sizePolicy().hasHeightForWidth());

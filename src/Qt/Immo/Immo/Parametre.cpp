@@ -3,7 +3,7 @@
 Parametre::Parametre()
 {
     QDomDocument doc( "test" );
-    QFile file( "/home/isirat/Bureau/test.xml" );
+    QFile file( "../ressources/test.xml" );
 
     if( !file.open( QIODevice::ReadOnly ) )
       return ;
