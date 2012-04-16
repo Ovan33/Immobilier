@@ -2,6 +2,7 @@
 #include "ui_sql_gui.h"
 #include "client.h"
 
+#include <QMdiArea>
 
 SQL_GUI::SQL_GUI(QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +10,16 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
 {
     ui->setupUi(this);
 //    connect(ui->actionNouveau_Client,SIGNAL(clicked()),this,SLOT(actionNouveau_Client()));
+
+//    QPalette fond;
+//    fond.setBrush(backgroundRole(),QBrush(QImage("../ressources/art/chicago.svg")));
+//    setPalette(fond);
+
+    //QMdiArea *zoneCentrale = new QMdiArea; // on crée la zone centrale de la fenêtre
+    //QBrush arrierePlan; // un QBrush
+    //arrierePlan.setTexture(QPixmap("../ressources/art/chicago.svg")); // on lui attribue une image (qui ici, devra se trouver dans le dossier de l'exe
+    //zoneCentrale->setBackground(arrierePlan); // et on l'affecte à la zone centrale
+    //setCentralWidget(zoneCentrale);
 
 
     // Création barre menu
