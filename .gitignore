@@ -10,3 +10,6 @@
 *.autosave
 *.bak
 */WidgetPerso-build-desktop/*
+
+# fichiers .user de Qt
+*.user
