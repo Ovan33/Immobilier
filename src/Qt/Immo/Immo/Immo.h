@@ -14,7 +14,6 @@ class Immo : public QMainWindow
 
 public:
     explicit Immo(QWidget *parent = 0);
-
     ~Immo();
 
 private:
