@@ -8,7 +8,7 @@
 class Parametre
 {
 public:
-    //Permet d'aller charger des paramètres (ici de connection SQL) dans un fichier XML
+    // Chargement des paramètres de l'application dans un fichier XML
     Parametre();
 
     QString getTypeConnection();
@@ -19,8 +19,9 @@ public:
 
 
 private:
-
     QDomDocument *doc;
+
+    // Paramètres de base de données
     QString typeConnection, host, dataBaseName, user, password;
 
 };

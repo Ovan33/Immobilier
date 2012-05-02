@@ -7,7 +7,7 @@ class BDD
 {
 public:
     // Construit un objet de type QSqlDatabase
-    BDD(QString, QString, QString, QString, QString);
+    BDD(QString typeConnection ,QString host, QString database, QString user, QString password);
 
     // Renvoie "true" si la connexion est établie. Utilise la méthode QSqlDatabase::open().
     bool isConnectionActive();
@@ -20,8 +20,6 @@ public:
 
 private:
     QSqlDatabase db;
-
-
 };
 
 #endif // CONNEXIONSQL_H
