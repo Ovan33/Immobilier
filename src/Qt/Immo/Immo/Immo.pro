@@ -17,11 +17,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
     BDD.cpp \
     Parametre.cpp \
-    Immo.cpp
+    Immo.cpp \
+    Ville.cpp
 
 HEADERS  += \
     BDD.h \
     Immo.h \
-    Parametre.h
+    Parametre.h \
+    Ville.h
 
 FORMS    += immo.ui
