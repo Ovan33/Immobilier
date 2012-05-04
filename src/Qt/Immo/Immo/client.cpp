@@ -1,16 +1,15 @@
 #include "client.h"
 
-//======================================================================
-//Initialisation
-//======================================================================
+/*
+  Constructeur
+*/
 Client::Client(int num_c, QString nom, QString adresse, QString tel, Ville ville)
 {
-           this->m_num_c = num_c;
-            this->m_nom = nom;
-            this->m_adresse = adresse;
-            this->m_tel = tel;
-            this->m_ville = ville;
-
+    this->m_num = num_c;
+    this->m_nom = nom;
+    this->m_adresse = adresse;
+    this->m_tel = tel;
+    this->m_ville = ville;
 }
 
 //======================================================================
@@ -18,7 +17,6 @@ Client::Client(int num_c, QString nom, QString adresse, QString tel, Ville ville
 //======================================================================
 Client::~Client ()
 {
-
 }
 
 //======================================================================
@@ -26,7 +24,8 @@ Client::~Client ()
 //======================================================================
 void Client::setAdresse(QString adr)
 {
-    this->m_adresse = adresse;
+    // this->m_adresse = adresse;
+    this->m_adresse = adr;
 }
 
 //======================================================================
@@ -35,5 +34,4 @@ void Client::setAdresse(QString adr)
 void Client::setTelephone(QString tel)
 {
     this->m_tel = tel;
-
 }
