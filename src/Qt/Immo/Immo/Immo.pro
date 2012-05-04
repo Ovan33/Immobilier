@@ -18,12 +18,18 @@ SOURCES += main.cpp\
     BDD.cpp \
     Parametre.cpp \
     Immo.cpp \
-    Ville.cpp
+    Ville.cpp \
+    client.cpp \
+    proprietaire.cpp \
+    acheteur.cpp
 
 HEADERS  += \
     BDD.h \
     Immo.h \
     Parametre.h \
-    Ville.h
+    Ville.h \
+    client.h \
+    proprietaire.h \
+    acheteur.h
 
 FORMS    += immo.ui
