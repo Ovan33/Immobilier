@@ -1,6 +1,8 @@
 #ifndef ACHETEUR_H
 #define ACHETEUR_H
 
+
+#include <QList>
 #include <client.h>
 
 class Acheteur:public Client
@@ -18,7 +20,7 @@ public:
 
  private:
     //liste de souhaits par acheteur
-    Liste<Souhait> m_listeSouhaits;
+    QList<Souhait> m_listeSouhaits;
 };
 
 #endif // ACHETEUR_H

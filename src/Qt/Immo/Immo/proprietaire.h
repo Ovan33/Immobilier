@@ -17,7 +17,7 @@ public:
 private:
 
     //Liste de biens par proprietaire
-    Liste<Bien> m_listeBiens;
+    QList<Bien> m_listeBiens;
 
 };
 

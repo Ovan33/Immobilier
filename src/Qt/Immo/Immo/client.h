@@ -3,25 +3,25 @@
 
 #include <QObject>
 #include <QString>
-
+#include "Ville.h"
 
 class Client : public QObject
 {
 
 public:
 
-        Client (QString nom,QString adresse,QString tel,Ville ville);
-        ~Client ();
-        void setAdresse (QString adr);
-        void setTelephone (QString tel);
+    Client (QString nom,QString adresse,QString tel,Ville ville);
+    ~Client ();
+    void setAdresse (QString adr);
+    void setTelephone (QString tel);
 
 private:
 
-        unsigned int m_num_c = num_c;
-        QString m_nom = nom;
-        QString m_adresse = adresse;
-        QString m_tel = tel;
-        Ville m_ville = ville;
+    unsigned int m_num_c = num_c;
+    QString m_nom = nom;
+    QString m_adresse = adresse;
+    QString m_tel = tel;
+    Ville m_ville = ville;
 };
 
 #endif // CLIENT_H
