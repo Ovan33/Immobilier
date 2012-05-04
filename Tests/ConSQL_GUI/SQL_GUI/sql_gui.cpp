@@ -9,18 +9,6 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     ui(new Ui::SQL_GUI)
 {
     ui->setupUi(this);
-//    connect(ui->actionNouveau_Client,SIGNAL(clicked()),this,SLOT(actionNouveau_Client()));
-
-//    QPalette fond;
-//    fond.setBrush(backgroundRole(),QBrush(QImage("../ressources/art/chicago.svg")));
-//    setPalette(fond);
-
-    //QMdiArea *zoneCentrale = new QMdiArea; // on crée la zone centrale de la fenêtre
-    //QBrush arrierePlan; // un QBrush
-    //arrierePlan.setTexture(QPixmap("../ressources/art/chicago.svg")); // on lui attribue une image (qui ici, devra se trouver dans le dossier de l'exe
-    //zoneCentrale->setBackground(arrierePlan); // et on l'affecte à la zone centrale
-    //setCentralWidget(zoneCentrale);
-
 
     // Création barre menu
     QMenuBar* menuBar = new QMenuBar(this); // création barre de menu
@@ -35,20 +23,16 @@ SQL_GUI::SQL_GUI(QWidget *parent) :
     //Menu Edition
     menuFile = new QMenu("Edition"); // menu Edition
     menuBar->addMenu(menuFile);
-    // Items
-//    menuFile->addAction("Nouveau Client", this, SLOT(ajoutNewClient()));
-//    menuFile->addSeparator();
-
 
     ui->FenetreInfo->append("Connexion a la base de donnees...");
     connexionBDD();
-    //requeteVille();
+    requeteVille();
     //remplissageTV();
     //requeteClient();
     //TVClient();
     //requeteNewClient();
     //requeteNewClient2();
-    TVClient();
+    // TVClient();
 
     // Interface Client
     Client *cl = new Client(this);

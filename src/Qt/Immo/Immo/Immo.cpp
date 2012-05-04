@@ -1,6 +1,9 @@
 #include "Immo.h"
 #include "BDD.h"
 #include "Parametre.h"
+#include "Ville.h"
+#include <QDebug>
+// #include <QtDebug>
 
 #include "ui_immo.h"
 
@@ -12,6 +15,9 @@ Immo::Immo(QWidget *parent) :
 
     // Aller chercher les parametres dans le fichier XML
     Parametre* test = new Parametre();
+    Ville cado("Cadaujac","33140");
+    ui->textEdit->append(cado.getCodePostal());
+    ui->textEdit->append(cado.getNom());
 
     // Création de la connexion
     BDD* m_bdd = new BDD(test->getTypeConnection(), test->getHost(), test->getDataBaseName(), test->getUser(), test->getPassword());
@@ -20,8 +26,14 @@ Immo::Immo(QWidget *parent) :
     {
         ui->textEdit->append("Connection valide");
         if (m_bdd->isConnectionActive())
+        {
             ui->textEdit->append("Connection etablie");
-    }
+        }
+    if (Ville::isExisting("Cadaujac","33140"))
+        ui->textEdit->append("Trouvée");
+    else
+        ui->textEdit->append("pas trouvée");
+    }    
     m_bdd->close(); // Fermeture connexion
 }
 

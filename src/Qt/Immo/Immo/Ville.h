@@ -8,20 +8,21 @@ class Ville : public QObject
 {
     Q_OBJECT
 private:
-    unsigned int m_numVille;
+    unsigned int m_num;
     QString m_nom;
     QString m_codePostal;
 
-    Ville retrieveFromDB(QString nom, QString codePostal, BDD connexion);
+    Ville retrieveFromDB(QString nom, QString codePostal);
 
 public:
     // explicit Ville(QObject *parent = 0);
     Ville(QString nom, QString codePostal);
-    ~Ville;
+
+    // ~Ville;
 
     QString getNom();
     QString getCodePostal();
-    bool isExisting();
+    static bool isExisting(QString nom, QString codePostal);
     void modifierVille(QString nom, QString codePostal);
 
 signals:

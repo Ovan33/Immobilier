@@ -8,7 +8,7 @@ QT       += core gui
 QT       += sql
 QT       += xml
 
-#QT       += console
+CONFIG       += console
 
 TARGET = Immo
 TEMPLATE = app
