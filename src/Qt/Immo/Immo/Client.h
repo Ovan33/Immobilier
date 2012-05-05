@@ -11,7 +11,7 @@ class Client : public QObject
 public:
 
     Client();
-    Client (int num, QString nom,QString adresse,QString tel,Ville ville);
+    Client (int num, QString nom,QString adresse,QString tel,Ville &ville);
     ~Client ();
     void setAdresse (QString adr);
     void setTelephone (QString tel);
