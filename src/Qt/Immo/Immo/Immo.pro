@@ -21,8 +21,9 @@ SOURCES += main.cpp\
     Client.cpp \
     Bien.cpp \
     Immo.cpp \
+    Proprietaire.cpp \
+
     # Acheteur.cpp \
-    # Proprietaire.cpp \
     # Souhait.cpp
 
 HEADERS  += \
@@ -32,9 +33,8 @@ HEADERS  += \
     Client.h \
     Bien.h \
     Immo.h \
-    # Proprietaire.h \
+    Proprietaire.h \
     # Acheteur.h \
-
     # Souhait.h
 
 FORMS    += immo.ui

@@ -3,7 +3,8 @@
 //======================================================================
 //Initialisation
 //======================================================================
-Proprietaire::Proprietaire(QString nom, QString adresse, QString tel, Ville ville)
+Proprietaire::Proprietaire(int num, QString nom, QString adresse, QString tel, Ville &ville)
+    : Client(num,nom,adresse,tel,ville)
 {
 }
 

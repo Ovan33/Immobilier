@@ -9,7 +9,7 @@ class Proprietaire : public Client
 
 public:
 
-    Proprietaire(QString nom, QString adresse, QString tel, Ville ville);
+    Proprietaire(int num, QString nom, QString adresse, QString tel, Ville &ville);
     ~Proprietaire();
     bool ajouterBien (Bien bien);
     bool supprimerBien (Bien bien);
