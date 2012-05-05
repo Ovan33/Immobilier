@@ -3,13 +3,14 @@
 
 #include <QObject>
 #include <QString>
-#include "Ville.h"
+#include <Ville.h>
 
 class Client : public QObject
 {
 
 public:
 
+    Client();
     Client (int num, QString nom,QString adresse,QString tel,Ville ville);
     ~Client ();
     void setAdresse (QString adr);
@@ -28,7 +29,6 @@ private:
     QString m_adresse;
     QString m_tel;
     Ville m_ville;
-
 };
 
 #endif // CLIENT_H

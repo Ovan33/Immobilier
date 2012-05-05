@@ -3,7 +3,6 @@
 #include "Parametre.h"
 #include "Ville.h"
 #include <QDebug>
-// #include <QtDebug>
 
 #include "ui_immo.h"
 

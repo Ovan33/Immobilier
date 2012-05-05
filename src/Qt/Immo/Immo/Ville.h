@@ -15,7 +15,7 @@ private:
     Ville retrieveFromDB(QString nom, QString codePostal);
 
 public:
-    // explicit Ville(QObject *parent = 0);
+    explicit Ville(QObject *parent = 0);
     Ville(QString nom, QString codePostal);
 
     // ~Ville;
@@ -24,6 +24,7 @@ public:
     QString getCodePostal();
     static bool isExisting(QString nom, QString codePostal);
     void modifierVille(QString nom, QString codePostal);
+    void operator=(const Ville &ville);
 
 signals:
 

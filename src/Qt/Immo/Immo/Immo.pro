@@ -17,19 +17,24 @@ TEMPLATE = app
 SOURCES += main.cpp\
     BDD.cpp \
     Parametre.cpp \
-    Immo.cpp \
     Ville.cpp \
-    client.cpp \
-    proprietaire.cpp \
-    acheteur.cpp
+    Client.cpp \
+    Bien.cpp \
+    Immo.cpp \
+    # Acheteur.cpp \
+    # Proprietaire.cpp \
+    # Souhait.cpp
 
 HEADERS  += \
     BDD.h \
-    Immo.h \
     Parametre.h \
     Ville.h \
-    client.h \
-    proprietaire.h \
-    acheteur.h
+    Client.h \
+    Bien.h \
+    Immo.h \
+    # Proprietaire.h \
+    # Acheteur.h \
+
+    # Souhait.h
 
 FORMS    += immo.ui

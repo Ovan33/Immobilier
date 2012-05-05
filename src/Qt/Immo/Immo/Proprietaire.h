@@ -1,7 +1,8 @@
 #ifndef PROPRIETAIRE_H
 #define PROPRIETAIRE_H
 
-#include <client.h>
+#include "Client.h"
+#include "Bien.h"
 
 class Proprietaire : public Client
 {

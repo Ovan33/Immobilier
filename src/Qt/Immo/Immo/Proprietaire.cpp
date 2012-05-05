@@ -1,12 +1,10 @@
-#include "proprietaire.h"
+#include "Proprietaire.h"
 
 //======================================================================
 //Initialisation
 //======================================================================
 Proprietaire::Proprietaire(QString nom, QString adresse, QString tel, Ville ville)
 {
-
-
 }
 
 //======================================================================
@@ -22,7 +20,7 @@ Proprietaire::~Proprietaire()
 //======================================================================
 bool Proprietaire::ajouterBien(Bien bien)
 {
-    return bienAjoute;
+    return true;
 }
 
 //======================================================================
@@ -30,7 +28,7 @@ bool Proprietaire::ajouterBien(Bien bien)
 //======================================================================
 bool Proprietaire::supprimerBien(Bien bien)
 {
-    return bienSupprimer;
+    return true;
 }
 
 //======================================================================
@@ -38,5 +36,5 @@ bool Proprietaire::supprimerBien(Bien bien)
 //======================================================================
 bool Proprietaire::modifierBien(Bien bien)
 {
-    return bienModifie;
+    return true;
 }

@@ -1,13 +1,12 @@
-#include "Ville.h"
+#include <Ville.h>
 
-/*
 Ville::Ville(QObject *parent) :
     QObject(parent)
 {
 }
-*/
 
-Ville::Ville(QString nom, QString codePostal)
+Ville::Ville(QString nom, QString codePostal) :
+    QObject()
 {
     this->m_nom = nom;
     this->m_codePostal = codePostal;
@@ -45,4 +44,11 @@ void Ville::modifierVille(QString nom, QString codePostal)
 {
     this->m_nom = nom;
     this->m_codePostal= codePostal;
+}
+
+void Ville::operator=(const Ville &ville)
+{
+    this->m_codePostal = ville.m_codePostal;
+    this->m_nom = ville.m_nom;
+    this->m_num = ville.m_num;
 }
