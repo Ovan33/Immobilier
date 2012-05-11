@@ -1,1 +1,8 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/images" lang="fr">
+        <file alias="accueil">images/accueil.png</file>
+        <file alias="ajouterPersonne">images/personne_add.png</file>
+        <file alias="personnes">images/personnes.png</file>
+        <file alias="souhait">images/souhait.png</file>
+    </qresource>
+</RCC>
