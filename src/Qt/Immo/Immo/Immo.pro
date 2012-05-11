@@ -36,4 +36,6 @@ HEADERS  += \
     # Acheteur.h \
     Souhait.h
 
-FORMS    += immo.ui
+FORMS    += immo.ui \
+    UI_WIDGET_barreMenuFiche.ui \
+    UI_Client.ui

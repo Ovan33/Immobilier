@@ -3,6 +3,6 @@
 		<TypeConnection>QPSQL</TypeConnection>
 		<Host>localhost</Host>      
 		<DataBaseName>immo</DataBaseName>      
-		<User>isirat</User>      
-		<Password>isirat</Password>
+		<User>gcoulais</User>      
+		<Password>gcoulais</Password>
 </ParametreConnexion>
