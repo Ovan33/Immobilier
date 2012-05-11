@@ -39,3 +39,6 @@ HEADERS  += \
 FORMS    += immo.ui \
     UI_WIDGET_barreMenuFiche.ui \
     UI_Client.ui
+
+RESOURCES += \
+    ressources.qrc
