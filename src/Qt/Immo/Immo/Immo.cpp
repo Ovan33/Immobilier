@@ -13,16 +13,17 @@ Immo::Immo(QWidget *parent) :
     ui(new Ui::Immo)
 {
     ui->setupUi(this);
-    // Parametre* test = new Parametre();
+    /* Parametre* test = new Parametre();
     Ville cado("Cadaujac","33140");
 
     Client client(1, "NomClient", "AdresseClient", "TelClient", cado);
-    Client *cl;
-    cl = &client;
-    DialogClient dc;
-    dc.setClient(cl);
+    Client *cl = &client;
+    // cl = &client;
+    DialogClient dc(cl);
+    // dc.setClient(cl);
     dc.setParent(this);
-    dc.show();
+
+    dc.open();
     // ui->textEdit->append(cado.getCodePostal());
     // ui->textEdit->append(cado.getNom());
 

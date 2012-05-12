@@ -14,7 +14,7 @@ class DialogClient : public QDialog
 
 public:
     // explicit DialogClient(Client *client, QWidget *parent = 0);
-    // explicit DialogClient(Client *client);
+    explicit DialogClient(Client *client);
     explicit DialogClient();
     ~DialogClient();
     void setClient(Client *client);
