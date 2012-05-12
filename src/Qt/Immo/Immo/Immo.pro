@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     Immo.cpp \
     Proprietaire.cpp \
     # Acheteur.cpp \
-    Souhait.cpp
+    Souhait.cpp \
+    dialogclient.cpp
 
 HEADERS  += \
     BDD.h \
@@ -34,11 +35,13 @@ HEADERS  += \
     Immo.h \
     Proprietaire.h \
     # Acheteur.h \
-    Souhait.h
+    Souhait.h \
+    dialogclient.h
 
 FORMS    += immo.ui \
     # UI_WIDGET_barreMenuFiche.ui \
     # UI_Client.ui
+    dialogclient.ui
 
 RESOURCES += \
     ressources.qrc

@@ -2,23 +2,31 @@
 #include "BDD.h"
 #include "Parametre.h"
 #include "Ville.h"
+#include "Client.h"
 #include <QDebug>
 
 #include "ui_immo.h"
+#include "dialogclient.h"
 
 Immo::Immo(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Immo)
 {
     ui->setupUi(this);
-
-    // Aller chercher les parametres dans le fichier XML
-    Parametre* test = new Parametre();
+    // Parametre* test = new Parametre();
     Ville cado("Cadaujac","33140");
-    ui->textEdit->append(cado.getCodePostal());
-    ui->textEdit->append(cado.getNom());
 
-    // Création de la connexion
+    Client client(1, "NomClient", "AdresseClient", "TelClient", cado);
+    Client *cl;
+    cl = &client;
+    DialogClient dc;
+    dc.setClient(cl);
+    dc.setParent(this);
+    dc.show();
+    // ui->textEdit->append(cado.getCodePostal());
+    // ui->textEdit->append(cado.getNom());
+
+    /* Tests Base de données
     BDD* m_bdd = new BDD(test->getTypeConnection(), test->getHost(), test->getDataBaseName(), test->getUser(), test->getPassword());
     // Test connexion et affichage du test
     if (m_bdd->isValid())
@@ -36,6 +44,7 @@ Immo::Immo(QWidget *parent) :
         ui->textEdit->append("pas trouvée");
     }    
     m_bdd->close(); // Fermeture connexion
+    */
 }
 
 Immo::~Immo()

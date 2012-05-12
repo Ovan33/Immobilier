@@ -4,7 +4,7 @@
 //Initialisation
 //======================================================================
 Proprietaire::Proprietaire(int num, QString nom, QString adresse, QString tel, Ville &ville)
-    : Client(num,nom,adresse,tel,ville)
+    : Client(num,nom,adresse,tel, ville)
 {
 }
 
