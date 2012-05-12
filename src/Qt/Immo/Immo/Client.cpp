@@ -3,8 +3,7 @@
 /*
   Constructeur
 */
-Client::Client(int num_c, QString nom, QString adresse, QString tel, Ville &ville) :
-    QObject()
+Client::Client(int num_c, QString nom, QString adresse, QString tel, Ville &ville)
 {
     this->m_num = num_c;
     this->m_nom = nom;

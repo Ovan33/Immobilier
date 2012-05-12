@@ -28,7 +28,9 @@ Immo::Immo(QWidget *parent) :
         {
             ui->textEdit->append("Connection etablie");
         }
-    if (Ville::isExisting("Cadaujac","33140"))
+
+
+        if (Ville::isExisting("Cadaujac","33140"))
         ui->textEdit->append("Trouvée");
     else
         ui->textEdit->append("pas trouvée");

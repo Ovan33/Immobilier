@@ -37,8 +37,8 @@ HEADERS  += \
     Souhait.h
 
 FORMS    += immo.ui \
-    UI_WIDGET_barreMenuFiche.ui \
-    UI_Client.ui
+    # UI_WIDGET_barreMenuFiche.ui \
+    # UI_Client.ui
 
 RESOURCES += \
     ressources.qrc
