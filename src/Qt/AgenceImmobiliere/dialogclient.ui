@@ -135,7 +135,7 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="4" column="0">
         <widget class="QLabel" name="label_Ville">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -160,7 +160,7 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="4" column="1">
         <widget class="QComboBox" name="comboBox">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
@@ -170,7 +170,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_Telephone">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -195,7 +195,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="1">
         <widget class="QLineEdit" name="lineEdit_CodePostal_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
@@ -227,7 +227,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="3" column="1">
         <widget class="QPushButton" name="button_ChercherVilles">
          <property name="text">
           <string>Chercher les villes</string>
@@ -244,8 +244,8 @@
   <tabstop>lineEdit_Nom</tabstop>
   <tabstop>lineEdit_Adresse</tabstop>
   <tabstop>lineEdit_CodePostal</tabstop>
-  <tabstop>comboBox</tabstop>
   <tabstop>button_ChercherVilles</tabstop>
+  <tabstop>comboBox</tabstop>
   <tabstop>lineEdit_CodePostal_2</tabstop>
  </tabstops>
  <resources/>
