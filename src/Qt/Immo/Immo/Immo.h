@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 
-
 namespace Ui {
     class Immo;
 }
@@ -14,7 +13,6 @@ class Immo : public QMainWindow
 
 public:
     explicit Immo(QWidget *parent = 0);
-
     ~Immo();
 
 private:

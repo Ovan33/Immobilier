@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="100"
+   height="100"
+   viewBox="0 0 100 100"
+   enable-background="new 0 0 100 76.434"
+   xml:space="preserve"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="client.svg"
+   inkscape:export-filename="/home/gcoulais/Immobilier/src/Qt/AgenceImmobiliere/images/client_96x96.png"
+   inkscape:export-xdpi="86.400002"
+   inkscape:export-ydpi="86.400002"><metadata
+   id="metadata3044"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs3042" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1280"
+   inkscape:window-height="776"
+   id="namedview3040"
+   showgrid="false"
+   width="48px"
+   inkscape:zoom="3.7679568"
+   inkscape:cx="5.6788969"
+   inkscape:cy="38.216999"
+   inkscape:window-x="0"
+   inkscape:window-y="24"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<path
+   d="M 98.574,79.773 C 96.458,68.854 67.338,70.015 60.32,61.463 58.84,59.658 58.84,59.658 59.832,52.956 61.526,45.454 63.061,50.11 65.483,35.147 67.517,22.581 63.177,11.783 50,11.783 c -13.177,0 -17.517,10.798 -15.483,23.364 2.422,14.963 3.956,10.307 5.651,17.809 0.992,6.702 0.992,6.702 -0.488,8.507 C 32.662,70.015 3.542,68.854 1.426,79.773 1.175,81.065 0,88.217 0,88.217 h 100 c 0,0 -1.175,-7.152 -1.426,-8.444 z"
+   id="path3038"
+   inkscape:connector-curvature="0" />
+</svg>

@@ -1,0 +1,20 @@
+Étapes
+- création de la classe objet (telle que Client...) 
+	Sous QTCreator, créer une classe C++ "MaBelleClasse"
+	Elle n'a pas d'UI. 
+	Elle hérite de QObject
+	Elle dispose de ses propres attributs et méthodes. Notamment elle doit permettre les échanges avec la base de données.
+	Elle peut contenir des signaux et des slots pour ses propres besoins.
+- création de la classe graphique
+	Sous Qt Creator, créer une classe d'interface graphique QT Designer "MaBelleClasseView"
+	Elle contient un fichier ui et une classe c++
+	Elle disposer de ses propres attributs et méthodes. Notamment elle doit permettre la gestion des événements dans la fenêtre graphique.
+	Elle contient un pointeur de type "MaBelleClasse", avec lequel elle est capable d'échanger au travers des méthodes des instances de cette classe
+	
+Exemples dans mcercle
+Paramètres de l'application
+	- une classe Settings
+	- une classe DialogSettings qui contient un attribut *m_Settings de type Settings
+Client
+	- une classe customer
+	- une classe DialogCustomer qui contient un attribut *m_customer de type customer

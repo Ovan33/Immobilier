@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="70.462646"
+   height="70.455086"
+   viewBox="0 0 70.462644 70.455086"
+   enable-background="new 0 0 95.453 100"
+   xml:space="preserve"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="annuler.svg"><metadata
+   id="metadata3989"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs3987">
+	
+
+		
+	</defs><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1280"
+   inkscape:window-height="776"
+   id="namedview3985"
+   showgrid="false"
+   fit-margin-top="0"
+   fit-margin-left="0"
+   fit-margin-right="0"
+   fit-margin-bottom="0"
+   inkscape:zoom="2.88"
+   inkscape:cx="30.321142"
+   inkscape:cy="32.141434"
+   inkscape:window-x="0"
+   inkscape:window-y="24"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+
+<path
+   style="fill:#ff0000;stroke:none"
+   inkscape:connector-curvature="0"
+   id="path3030"
+   d="M 23.143566,35.318167 -1.5809399e-6,12.515698 5.9702984,6.4571176 12.004702,0.33346282 35.144482,23.139772 57.946969,0 70.121587,12.000951 47.322868,35.136893 70.462648,57.943206 58.461717,70.121616 35.318153,47.319144 12.519439,70.45509 0.34103342,58.457981 23.143524,35.318208 z"
+   sodipodi:nodetypes="ccccccccccccccc" /></svg>

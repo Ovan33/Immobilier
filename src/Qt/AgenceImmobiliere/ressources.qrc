@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/app">
+        <file alias="accueil">images/accueil.png</file>
+        <file alias="personnes">images/personnes.png</file>
+        <file alias="souhait">images/souhait.png</file>
+        <file alias="client48">images/client_48x48.png</file>
+        <file alias="client96">images/client_96x96.png</file>
+        <file alias="effacer48">images/effacer_48x48.png</file>
+        <file alias="effacer96">images/effacer_96x96.png</file>
+        <file alias="personneAdd48">images/personne_add_48x48.png</file>
+        <file alias="personneAdd96">images/personne_add_96x96.png</file>
+    </qresource>
+</RCC>

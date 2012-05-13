@@ -9,7 +9,10 @@
 *.*~
 *.autosave
 *.bak
-*/WidgetPerso-build-desktop/*
+WidgetPerso-build-desktop/
+Immo-build-desktop/
 
 # fichiers .user de Qt
 */*.user
+*.user
+*.user.*
