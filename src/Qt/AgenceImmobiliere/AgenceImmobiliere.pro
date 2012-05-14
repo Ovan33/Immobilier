@@ -13,16 +13,22 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     dialogaccueil.cpp \
-    dialogclient.cpp
+    dialogclient.cpp \
+    dialogbien.cpp \
+    dialogsouhait.cpp
 
 HEADERS  += mainwindow.h \
     dialogaccueil.h \
-    dialogclient.h
+    dialogclient.h \
+    dialogbien.h \
+    dialogsouhait.h
 
 FORMS    += mainwindow.ui \
     barreMenuFiche.ui \
     dialogaccueil.ui \
-    dialogclient.ui
+    dialogclient.ui \
+    dialogbien.ui \
+    dialogsouhait.ui
 
 RESOURCES += \
     ressources.qrc
