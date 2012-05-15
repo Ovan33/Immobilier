@@ -21,7 +21,7 @@ private:
     Ui::barreMenuFiche m_menu;
 
 public slots:
-    void quitter();
+    void reset();
 };
 
 #endif // DIALOGACCUEIL_H
