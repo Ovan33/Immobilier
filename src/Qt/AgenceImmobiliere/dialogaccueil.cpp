@@ -12,9 +12,17 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     m_menu.pushButton_3->setVisible(false);
     m_menu.pushButton_1->setIcon(QIcon(":/app/rafraichir96"));
     m_menu.pushButton_2->setIcon(QIcon(":/app/quitter96"));
+
+    QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()),this, SLOT(quitter()));
 }
 
 DialogAccueil::~DialogAccueil()
 {
     delete ui;
+}
+
+void DialogAccueil::quitter()
+{
+    // QApplication::closeAllWindows();
+    QApplication::quit();
 }

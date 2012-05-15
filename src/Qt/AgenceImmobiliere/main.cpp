@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     // MainWindow w;
     // w.show();
     DialogAccueil da;
-    da.exec();
+    return da.exec();
 
-    return a.exec();
+    // return a.exec();
 }

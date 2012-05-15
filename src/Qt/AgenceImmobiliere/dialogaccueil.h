@@ -19,6 +19,9 @@ public:
 private:
     Ui::DialogAccueil *ui;
     Ui::barreMenuFiche m_menu;
+
+public slots:
+    void quitter();
 };
 
 #endif // DIALOGACCUEIL_H
