@@ -13,5 +13,9 @@
         <file alias="annuler96">images/annuler_96x96.png</file>
         <file alias="valider48">images/valider_48x48.png</file>
         <file alias="valider96">images/valider_96x96.png</file>
+        <file alias="quitter48">images/quitter_48x48.png</file>
+        <file alias="quitter96">images/quitter_96x96.png</file>
+        <file alias="rafraichir48">images/rafraichir_48x48.png</file>
+        <file alias="rafraichir96">images/rafraichir_96x96.png</file>
     </qresource>
 </RCC>
