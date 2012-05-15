@@ -29,6 +29,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), qApp, SLOT(quit()));
     QObject::connect(m_menu.pushButton_1, SIGNAL(clicked()), this, SLOT(reset()));
     QObject::connect(ui->button_Effacer, SIGNAL(clicked()), ui->lineEdit_Recherche, SLOT(clear()));
+    QObject::connect(ui->button_Ok, SIGNAL(clicked()), this, SLOT(chercherClients()));
 }
 
 DialogAccueil::~DialogAccueil()
@@ -40,4 +41,26 @@ void DialogAccueil::reset()
 {
     ui->lineEdit_Recherche->clear();
     ui->tableView_Resultats->clearSpans();
+}
+
+void DialogAccueil::chercherClients()
+{
+    QString client = ui->lineEdit_Recherche->text();
+    if (client.isEmpty())
+        faireAutreChose();
+    else
+    {
+        // ouvrir une connexion
+        // construire la requête de recherche
+        // exécuter la requête
+        // récupérer le résultat
+        // compter le nombre de lignes de résultats
+        // afficher les résultats
+
+    }
+}
+
+void DialogAccueil::faireAutreChose()
+{
+
 }

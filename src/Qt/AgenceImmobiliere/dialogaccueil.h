@@ -20,8 +20,11 @@ private:
     Ui::DialogAccueil *ui;
     Ui::barreMenuFiche m_menu;
 
+    void faireAutreChose();
+
 public slots:
     void reset();
+    void chercherClients();
 };
 
 #endif // DIALOGACCUEIL_H

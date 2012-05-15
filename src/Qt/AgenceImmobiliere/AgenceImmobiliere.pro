@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
+QT      += xml
 
 TARGET = AgenceImmobiliere
 TEMPLATE = app
@@ -15,13 +17,17 @@ SOURCES += main.cpp\
     dialogaccueil.cpp \
     dialogclient.cpp \
     dialogbien.cpp \
-    dialogsouhait.cpp
+    dialogsouhait.cpp \
+    BDD.cpp \
+    Parametre.cpp
 
 HEADERS  += mainwindow.h \
     dialogaccueil.h \
     dialogclient.h \
     dialogbien.h \
-    dialogsouhait.h
+    dialogsouhait.h \
+    BDD.h \
+    Parametre.h
 
 FORMS    += mainwindow.ui \
     barreMenuFiche.ui \
