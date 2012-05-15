@@ -9,5 +9,9 @@
         <file alias="effacer96">images/effacer_96x96.png</file>
         <file alias="personneAdd48">images/personne_add_48x48.png</file>
         <file alias="personneAdd96">images/personne_add_96x96.png</file>
+        <file alias="annuler48">images/annuler_48x48.png</file>
+        <file alias="annuler96">images/annuler_96x96.png</file>
+        <file alias="valider48">images/valider_48x48.png</file>
+        <file alias="valider96">images/valider_96x96.png</file>
     </qresource>
 </RCC>

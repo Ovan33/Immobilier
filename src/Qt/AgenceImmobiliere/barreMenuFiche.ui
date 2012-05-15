@@ -26,8 +26,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../../../../docs/design/imgs/valider.svg</normaloff>../../../../docs/design/imgs/valider.svg</iconset>
+      <iconset resource="ressources.qrc">
+       <normaloff>:/app/valider96</normaloff>:/app/valider96</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -49,8 +49,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../../../../docs/design/imgs/annuler.svg</normaloff>../../../../docs/design/imgs/annuler.svg</iconset>
+      <iconset resource="ressources.qrc">
+       <normaloff>:/app/annuler96</normaloff>:/app/annuler96</iconset>
      </property>
      <property name="iconSize">
       <size>

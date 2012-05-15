@@ -12,9 +12,9 @@ error: ‘QObject::QObject(const QObject&)’ is private
 		Cette méthode ne fonctionnerait pas : Ville getVille() puisqu'elle nécessiterait de créer une copie de l'objet Ville
 			
 		
-*****************************
+##############################
 Instanciation des widgets dans la fenetre principale, et accès aux éléments de ces widgets =)
-*****************************
+##############################
 Du code commenté vaut mieux qu'un long discours !
 
 mainWindow.cpp

@@ -2,6 +2,7 @@
 #define DIALOGACCUEIL_H
 
 #include <QDialog>
+#include <ui_barreMenuFiche.h>
 
 namespace Ui {
     class DialogAccueil;
@@ -17,6 +18,7 @@ public:
 
 private:
     Ui::DialogAccueil *ui;
+    Ui::barreMenuFiche m_menu;
 };
 
 #endif // DIALOGACCUEIL_H
