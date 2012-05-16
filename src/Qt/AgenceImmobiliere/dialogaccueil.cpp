@@ -91,10 +91,10 @@ void DialogAccueil::chercherClients()
                         QTableWidgetItem *tel = new QTableWidgetItem(resultat.value(3).toString());
                         QTableWidgetItem *ville = new QTableWidgetItem(resultat.value(4).toString());
 
-                        ui->tableWidget_resultats->setItem(ligne,1,nom);
-                        ui->tableWidget_resultats->setItem(ligne,2,adresse);
-                        ui->tableWidget_resultats->setItem(ligne,3,tel);
-                        ui->tableWidget_resultats->setItem(ligne,4,ville);
+                        ui->tableWidget_resultats->setItem(ligne,0,nom);
+                        ui->tableWidget_resultats->setItem(ligne,1,adresse);
+                        ui->tableWidget_resultats->setItem(ligne,2,tel);
+                        ui->tableWidget_resultats->setItem(ligne,3,ville);
                         ligne++;
                     }
                 }
