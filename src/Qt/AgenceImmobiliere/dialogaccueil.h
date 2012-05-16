@@ -23,7 +23,7 @@ private:
     Ui::barreMenuFiche m_menu;
 
     BDD *m_db;
-    Parametre *m_settings;
+    // Parametre *m_settings;
     void faireAutreChose();
 
 

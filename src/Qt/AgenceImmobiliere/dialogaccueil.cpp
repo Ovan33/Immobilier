@@ -8,7 +8,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     ui->setupUi(this);
 
     // Chargement des paramètres
-    m_settings = new Parametre();
+    // m_settings = new Parametre();
 
     // Création de la barre de menu
     m_menu.setupUi(ui->widget_barreMenu);
@@ -40,7 +40,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 DialogAccueil::~DialogAccueil()
 {
     delete m_db;
-    delete m_settings;
+    // delete m_settings;
     delete ui;
 }
 
@@ -57,11 +57,14 @@ void DialogAccueil::chercherClients()
         faireAutreChose();
     else
     {
+        /*
         m_db = new BDD(m_settings->getTypeConnection(),
                        m_settings->getHost(),
                        m_settings->getDataBaseName(),
                        m_settings->getUser(),
                        m_settings->getPassword());
+*/
+        m_db = new BDD();
 
         if (m_db->isValid())
         {

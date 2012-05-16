@@ -2,10 +2,14 @@
 #define CONNEXIONSQL_H
 
 #include <QtSql>
+#include "Parametre.h"
 
 class BDD
 {
 public:
+    // Constructeur par défaut
+    BDD();
+
     // Construit un objet de type QSqlDatabase
     BDD(QString typeConnection ,QString host, QString database, QString user, QString password);
 
@@ -20,6 +24,8 @@ public:
 
 private:
     QSqlDatabase db;
+    Parametre *m_settings;
+
 };
 
 #endif // CONNEXIONSQL_H

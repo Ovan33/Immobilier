@@ -9,6 +9,16 @@ BDD::BDD(QString typeConnection ,QString host, QString database, QString user, Q
     db.setPassword(password);
 }
 
+BDD::BDD()
+{
+    m_settings = new Parametre();
+    db = QSqlDatabase::addDatabase(m_settings->getTypeConnection());
+    db.setHostName(m_settings->getHost());
+    db.setDatabaseName(m_settings->getDataBaseName());
+    db.setUserName(m_settings->getUser());
+    db.setPassword(m_settings->getPassword());
+}
+
 bool BDD::isConnectionActive()
 {
     return (db.open());
