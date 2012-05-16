@@ -17,5 +17,6 @@
         <file alias="quitter96">images/quitter_96x96.png</file>
         <file alias="rafraichir48">images/rafraichir_48x48.png</file>
         <file alias="rafraichir96">images/rafraichir_96x96.png</file>
+        <file alias="settings">ressources/settings.xml</file>
     </qresource>
 </RCC>

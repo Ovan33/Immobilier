@@ -6,6 +6,20 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     ui(new Ui::DialogAccueil)
 {
     ui->setupUi(this);
+
+    // Parametre *base = new Parametre();
+    m_settings = new Parametre();
+    BDD *m_db = new BDD(m_settings->getTypeConnection(),
+                   m_settings->getHost(),
+                   m_settings->getDataBaseName(),
+                   m_settings->getUser(),
+                   m_settings->getPassword());
+
+    if (m_db->isValid())
+    {
+        qDebug() << "Connexion ouverte";
+    }
+
     m_menu.setupUi(ui->widget_barreMenu);
     m_menu.label_fenetre->setText("Accueil");
     m_menu.image_fenetre->setPixmap(QPixmap(":/app/accueil"));
@@ -34,6 +48,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 
 DialogAccueil::~DialogAccueil()
 {
+    // delete m_settings;
     delete ui;
 }
 
@@ -51,6 +66,26 @@ void DialogAccueil::chercherClients()
     else
     {
         // ouvrir une connexion
+
+        /*
+        m_db = new BDD(base->getTypeConnection(),
+                       base->getHost(),
+                       base->getDataBaseName(),
+                       base->getUser(),
+                       base->getPassword());
+
+        if (m_db->isValid())
+        {
+//            QDebug("Connexion ouverte");
+            qDebug() << "Connexion ouverte";
+        }
+        else
+        {
+            // QDebug("Pas de connexion");
+        }
+
+        */
+
         // construire la requête de recherche
         // exécuter la requête
         // récupérer le résultat

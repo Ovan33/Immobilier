@@ -2,11 +2,13 @@
 
 Parametre::Parametre()
 {
-    QDomDocument doc( "test" );
-    QFile file( "../ressources/test.xml" );
+    QDomDocument doc( "settings" );
+    QFile file(":/app/settings");
 
     if( !file.open( QIODevice::ReadOnly ) )
-      return ;
+    {
+        return ;
+    }
     if( !doc.setContent( &file ) )
     {
       file.close();

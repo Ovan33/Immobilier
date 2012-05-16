@@ -6,7 +6,7 @@
 
 QT       += core gui
 QT       += sql
-QT      += xml
+QT       += xml
 
 TARGET = AgenceImmobiliere
 TEMPLATE = app

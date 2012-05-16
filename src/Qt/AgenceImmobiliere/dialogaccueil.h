@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <ui_barreMenuFiche.h>
+#include "BDD.h"
+#include "Parametre.h"
 
 namespace Ui {
     class DialogAccueil;
@@ -20,7 +22,10 @@ private:
     Ui::DialogAccueil *ui;
     Ui::barreMenuFiche m_menu;
 
+    // BDD *m_db;
+    Parametre *m_settings;
     void faireAutreChose();
+
 
 public slots:
     void reset();
