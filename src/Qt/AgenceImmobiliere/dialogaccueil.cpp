@@ -1,5 +1,6 @@
 #include "dialogaccueil.h"
 #include "ui_dialogaccueil.h"
+#include <QMessageBox>
 
 DialogAccueil::DialogAccueil(QWidget *parent) :
     QDialog(parent),
@@ -30,6 +31,8 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     ui->button_Effacer->setToolTip("Effacer la zone de recherche");
     ui->button_Ok->setToolTip("Lancer la recherche");
 
+
+
     // SIGNAUX et SLOTS
     QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), qApp, SLOT(quit()));
     QObject::connect(m_menu.pushButton_1, SIGNAL(clicked()), this, SLOT(reset()));
@@ -39,7 +42,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 
 DialogAccueil::~DialogAccueil()
 {
-    delete m_db;
+    // delete m_db;
     // delete m_settings;
     delete ui;
 }
@@ -47,38 +50,59 @@ DialogAccueil::~DialogAccueil()
 void DialogAccueil::reset()
 {
     ui->lineEdit_Recherche->clear();
-    ui->tableView_Resultats->clearSpans();
+    ui->tableWidget_resultats->clearSpans();
 }
 
 void DialogAccueil::chercherClients()
 {
-    QString client = ui->lineEdit_Recherche->text();
+    QString client = ui->lineEdit_Recherche->text().toUpper();
     if (client.isEmpty())
         faireAutreChose();
     else
     {
-        /*
-        m_db = new BDD(m_settings->getTypeConnection(),
-                       m_settings->getHost(),
-                       m_settings->getDataBaseName(),
-                       m_settings->getUser(),
-                       m_settings->getPassword());
-*/
         m_db = new BDD();
 
-        if (m_db->isValid())
-        {
-            qDebug() << "Connexion ouverte";
-        }
-        else
-        {
-            // QDebug("Pas de connexion");
-        }
         // construire la requête de recherche
-        // exécuter la requête
-        // récupérer le résultat
-        // compter le nombre de lignes de résultats
-        // afficher les résultats
+        QString requete = "select CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c, VILLES.nom_v ";
+        requete += "from CLIENTS INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V where CLIENTS.nom_c like '";
+        requete += client;
+        requete += "%';";
+
+        // exécuter la requête et récupérer le résultat
+        if (m_db->ouvrir())
+        {
+            QSqlQuery resultat;
+            if (resultat.exec(requete))
+            {
+                QMessageBox::information(this,"Resultat",""+resultat.size());
+
+                // Si 0 contenu
+                if (resultat.size() == -1)
+                    QMessageBox::information(this,"Recherche client", "Aucun client trouvé");
+                else
+                {
+                    ui->tableWidget_resultats->setRowCount(resultat.size());
+                    int ligne = 0;
+                    while (resultat.next())
+                    {
+                        ui->tableWidget_resultats->setColumnCount(4);
+                        QTableWidgetItem *nom = new QTableWidgetItem(resultat.value(1).toString());
+                        QTableWidgetItem *adresse = new QTableWidgetItem(resultat.value(2).toString());
+                        QTableWidgetItem *tel = new QTableWidgetItem(resultat.value(3).toString());
+                        QTableWidgetItem *ville = new QTableWidgetItem(resultat.value(4).toString());
+
+                        ui->tableWidget_resultats->setItem(ligne,1,nom);
+                        ui->tableWidget_resultats->setItem(ligne,2,adresse);
+                        ui->tableWidget_resultats->setItem(ligne,3,tel);
+                        ui->tableWidget_resultats->setItem(ligne,4,ville);
+                        ligne++;
+                    }
+                }
+            }
+        }
+
+        // afficher message d'information
+        // sinon afficher les résultats
 
         m_db->close();
     }
