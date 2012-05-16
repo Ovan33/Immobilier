@@ -22,7 +22,7 @@ private:
     Ui::DialogAccueil *ui;
     Ui::barreMenuFiche m_menu;
 
-    // BDD *m_db;
+    BDD *m_db;
     Parametre *m_settings;
     void faireAutreChose();
 

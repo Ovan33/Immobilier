@@ -72,8 +72,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../../../../docs/design/imgs/quitter.svg</normaloff>../../../../docs/design/imgs/quitter.svg</iconset>
+      <iconset resource="ressources.qrc">
+       <normaloff>:/app/quitter96</normaloff>:/app/quitter96</iconset>
      </property>
      <property name="iconSize">
       <size>

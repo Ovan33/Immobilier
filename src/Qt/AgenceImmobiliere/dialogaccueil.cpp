@@ -7,19 +7,10 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Parametre *base = new Parametre();
+    // Chargement des paramètres
     m_settings = new Parametre();
-    BDD *m_db = new BDD(m_settings->getTypeConnection(),
-                   m_settings->getHost(),
-                   m_settings->getDataBaseName(),
-                   m_settings->getUser(),
-                   m_settings->getPassword());
 
-    if (m_db->isValid())
-    {
-        qDebug() << "Connexion ouverte";
-    }
-
+    // Création de la barre de menu
     m_menu.setupUi(ui->widget_barreMenu);
     m_menu.label_fenetre->setText("Accueil");
     m_menu.image_fenetre->setPixmap(QPixmap(":/app/accueil"));
@@ -48,7 +39,8 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 
 DialogAccueil::~DialogAccueil()
 {
-    // delete m_settings;
+    delete m_db;
+    delete m_settings;
     delete ui;
 }
 
@@ -65,33 +57,27 @@ void DialogAccueil::chercherClients()
         faireAutreChose();
     else
     {
-        // ouvrir une connexion
-
-        /*
-        m_db = new BDD(base->getTypeConnection(),
-                       base->getHost(),
-                       base->getDataBaseName(),
-                       base->getUser(),
-                       base->getPassword());
+        m_db = new BDD(m_settings->getTypeConnection(),
+                       m_settings->getHost(),
+                       m_settings->getDataBaseName(),
+                       m_settings->getUser(),
+                       m_settings->getPassword());
 
         if (m_db->isValid())
         {
-//            QDebug("Connexion ouverte");
             qDebug() << "Connexion ouverte";
         }
         else
         {
             // QDebug("Pas de connexion");
         }
-
-        */
-
         // construire la requête de recherche
         // exécuter la requête
         // récupérer le résultat
         // compter le nombre de lignes de résultats
         // afficher les résultats
 
+        m_db->close();
     }
 }
 
