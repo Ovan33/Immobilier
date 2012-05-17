@@ -11,6 +11,7 @@
 *.bak
 WidgetPerso-build-desktop/
 Immo-build-desktop/
+AgenceImmobiliere-build-desktop/
 
 # fichiers .user de Qt
 */*.user

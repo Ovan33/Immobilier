@@ -5,24 +5,36 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
+QT       += xml
 
 TARGET = AgenceImmobiliere
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     dialogaccueil.cpp \
-    dialogclient.cpp
+    dialogclient.cpp \
+    dialogbien.cpp \
+    dialogsouhait.cpp \
+    BDD.cpp \
+    Parametre.cpp
+    # mainwindow.cpp \
 
-HEADERS  += mainwindow.h \
-    dialogaccueil.h \
-    dialogclient.h
+HEADERS  +=     dialogaccueil.h \
+    dialogclient.h \
+    dialogbien.h \
+    dialogsouhait.h \
+    BDD.h \
+    Parametre.h
+    # mainwindow.h \
 
 FORMS    += mainwindow.ui \
     barreMenuFiche.ui \
     dialogaccueil.ui \
-    dialogclient.ui
+    dialogclient.ui \
+    dialogbien.ui \
+    dialogsouhait.ui
 
 RESOURCES += \
     ressources.qrc

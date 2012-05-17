@@ -12,3 +12,59 @@ error: ‘QObject::QObject(const QObject&)’ is private
 		Cette méthode ne fonctionnerait pas : Ville getVille() puisqu'elle nécessiterait de créer une copie de l'objet Ville
 			
 		
+##############################
+Instanciation des widgets dans la fenetre principale, et accès aux éléments de ces widgets =)
+##############################
+Du code commenté vaut mieux qu'un long discours !
+
+mainWindow.cpp
+
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include "ui_mainwindow.h"
+
+// inclusion des ui
+#include <ui_barreMenuFiche.h>
+#include <ui_dialogaccueil.h>
+
+// Layout Vertical
+#include <QVBoxLayout>
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+
+    // Instanciation d'un Layout Vertical pour le positionnement
+    // des widgets
+    QVBoxLayout *layout= new QVBoxLayout;
+
+
+    // Instanciation de la QDialog pour notre fenetre Accueil
+    QDialog *fenetreAccueil = new QDialog;
+    // on declare notre ui dialogAccueil
+    Ui::DialogAccueil m_DA;
+    // on insere notre design (l'ui) dans le Qdialog fraichement declaré
+    m_DA.setupUi(fenetreAccueil);
+
+    // on declare notre ui barreMenu
+    Ui::barreMenuFiche barreMenu;
+    // on insere notre ui dans le widget de notre fenetre Accueil
+	// donc on a accès aux éléments de notre fenetreAccueil (ici le widget_barreMenu)
+    barreMenu.setupUi(m_DA.widget_barreMenu);
+
+    // A ce stade, notre fenetre Accueil comprend notre barreMenu
+
+    // on insere notre fenetreAccueil à l'interieur du layout
+    layout->addWidget(fenetreAccueil);
+    // et on place ce layout dans la centralWidget de notre fenetre principale
+    ui->centralWidget->setLayout(layout);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+Voila... =)

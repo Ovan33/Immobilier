@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <dialogaccueil.h>
 
 namespace Ui {
     class MainWindow;
@@ -17,6 +18,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    DialogAccueil *m_accueil;
 };
 
 #endif // MAINWINDOW_H

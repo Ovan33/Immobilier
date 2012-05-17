@@ -6,9 +6,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    m_accueil = new (DialogAccueil);
+    m_accueil->exec();
 }
 
 MainWindow::~MainWindow()
 {
+    delete m_accueil;
     delete ui;
 }

@@ -3,7 +3,7 @@
 
 #include <qfile.h>
 #include <QtXml/qdom.h>
-#include<QtXml/QDomDocument>
+#include <QtXml/QDomDocument>
 
 class Parametre
 {
