@@ -34,7 +34,12 @@ FORMS    += mainwindow.ui \
     dialogaccueil.ui \
     dialogclient.ui \
     dialogbien.ui \
-    dialogsouhait.ui
+    dialogsouhait.ui \
+    accueilResultat.ui \
+    souhait.ui \
+    listeSouhaits.ui \
+    listeBiens.ui \
+    bien.ui
 
 RESOURCES += \
     ressources.qrc
