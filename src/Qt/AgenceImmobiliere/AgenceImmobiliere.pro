@@ -13,21 +13,21 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     dialogaccueil.cpp \
     dialogclient.cpp \
     dialogbien.cpp \
     dialogsouhait.cpp \
     BDD.cpp \
     Parametre.cpp
+    # mainwindow.cpp \
 
-HEADERS  += mainwindow.h \
-    dialogaccueil.h \
+HEADERS  +=     dialogaccueil.h \
     dialogclient.h \
     dialogbien.h \
     dialogsouhait.h \
     BDD.h \
     Parametre.h
+    # mainwindow.h \
 
 FORMS    += mainwindow.ui \
     barreMenuFiche.ui \

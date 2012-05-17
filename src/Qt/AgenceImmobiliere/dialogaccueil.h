@@ -22,8 +22,8 @@ private:
     Ui::DialogAccueil *ui;
     Ui::barreMenuFiche m_menu;
 
-    // BDD *m_db;
-    Parametre *m_settings;
+    BDD *m_db;
+    // Parametre *m_settings;
     void faireAutreChose();
 
 
