@@ -5,11 +5,13 @@
 error: ‘QObject::QObject(const QObject&)’ is private
 	Quand : se produit sur une classe qui hérite de QObject
 	Pourquoi : Qt interdit la copie de QObject
-	Solution il faut passer par un pointeur
+	Solution il faut passer par un pointeur et passer les valeurs par référence
 	Exemple avec la classe Client
 		Client contient une méthode getVille() qui renvoie une référence vers la ville : Ville& getVille()
 		Ville hérite de QObject
 		Cette méthode ne fonctionnerait pas : Ville getVille() puisqu'elle nécessiterait de créer une copie de l'objet Ville
+	Autre exemple de la classe Client
+		ville est passé par référence
 			
 		
 ##############################
