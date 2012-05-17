@@ -13,41 +13,54 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QLabel" name="label_Ville">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>20</y>
+     <width>79</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ville</string>
+   </property>
+  </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>20</y>
-     <width>81</width>
+     <y>21</y>
+     <width>149</width>
      <height>88</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label_Nom">
+     <widget class="QLabel" name="label_PrixdeVente">
       <property name="text">
-       <string>Nom</string>
+       <string>Prix de vente</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_Adresse">
+     <widget class="QLabel" name="label_DatedeMiseenVente">
       <property name="text">
-       <string>Adresse</string>
+       <string>Date de mise en vente</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_Ville">
+     <widget class="QLabel" name="label_SurfaceHabitable">
       <property name="text">
-       <string>Ville</string>
+       <string>Surface habitable</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_CodePostal">
+     <widget class="QLabel" name="label_SurfaceJardin">
       <property name="text">
-       <string>CodePostal</string>
+       <string>Surface jardin</string>
       </property>
      </widget>
     </item>
@@ -56,41 +69,15 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>30</y>
-     <width>224</width>
+     <x>451</x>
+     <y>31</y>
+     <width>147</width>
      <height>63</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QPushButton" name="pushButton_souhaits">
-      <property name="minimumSize">
-       <size>
-        <width>71</width>
-        <height>61</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>71</width>
-        <height>61</height>
-       </size>
-      </property>
-      <property name="icon">
-       <iconset resource="ressources.qrc">
-        <normaloff>:/app/souhait48</normaloff>:/app/souhait48</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>46</width>
-        <height>46</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_biens">
+     <widget class="QPushButton" name="pushButton_modifierBien">
       <property name="minimumSize">
        <size>
         <width>71</width>
@@ -116,7 +103,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_client">
+     <widget class="QPushButton" name="pushButton_supprimerBien">
       <property name="maximumSize">
        <size>
         <width>71</width>
@@ -125,7 +112,7 @@
       </property>
       <property name="icon">
        <iconset resource="ressources.qrc">
-        <normaloff>:/app/client48</normaloff>:/app/client48</iconset>
+        <normaloff>:/app/annuler48</normaloff>:/app/annuler48</iconset>
       </property>
       <property name="iconSize">
        <size>
