@@ -1,6 +1,12 @@
 #include "dialogaccueil.h"
 #include "ui_dialogaccueil.h"
+#include <widgetclient.h>
 #include <QMessageBox>
+
+
+/*
+  Constructeur
+  */
 
 DialogAccueil::DialogAccueil(QWidget *parent) :
     QDialog(parent),
@@ -16,7 +22,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     m_menu.label_fenetre->setText("Accueil");
     m_menu.image_fenetre->setPixmap(QPixmap(":/app/accueil"));
 
-    // Masquage du 3e bouton de barreMenuFiche
+    // Masquage du 3e bouton de la barre de menu
     m_menu.pushButton_3->setVisible(false);
 
     // Bouton de reset
@@ -30,8 +36,8 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     ui->button_Ajouter->setToolTip("Créer un nouveau client");
     ui->button_Effacer->setToolTip("Effacer la zone de recherche");
     ui->button_Ok->setToolTip("Lancer la recherche");
-
-
+    ui->tableWidget_resultats->verticalHeader()->hide();
+    ui->tableWidget_resultats->horizontalHeader()->hide();
 
     // SIGNAUX et SLOTS
     QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), qApp, SLOT(quit()));
@@ -50,7 +56,9 @@ DialogAccueil::~DialogAccueil()
 void DialogAccueil::reset()
 {
     ui->lineEdit_Recherche->clear();
-    ui->tableWidget_resultats->clearSpans();
+    // ui->tableWidget_resultats->clearSpans();
+    ui->tableWidget_resultats->clearContents();
+    ui->tableWidget_resultats->clear();
 }
 
 void DialogAccueil::chercherClients()
@@ -81,10 +89,32 @@ void DialogAccueil::chercherClients()
                     QMessageBox::information(this,"Recherche client", "Aucun client trouvé");
                 else
                 {
-                    ui->tableWidget_resultats->setRowCount(resultat.size());
+                    int cpt = resultat.size();
+                    ui->tableWidget_resultats->setRowCount(cpt);
+                    ui->tableWidget_resultats->setColumnCount(1);
+                    // ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width());
+                    // int largeur = WidgetClient.width();
+
+                    // ui->tableWidget_resultats = new QTableWidget(resultat.size(),1,this);
+                    // monTableauDeWidgets = new QTableWidget(3,1,this);
                     int ligne = 0;
                     while (resultat.next())
                     {
+
+                        ui->tableWidget_resultats->setColumnCount(1);
+                        WidgetClient *client = new WidgetClient();
+                        if (ligne == 0)
+                        {
+                            // ui->tableWidget_resultats->setColumnWidth(0,client->width());
+                            ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
+                        }
+                        ui->tableWidget_resultats->setRowHeight(ligne,client->height());
+
+                        // QWidget *client = new Ui::widget_Client;
+                        // client.label_Nom->setText(resultat.value(1).toString());
+                        ui->tableWidget_resultats->setCellWidget(ligne,0,client);
+
+                        /*
                         ui->tableWidget_resultats->setColumnCount(4);
                         QTableWidgetItem *nom = new QTableWidgetItem(resultat.value(1).toString());
                         QTableWidgetItem *adresse = new QTableWidgetItem(resultat.value(2).toString());
@@ -95,6 +125,7 @@ void DialogAccueil::chercherClients()
                         ui->tableWidget_resultats->setItem(ligne,1,adresse);
                         ui->tableWidget_resultats->setItem(ligne,2,tel);
                         ui->tableWidget_resultats->setItem(ligne,3,ville);
+                        */
                         ligne++;
                     }
                 }

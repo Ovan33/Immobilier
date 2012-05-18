@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <ui_barreMenuFiche.h>
+#include <ui_accueilResultat.h>
 #include "BDD.h"
 #include "Parametre.h"
 
