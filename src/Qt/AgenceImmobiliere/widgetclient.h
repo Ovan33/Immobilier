@@ -14,9 +14,15 @@ class WidgetClient : public QWidget
 public:
     explicit WidgetClient(QWidget *parent = 0);
     ~WidgetClient();
+    void setNom(QString nom);
+    void setAdresse(QString adresse);
+    void setTelephone(QString tel);
+    void setVille(QString ville);
+    void setCodePostal(QString cp);
 
 private:
     Ui::WidgetClient *ui;
+
 };
 
 #endif // WIDGETCLIENT_H
