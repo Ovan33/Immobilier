@@ -47,3 +47,8 @@ void WidgetClient::setImageSouhait(QPixmap image)
 {
     ui->pushButton_souhaits->setIcon(image);
 }
+
+QPushButton* WidgetClient::getBoutonBien()
+{
+    return ui->pushButton_biens;
+}

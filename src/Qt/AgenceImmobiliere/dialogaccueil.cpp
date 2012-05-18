@@ -110,15 +110,24 @@ void DialogAccueil::chercherClients()
 
                         //Nb souhait = 0
                         if (resultat.value(7).toInt() < 1)
+                        {
                             client->setImageSouhait(QPixmap(":/app/add_souhait96"));
+                            // Slot si aucun souhait
+                        } else {
+                        // Sinon slot si au moins un bien
+                        }
+
                         //Nb bien = 0
                         if (resultat.value(6).toInt() < 1)
-                            client->setImageBien(QPixmap(":/app/add_bien96"));
-
-                        if (ligne == 0)
                         {
-                            ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
+                            client->setImageBien(QPixmap(":/app/add_bien96"));
+                            m_dialogBien = new DialogBien();
+                            QObject::connect(client->getBoutonBien(),SIGNAL(clicked()), m_dialogBien,SLOT(exec()));
+                        } else {
+                        // Slot si au moins un souhait
                         }
+
+                        ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
                         ui->tableWidget_resultats->setRowHeight(ligne,client->height());
                         ui->tableWidget_resultats->setCellWidget(ligne,0,client);
 
@@ -129,8 +138,4 @@ void DialogAccueil::chercherClients()
         }
         m_db->close();
     }
-}
-
-void DialogAccueil::faireAutreChose()
-{
 }
