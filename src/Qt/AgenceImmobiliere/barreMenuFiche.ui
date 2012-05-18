@@ -101,7 +101,7 @@
      <property name="font">
       <font>
        <family>Liberation Sans</family>
-       <pointsize>18</pointsize>
+       <pointsize>30</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
