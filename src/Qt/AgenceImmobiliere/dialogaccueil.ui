@@ -46,6 +46,12 @@
          <height>81</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <family>Liberation Sans</family>
+         <pointsize>25</pointsize>
+        </font>
+       </property>
       </widget>
      </item>
      <item row="0" column="1">

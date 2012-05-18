@@ -65,16 +65,22 @@ void DialogAccueil::chercherClients()
 {
     QString client = ui->lineEdit_Recherche->text().toUpper();
     if (client.isEmpty())
-        faireAutreChose();
+        QMessageBox::information(this,"Recherche client", "Merci de saisir au moins une lettre dans la zone de recherche");
     else
     {
         m_db = new BDD();
 
         // construire la requête de recherche
-        QString requete = "select CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c, VILLES.nom_v, VILLES.code_postal_v ";
-        requete += "from CLIENTS INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V where CLIENTS.nom_c like '";
-        requete += client;
-        requete += "%';";
+        QString requete = "select CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c, ";
+        requete += "VILLES.nom_v, VILLES.code_postal_v, ";
+        requete += "(select count(BIENS.num_b) from Biens where biens.num_c=clients.num_c) as NbBiens, ";
+        requete += "(select count(SOUHAITS.num_s) from Souhaits where souhaits.num_c=clients.num_c) as NbSouhaits ";
+        requete += "from CLIENTS INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V ";
+        requete += "left outer JOIN BIENS on BIENS.num_c=CLIENTS.num_c ";
+        requete += "left outer JOIN SOUHAITS on SOUHAITS.num_c=CLIENTS.num_c ";
+        requete += "where CLIENTS.nom_c like'" + client + "%'";
+        requete += "group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v ";
+        requete += "order by clients.num_c";
 
         // exécuter la requête et récupérer le résultat
         if (m_db->ouvrir())
@@ -83,7 +89,7 @@ void DialogAccueil::chercherClients()
             if (resultat.exec(requete))
             {
                 // Si 0 contenu
-                if (resultat.size() == -1)
+                if (resultat.size() < 1)
                     QMessageBox::information(this,"Recherche client", "Aucun client trouvé");
                 else
                 {
@@ -102,43 +108,29 @@ void DialogAccueil::chercherClients()
                         client->setTelephone(resultat.value(3).toString());
                         client->setCodePostal(resultat.value(5).toString());
 
+                        //Nb souhait = 0
+                        if (resultat.value(7).toInt() < 1)
+                            client->setImageSouhait(QPixmap(":/app/add_souhait96"));
+                        //Nb bien = 0
+                        if (resultat.value(6).toInt() < 1)
+                            client->setImageBien(QPixmap(":/app/add_bien96"));
+
                         if (ligne == 0)
                         {
-                            // ui->tableWidget_resultats->setColumnWidth(0,client->width());
                             ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
                         }
                         ui->tableWidget_resultats->setRowHeight(ligne,client->height());
-
-                        // QWidget *client = new Ui::widget_Client;
-                        // client.label_Nom->setText(resultat.value(1).toString());
                         ui->tableWidget_resultats->setCellWidget(ligne,0,client);
 
-                        /*
-                        ui->tableWidget_resultats->setColumnCount(4);
-                        QTableWidgetItem *nom = new QTableWidgetItem(resultat.value(1).toString());
-                        QTableWidgetItem *adresse = new QTableWidgetItem(resultat.value(2).toString());
-                        QTableWidgetItem *tel = new QTableWidgetItem(resultat.value(3).toString());
-                        QTableWidgetItem *ville = new QTableWidgetItem(resultat.value(4).toString());
-
-                        ui->tableWidget_resultats->setItem(ligne,0,nom);
-                        ui->tableWidget_resultats->setItem(ligne,1,adresse);
-                        ui->tableWidget_resultats->setItem(ligne,2,tel);
-                        ui->tableWidget_resultats->setItem(ligne,3,ville);
-                        */
                         ligne++;
                     }
                 }
             }
         }
-
-        // afficher message d'information
-        // sinon afficher les résultats
-
         m_db->close();
     }
 }
 
 void DialogAccueil::faireAutreChose()
 {
-
 }
