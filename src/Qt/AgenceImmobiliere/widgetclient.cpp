@@ -52,3 +52,8 @@ QPushButton* WidgetClient::getBoutonBien()
 {
     return ui->pushButton_biens;
 }
+
+QPushButton* WidgetClient::getBoutonSouhait()
+{
+    return ui->pushButton_souhaits;
+}

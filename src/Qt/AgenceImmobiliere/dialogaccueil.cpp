@@ -1,9 +1,8 @@
 #include "dialogaccueil.h"
 #include "ui_dialogaccueil.h"
 
-#include <widgetclient.h>
+// #include <widgetclient.h>
 #include <QMessageBox>
-
 
 /*
   Constructeur
@@ -45,6 +44,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     QObject::connect(m_menu.pushButton_1, SIGNAL(clicked()), this, SLOT(reset()));
     QObject::connect(ui->button_Effacer, SIGNAL(clicked()), ui->lineEdit_Recherche, SLOT(clear()));
     QObject::connect(ui->button_Ok, SIGNAL(clicked()), this, SLOT(chercherClients()));
+    QObject::connect(ui->button_Ajouter, SIGNAL(clicked()),this,SLOT(nouveauClient()));
 }
 
 DialogAccueil::~DialogAccueil()
@@ -93,26 +93,31 @@ void DialogAccueil::chercherClients()
                     QMessageBox::information(this,"Recherche client", "Aucun client trouvé");
                 else
                 {
-                    // Initialisation du tableau de widgets
+                    // Initialisations
                     int cpt = resultat.size();
                     ui->tableWidget_resultats->setRowCount(cpt);
                     ui->tableWidget_resultats->setColumnCount(1);
                     int ligne = 0;
+                    // this->m_listeClients = new QList();
                     while (resultat.next())
                     {
                         ui->tableWidget_resultats->setColumnCount(1);
-                        WidgetClient *client = new WidgetClient();
-                        client->setNom(resultat.value(1).toString());
-                        client->setVille(resultat.value(4).toString());
-                        client->setAdresse(resultat.value(2).toString());
-                        client->setTelephone(resultat.value(3).toString());
-                        client->setCodePostal(resultat.value(5).toString());
+                        WidgetClient *clientUi = new WidgetClient();
+                        Ville ville(resultat.value(4).toString(),resultat.value(5).toString());
+                        Client client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville);
+                        // m_listeClients->append(client);
+                        clientUi->setNom(client.getNom());
+                        clientUi->setVille(ville.getNom());
+                        clientUi->setAdresse(client.getAdresse());
+                        clientUi->setTelephone(client.getTel());
+                        clientUi->setCodePostal(ville.getCodePostal());
 
                         //Nb souhait = 0
                         if (resultat.value(7).toInt() < 1)
                         {
-                            client->setImageSouhait(QPixmap(":/app/add_souhait96"));
-                            // Slot si aucun souhait
+                            clientUi->setImageSouhait(QPixmap(":/app/add_souhait96"));
+                            m_dialogSouhait = new DialogSouhait();
+                            QObject::connect(clientUi->getBoutonSouhait(),SIGNAL(clicked()),m_dialogSouhait,SLOT(exec()));
                         } else {
                         // Sinon slot si au moins un bien
                         }
@@ -120,16 +125,16 @@ void DialogAccueil::chercherClients()
                         //Nb bien = 0
                         if (resultat.value(6).toInt() < 1)
                         {
-                            client->setImageBien(QPixmap(":/app/add_bien96"));
+                            clientUi->setImageBien(QPixmap(":/app/add_bien96"));
                             m_dialogBien = new DialogBien();
-                            QObject::connect(client->getBoutonBien(),SIGNAL(clicked()), m_dialogBien,SLOT(exec()));
+                            QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()), m_dialogBien,SLOT(exec()));
                         } else {
                         // Slot si au moins un souhait
                         }
 
                         ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
-                        ui->tableWidget_resultats->setRowHeight(ligne,client->height());
-                        ui->tableWidget_resultats->setCellWidget(ligne,0,client);
+                        ui->tableWidget_resultats->setRowHeight(ligne,clientUi->height());
+                        ui->tableWidget_resultats->setCellWidget(ligne,0,clientUi);
 
                         ligne++;
                     }
@@ -138,4 +143,10 @@ void DialogAccueil::chercherClients()
         }
         m_db->close();
     }
+}
+
+void DialogAccueil::nouveauClient()
+{
+    // Client client = new Client(NULL,ui->lineEdit_Recherche->text(),null,null,null);
+    this->m_dialogClient = new DialogClient();
 }

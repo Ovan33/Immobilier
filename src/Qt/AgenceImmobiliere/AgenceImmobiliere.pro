@@ -19,6 +19,8 @@ SOURCES += main.cpp\
     dialogsouhait.cpp \
     BDD.cpp \
     Parametre.cpp \
+    Client.cpp \
+    Ville.cpp \
     widgetclient.cpp
     # mainwindow.cpp \
 
@@ -28,6 +30,8 @@ HEADERS  +=     dialogaccueil.h \
     dialogsouhait.h \
     BDD.h \
     Parametre.h \
+    Client.h \
+    Ville.h \
     widgetclient.h
     # mainwindow.h \
 

@@ -8,6 +8,10 @@
 #include "BDD.h"
 #include "Parametre.h"
 #include <dialogbien.h>
+#include <dialogsouhait.h>
+#include <dialogclient.h>
+#include <Client.h>
+#include <QList>
 
 namespace Ui {
     class DialogAccueil;
@@ -27,13 +31,14 @@ private:
 
     BDD *m_db;
     DialogBien *m_dialogBien;
-
-    void faireAutreChose();
-    void creerSlots(WidgetClient client);
+    DialogSouhait *m_dialogSouhait;
+    DialogClient *m_dialogClient;
+    // QList *m_listeClients;
 
 public slots:
     void reset();
     void chercherClients();
+    void nouveauClient();
 };
 
 #endif // DIALOGACCUEIL_H
