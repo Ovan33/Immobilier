@@ -24,6 +24,7 @@ public:
     void setImageSouhait(QPixmap image);
     QPushButton *getBoutonBien();
     QPushButton *getBoutonSouhait();
+    QPushButton *getBoutonClient();
 
 private:
     Ui::WidgetClient *ui;
