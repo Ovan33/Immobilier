@@ -10,7 +10,7 @@
 
 class Bien : public QObject
 {
-    Q_OBJECT
+ //   Q_OBJECT
 
 private:
     unsigned int m_num;
@@ -24,7 +24,7 @@ private:
 public:
     enum typeSurf {habitation,jardin};
 
-    explicit Bien(QObject *parent = 0);
+  //  explicit Bien(QObject *parent = 0);
     Bien(unsigned int prix, QDate date, unsigned int surfHab, unsigned int surfJar, Ville ville, Client *client);
 
     void setPrix(unsigned int prix);

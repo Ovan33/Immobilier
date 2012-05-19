@@ -1,9 +1,9 @@
 #include "Bien.h"
 
-Bien::Bien(QObject *parent) :
-    QObject(parent)
-{
-}
+//Bien::Bien(QObject *parent) :
+//    QObject(parent)
+//{
+//}
 
 Bien::Bien(unsigned int prix, QDate date, unsigned int surfHab, unsigned int surfJar, Ville ville, Client *client)
 {
