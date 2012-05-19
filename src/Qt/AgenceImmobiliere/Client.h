@@ -5,7 +5,6 @@
 #include <QString>
 #include <Ville.h>
 
-
 class Client : public QObject
 {
 

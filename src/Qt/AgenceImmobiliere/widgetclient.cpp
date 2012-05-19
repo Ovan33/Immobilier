@@ -37,3 +37,23 @@ void WidgetClient::setCodePostal(QString cp)
 {
     ui->label_CodePostal->setText(cp);
 }
+
+void WidgetClient::setImageBien(QPixmap image)
+{
+    ui->pushButton_biens->setIcon(image);
+}
+
+void WidgetClient::setImageSouhait(QPixmap image)
+{
+    ui->pushButton_souhaits->setIcon(image);
+}
+
+QPushButton* WidgetClient::getBoutonBien()
+{
+    return ui->pushButton_biens;
+}
+
+QPushButton* WidgetClient::getBoutonSouhait()
+{
+    return ui->pushButton_souhaits;
+}

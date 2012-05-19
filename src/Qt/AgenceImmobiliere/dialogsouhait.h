@@ -13,6 +13,7 @@ class DialogSouhait : public QDialog
 
 public:
     explicit DialogSouhait(QWidget *parent = 0);
+    // DialogSouhait(Client *client);
     ~DialogSouhait();
 
 private:

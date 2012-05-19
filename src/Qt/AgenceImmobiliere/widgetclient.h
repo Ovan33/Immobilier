@@ -2,6 +2,7 @@
 #define WIDGETCLIENT_H
 
 #include <QWidget>
+#include <QPushButton>
 
 namespace Ui {
     class WidgetClient;
@@ -19,6 +20,10 @@ public:
     void setTelephone(QString tel);
     void setVille(QString ville);
     void setCodePostal(QString cp);
+    void setImageBien(QPixmap image);
+    void setImageSouhait(QPixmap image);
+    QPushButton *getBoutonBien();
+    QPushButton *getBoutonSouhait();
 
 private:
     Ui::WidgetClient *ui;

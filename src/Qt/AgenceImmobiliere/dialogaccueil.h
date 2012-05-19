@@ -4,8 +4,14 @@
 #include <QDialog>
 #include <ui_barreMenuFiche.h>
 #include <ui_accueilResultat.h>
+#include <widgetclient.h>
 #include "BDD.h"
 #include "Parametre.h"
+#include <dialogbien.h>
+#include <dialogsouhait.h>
+#include <dialogclient.h>
+#include <Client.h>
+#include <QList>
 
 namespace Ui {
     class DialogAccueil;
@@ -24,13 +30,15 @@ private:
     Ui::barreMenuFiche m_menu;
 
     BDD *m_db;
-    // Parametre *m_settings;
-    void faireAutreChose();
-
+    DialogBien *m_dialogBien;
+    DialogSouhait *m_dialogSouhait;
+    DialogClient *m_dialogClient;
+    // QList *m_listeClients;
 
 public slots:
     void reset();
     void chercherClients();
+    void nouveauClient();
 };
 
 #endif // DIALOGACCUEIL_H

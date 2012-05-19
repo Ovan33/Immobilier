@@ -15,5 +15,6 @@ AgenceImmobiliere-build-desktop/
 ListWidget-build-desktop/
 
 # fichiers .user de Qt
+*/*.user
 *.user
 *.user.*

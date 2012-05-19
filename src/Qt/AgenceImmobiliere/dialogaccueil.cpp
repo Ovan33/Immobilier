@@ -1,9 +1,8 @@
 #include "dialogaccueil.h"
 #include "ui_dialogaccueil.h"
 
-#include <widgetclient.h>
+// #include <widgetclient.h>
 #include <QMessageBox>
-
 
 /*
   Constructeur
@@ -45,6 +44,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     QObject::connect(m_menu.pushButton_1, SIGNAL(clicked()), this, SLOT(reset()));
     QObject::connect(ui->button_Effacer, SIGNAL(clicked()), ui->lineEdit_Recherche, SLOT(clear()));
     QObject::connect(ui->button_Ok, SIGNAL(clicked()), this, SLOT(chercherClients()));
+    QObject::connect(ui->button_Ajouter, SIGNAL(clicked()),this,SLOT(nouveauClient()));
 }
 
 DialogAccueil::~DialogAccueil()
@@ -65,16 +65,22 @@ void DialogAccueil::chercherClients()
 {
     QString client = ui->lineEdit_Recherche->text().toUpper();
     if (client.isEmpty())
-        faireAutreChose();
+        QMessageBox::information(this,"Recherche client", "Merci de saisir au moins une lettre dans la zone de recherche");
     else
     {
         m_db = new BDD();
 
         // construire la requête de recherche
-        QString requete = "select CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c, VILLES.nom_v, VILLES.code_postal_v ";
-        requete += "from CLIENTS INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V where CLIENTS.nom_c like '";
-        requete += client;
-        requete += "%';";
+        QString requete = "select CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c, ";
+        requete += "VILLES.nom_v, VILLES.code_postal_v, ";
+        requete += "(select count(BIENS.num_b) from Biens where biens.num_c=clients.num_c) as NbBiens, ";
+        requete += "(select count(SOUHAITS.num_s) from Souhaits where souhaits.num_c=clients.num_c) as NbSouhaits ";
+        requete += "from CLIENTS INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V ";
+        requete += "left outer JOIN BIENS on BIENS.num_c=CLIENTS.num_c ";
+        requete += "left outer JOIN SOUHAITS on SOUHAITS.num_c=CLIENTS.num_c ";
+        requete += "where CLIENTS.nom_c like'" + client + "%'";
+        requete += "group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v ";
+        requete += "order by clients.num_c";
 
         // exécuter la requête et récupérer le résultat
         if (m_db->ouvrir())
@@ -83,62 +89,64 @@ void DialogAccueil::chercherClients()
             if (resultat.exec(requete))
             {
                 // Si 0 contenu
-                if (resultat.size() == -1)
+                if (resultat.size() < 1)
                     QMessageBox::information(this,"Recherche client", "Aucun client trouvé");
                 else
                 {
-                    // Initialisation du tableau de widgets
+                    // Initialisations
                     int cpt = resultat.size();
                     ui->tableWidget_resultats->setRowCount(cpt);
                     ui->tableWidget_resultats->setColumnCount(1);
                     int ligne = 0;
+                    // this->m_listeClients = new QList();
                     while (resultat.next())
                     {
                         ui->tableWidget_resultats->setColumnCount(1);
-                        WidgetClient *client = new WidgetClient();
-                        client->setNom(resultat.value(1).toString());
-                        client->setVille(resultat.value(4).toString());
-                        client->setAdresse(resultat.value(2).toString());
-                        client->setTelephone(resultat.value(3).toString());
-                        client->setCodePostal(resultat.value(5).toString());
+                        WidgetClient *clientUi = new WidgetClient();
+                        Ville ville(resultat.value(4).toString(),resultat.value(5).toString());
+                        Client client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville);
+                        // m_listeClients->append(client);
+                        clientUi->setNom(client.getNom());
+                        clientUi->setVille(ville.getNom());
+                        clientUi->setAdresse(client.getAdresse());
+                        clientUi->setTelephone(client.getTel());
+                        clientUi->setCodePostal(ville.getCodePostal());
 
-                        if (ligne == 0)
+                        //Nb souhait = 0
+                        if (resultat.value(7).toInt() < 1)
                         {
-                            // ui->tableWidget_resultats->setColumnWidth(0,client->width());
-                            ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
+                            clientUi->setImageSouhait(QPixmap(":/app/add_souhait96"));
+                            m_dialogSouhait = new DialogSouhait();
+                            QObject::connect(clientUi->getBoutonSouhait(),SIGNAL(clicked()),m_dialogSouhait,SLOT(exec()));
+                        } else {
+                        // Sinon slot si au moins un bien
                         }
-                        ui->tableWidget_resultats->setRowHeight(ligne,client->height());
 
-                        // QWidget *client = new Ui::widget_Client;
-                        // client.label_Nom->setText(resultat.value(1).toString());
-                        ui->tableWidget_resultats->setCellWidget(ligne,0,client);
+                        //Nb bien = 0
+                        if (resultat.value(6).toInt() < 1)
+                        {
+                            clientUi->setImageBien(QPixmap(":/app/add_bien96"));
+                            m_dialogBien = new DialogBien();
+                            QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()), m_dialogBien,SLOT(exec()));
+                        } else {
+                        // Slot si au moins un souhait
+                        }
 
-                        /*
-                        ui->tableWidget_resultats->setColumnCount(4);
-                        QTableWidgetItem *nom = new QTableWidgetItem(resultat.value(1).toString());
-                        QTableWidgetItem *adresse = new QTableWidgetItem(resultat.value(2).toString());
-                        QTableWidgetItem *tel = new QTableWidgetItem(resultat.value(3).toString());
-                        QTableWidgetItem *ville = new QTableWidgetItem(resultat.value(4).toString());
+                        ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
+                        ui->tableWidget_resultats->setRowHeight(ligne,clientUi->height());
+                        ui->tableWidget_resultats->setCellWidget(ligne,0,clientUi);
 
-                        ui->tableWidget_resultats->setItem(ligne,0,nom);
-                        ui->tableWidget_resultats->setItem(ligne,1,adresse);
-                        ui->tableWidget_resultats->setItem(ligne,2,tel);
-                        ui->tableWidget_resultats->setItem(ligne,3,ville);
-                        */
                         ligne++;
                     }
                 }
             }
         }
-
-        // afficher message d'information
-        // sinon afficher les résultats
-
         m_db->close();
     }
 }
 
-void DialogAccueil::faireAutreChose()
+void DialogAccueil::nouveauClient()
 {
-
+    // Client client = new Client(NULL,ui->lineEdit_Recherche->text(),null,null,null);
+    this->m_dialogClient = new DialogClient();
 }
