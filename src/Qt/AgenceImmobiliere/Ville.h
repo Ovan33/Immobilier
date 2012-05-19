@@ -17,9 +17,7 @@ private:
 public:
     explicit Ville(QObject *parent = 0);
     Ville(QString nom, QString codePostal);
-
-    // ~Ville;
-
+    ~Ville ();
     QString getNom();
     QString getCodePostal();
     int getNum();
