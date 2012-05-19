@@ -3,11 +3,35 @@
 
 #include <QObject>
 
+#include <QDate>
+#include "Ville.h"
+
+
 class Bien : public QObject
 {
     Q_OBJECT
+
+private:
+    unsigned int m_num;
+    unsigned int m_prixVente;
+    QDate m_dateMiseVente;
+    unsigned int m_surfaceHabitable;
+    unsigned int m_surfaceJardin;
+    Ville m_ville;
+
 public:
+    enum typeSurf {habitation,jardin};
+
     explicit Bien(QObject *parent = 0);
+    Bien(unsigned int prix, QDate date, unsigned int surfHab, unsigned int surfJar, Ville ville);
+
+    void setPrix(unsigned int prix);
+    void setDate(QDate date);
+    void setSurf(typeSurf, unsigned int surf);
+
+    int getPrix();
+    int getSurf(typeSurf);
+    QDate getDate();
 
 signals:
 

@@ -2,6 +2,7 @@
 #define DIALOGBIEN_H
 
 #include <QDialog>
+#include <ui_barreMenuFiche.h>
 
 namespace Ui {
     class DialogBien;
@@ -15,8 +16,12 @@ public:
     explicit DialogBien(QWidget *parent = 0);
     ~DialogBien();
 
+
 private:
     Ui::DialogBien *ui;
+    Ui::barreMenuFiche m_menu;
+
+
 };
 
 #endif // DIALOGBIEN_H
