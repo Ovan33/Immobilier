@@ -40,7 +40,7 @@ public slots:
     void reset();
     void chercherClients();
     void nouveauClient();
-    // void ouvrirClient(Client);
+    void ouvrirClient(Client *client);
 };
 
 #endif // DIALOGACCUEIL_H
