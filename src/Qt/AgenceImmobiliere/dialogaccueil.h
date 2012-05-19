@@ -33,14 +33,14 @@ private:
     DialogBien *m_dialogBien;
     DialogSouhait *m_dialogSouhait;
     DialogClient *m_dialogClient;
-    // QList *m_listeClients;
+    QList<Client *> m_listeClients;
     Client *m_clientCourant;
 
 public slots:
     void reset();
     void chercherClients();
     void nouveauClient();
-    void ouvrirClient(Client *client);
+    void ouvrirClient(int);
 };
 
 #endif // DIALOGACCUEIL_H

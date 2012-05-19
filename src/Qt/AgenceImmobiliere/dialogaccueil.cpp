@@ -1,7 +1,5 @@
 #include "dialogaccueil.h"
 #include "ui_dialogaccueil.h"
-
-// #include <widgetclient.h>
 #include <QMessageBox>
 
 /*
@@ -15,6 +13,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     ui->setupUi(this);
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
     this->setWindowTitle("Accueil");
+    //this->m_listeClients = new QList<Client>();
     // Création de la barre de menu
     m_menu.setupUi(ui->widget_barreMenu);
     m_menu.label_fenetre->setText("Accueil");
@@ -94,6 +93,7 @@ void DialogAccueil::chercherClients()
                         Ville ville(resultat.value(4).toString(),resultat.value(5).toString());
                         // Client client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville);
                         Client *client = new Client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville);
+                        this->m_listeClients.append(client);
                         int nbBiens = resultat.value(6).toInt();
                         int nbSouhaits = resultat.value(7).toInt();
                         //clientUi->setNom(client.getNom());
@@ -128,8 +128,8 @@ void DialogAccueil::chercherClients()
 
                         QSignalMapper *mapper = new QSignalMapper(this);
                         QObject::connect(clientUi->getBoutonClient(),SIGNAL(clicked()),mapper,SLOT(map()));
-                        mapper->setMapping(clientUi->getBoutonClient(),client);
-                        connect(mapper,SIGNAL(mapped(QObject*)),this,SLOT(ouvrirClient(client)));
+                        mapper->setMapping(clientUi->getBoutonClient(),this->m_listeClients.indexOf(client));
+                        connect(mapper,SIGNAL(mapped(int)),this,SLOT(ouvrirClient(int)));
 
                         ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
                         ui->tableWidget_resultats->setRowHeight(ligne,clientUi->height());
@@ -151,9 +151,9 @@ void DialogAccueil::nouveauClient()
     m_dialogClient->exec();
 }
 
-void DialogAccueil::ouvrirClient(Client *client)
+void DialogAccueil::ouvrirClient(int indexClient)
 {
-    m_clientCourant = client;
+    m_clientCourant = this->m_listeClients.at(indexClient);
     this->m_dialogClient = new DialogClient(m_clientCourant);
     m_dialogClient->exec();
 }
