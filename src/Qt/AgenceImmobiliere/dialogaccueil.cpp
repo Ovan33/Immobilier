@@ -42,8 +42,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 
 DialogAccueil::~DialogAccueil()
 {
-    // delete m_db;
-    // delete m_settings;
+    delete m_db;
     delete ui;
 }
 
