@@ -44,8 +44,8 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 
 DialogAccueil::~DialogAccueil()
 {
-    delete m_db;
-    delete m_clientCourant;
+//     delete m_db;
+//     delete m_clientCourant;
     delete ui;
 }
 
@@ -123,7 +123,10 @@ void DialogAccueil::chercherClients()
                         ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
                         ui->tableWidget_resultats->setRowHeight(ligne,clientUi->height());
                         ui->tableWidget_resultats->setCellWidget(ligne,0,clientUi);
-
+                        // QSignalMapper *mapper = new QSignalMapper();
+                        // QObject::connect(clientUi->getBoutonClient(),SIGNAL(clicked()),mapper,SLOT(map()));
+                        // mapper->setMapping(clientUi->getBoutonClient(),client);
+                        // QObject::connect(mapper,SIGNAL(mapped(QWidget*)),this,SLOT(ouvrirClient(Client)));
                         ligne++;
                     }
                 }
@@ -140,3 +143,12 @@ void DialogAccueil::nouveauClient()
     this->m_dialogClient = new DialogClient(m_clientCourant);
     m_dialogClient->exec();
 }
+
+/*
+void DialogAccueil::ouvrirClient(Client client)
+{
+    // m_clientCourant = client;
+    // this->m_dialogClient = new DialogClient(m_clientCourant);
+    // m_dialogClient->exec();
+}
+*/

@@ -12,8 +12,10 @@ Ville::Ville(QString nom, QString codePostal) :
     this->m_codePostal = codePostal;
     this->m_num = 0;
 }
+Ville::~Ville()
+{
 
-
+}
 
 QString Ville::getNom()
 {
