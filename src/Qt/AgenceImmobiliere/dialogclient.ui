@@ -69,6 +69,12 @@
              <height>16777215</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>Liberation Sans</family>
+             <pointsize>18</pointsize>
+            </font>
+           </property>
           </widget>
          </item>
          <item row="1" column="0">
@@ -109,6 +115,12 @@
              <width>421</width>
              <height>16777215</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Liberation Sans</family>
+             <pointsize>18</pointsize>
+            </font>
            </property>
           </widget>
          </item>
@@ -158,17 +170,23 @@
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
            <property name="buddy">
-            <cstring>comboBox</cstring>
+            <cstring>comboBox_Villes</cstring>
            </property>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox">
+          <widget class="QComboBox" name="comboBox_Villes">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
              <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Liberation Sans</family>
+             <pointsize>18</pointsize>
+            </font>
            </property>
           </widget>
          </item>
@@ -193,12 +211,12 @@
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
            <property name="buddy">
-            <cstring>lineEdit_CodePostal_2</cstring>
+            <cstring>lineEdit_Telephone</cstring>
            </property>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QLineEdit" name="lineEdit_CodePostal_2">
+          <widget class="QLineEdit" name="lineEdit_Telephone">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
              <horstretch>3</horstretch>
@@ -210,6 +228,12 @@
              <width>421</width>
              <height>16777215</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Liberation Sans</family>
+             <pointsize>18</pointsize>
+            </font>
            </property>
           </widget>
          </item>
@@ -226,6 +250,12 @@
              <width>421</width>
              <height>16777215</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Liberation Sans</family>
+             <pointsize>18</pointsize>
+            </font>
            </property>
           </widget>
          </item>
@@ -280,8 +310,8 @@
   <tabstop>lineEdit_Adresse</tabstop>
   <tabstop>lineEdit_CodePostal</tabstop>
   <tabstop>button_ChercherVilles</tabstop>
-  <tabstop>comboBox</tabstop>
-  <tabstop>lineEdit_CodePostal_2</tabstop>
+  <tabstop>comboBox_Villes</tabstop>
+  <tabstop>lineEdit_Telephone</tabstop>
  </tabstops>
  <resources/>
  <connections/>

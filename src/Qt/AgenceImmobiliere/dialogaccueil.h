@@ -34,6 +34,7 @@ private:
     DialogSouhait *m_dialogSouhait;
     DialogClient *m_dialogClient;
     // QList *m_listeClients;
+    Client *m_clientCourant;
 
 public slots:
     void reset();

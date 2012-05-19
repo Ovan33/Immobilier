@@ -22,3 +22,16 @@ where CLIENTS.nom_c like 'DUP%'
 /* Insertion client */
 INSERT INTO clients(num_c, num_v, num_a, nom_c, adresse_c, tel_c) 
 			VALUES (default, :num_v, :num_a, :nom_c, :adresse_c, :tel_c)
+
+/* Obtenir une liste de clients et le nombre de biens et souhaits de ces clients */
+select 	CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c,
+		VILLES.nom_v, VILLES.code_postal_v,
+        (select count(BIENS.num_b) from Biens where biens.num_c=clients.num_c) as NbBiens,
+        (select count(SOUHAITS.num_s) from Souhaits where souhaits.num_c=clients.num_c) as NbSouhaits
+from CLIENTS 
+INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V
+LEFT OUTER JOIN BIENS on BIENS.num_c=CLIENTS.num_c
+LEFT OUTER JOIN SOUHAITS on SOUHAITS.num_c=CLIENTS.num_c
+where CLIENTS.nom_c like '%'
+group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v
+order by clients.num_c

@@ -52,3 +52,8 @@ void Ville::operator=(const Ville &ville)
     this->m_nom = ville.m_nom;
     this->m_num = ville.m_num;
 }
+
+int Ville::getNum()
+{
+    return this->m_num;
+}
