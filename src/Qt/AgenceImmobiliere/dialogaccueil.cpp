@@ -14,6 +14,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 {
     ui->setupUi(this);
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
+    this->setWindowTitle("Accueil");
     // Création de la barre de menu
     m_menu.setupUi(ui->widget_barreMenu);
     m_menu.label_fenetre->setText("Accueil");
@@ -44,6 +45,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 DialogAccueil::~DialogAccueil()
 {
     delete m_db;
+    delete m_clientCourant;
     delete ui;
 }
 
@@ -136,6 +138,8 @@ void DialogAccueil::chercherClients()
 
 void DialogAccueil::nouveauClient()
 {
-    // Client client = new Client(NULL,ui->lineEdit_Recherche->text(),null,null,null);
-    this->m_dialogClient = new DialogClient();
+    Ville ville;
+    m_clientCourant = new Client(-1,ui->lineEdit_Recherche->text(),QString(""),QString(""),ville);
+    this->m_dialogClient = new DialogClient(m_clientCourant);
+    m_dialogClient->exec();
 }
