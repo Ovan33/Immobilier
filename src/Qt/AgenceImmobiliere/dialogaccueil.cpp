@@ -64,9 +64,6 @@ void DialogAccueil::chercherClients()
         QMessageBox::information(this,"Recherche client", "Merci de saisir au moins une lettre dans la zone de recherche");
     else
     {
-        m_db = new BDD();
-
-        // construire la requête de recherche
         QString requete = "select CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c, ";
         requete += "VILLES.nom_v, VILLES.code_postal_v, ";
         requete += "(select count(BIENS.num_b) from Biens where biens.num_c=clients.num_c) as NbBiens, ";
@@ -78,7 +75,7 @@ void DialogAccueil::chercherClients()
         requete += "group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v ";
         requete += "order by clients.num_c";
 
-        // exécuter la requête et récupérer le résultat
+        m_db = new BDD();
         if (m_db->ouvrir())
         {
             QSqlQuery resultat;
@@ -139,7 +136,7 @@ void DialogAccueil::chercherClients()
 void DialogAccueil::nouveauClient()
 {
     Ville ville;
-    m_clientCourant = new Client(-1,ui->lineEdit_Recherche->text(),QString(""),QString(""),ville);
+    m_clientCourant = new Client(0,ui->lineEdit_Recherche->text(),QString(""),QString(""),ville);
     this->m_dialogClient = new DialogClient(m_clientCourant);
     m_dialogClient->exec();
 }

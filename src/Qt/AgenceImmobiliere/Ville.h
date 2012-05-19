@@ -22,6 +22,7 @@ public:
 
     QString getNom();
     QString getCodePostal();
+    int getNum();
     static bool isExisting(QString nom, QString codePostal);
     void modifierVille(QString nom, QString codePostal);
     void operator=(const Ville &ville);

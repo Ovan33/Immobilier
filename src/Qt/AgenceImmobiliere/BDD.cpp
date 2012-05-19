@@ -23,7 +23,6 @@ BDD::~BDD()
 {
     delete m_settings;
     QSqlDatabase::removeDatabase("immo");
-    // delete m_db;
 }
 
 bool BDD::isConnectionActive()

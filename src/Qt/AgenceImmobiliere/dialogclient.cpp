@@ -60,8 +60,14 @@ void DialogClient::valider()
     else
     {   // Si Ok
         // Sauvegarder le client
-        // ferme proprement la fenêtre
-        // appeler le SLOT refresh sur dialogAccueil
+        if (m_client->sauvegarder())
+        {
+            this->close();
+        }
+        else
+        {
+            QMessageBox::critical(this,"Sauvegarde impossible","Le client n'a pas été sauvegardé. Vérifiez les données entrées et retentez une sauvegarde");
+        }
     }
 }
 
