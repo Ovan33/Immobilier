@@ -5,13 +5,14 @@ Bien::Bien(QObject *parent) :
 {
 }
 
-Bien::Bien(unsigned int prix, QDate date, unsigned int surfHab, unsigned int surfJar, Ville ville)
+Bien::Bien(unsigned int prix, QDate date, unsigned int surfHab, unsigned int surfJar, Ville ville, Client *client)
 {
     this->m_prixVente = prix;
     this->m_dateMiseVente = date;
     this->m_surfaceHabitable = surfHab;
     this->m_surfaceJardin = surfJar;
     this->m_ville = ville;
+    this->m_client = client;
 }
 
 void Bien::setPrix(unsigned int prix)
