@@ -13,6 +13,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     ui(new Ui::DialogAccueil)
 {
     ui->setupUi(this);
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
     // Création de la barre de menu
     m_menu.setupUi(ui->widget_barreMenu);
     m_menu.label_fenetre->setText("Accueil");
