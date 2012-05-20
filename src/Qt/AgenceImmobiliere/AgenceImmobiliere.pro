@@ -11,7 +11,6 @@ QT       += xml
 TARGET = AgenceImmobiliere
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
     dialogaccueil.cpp \
     dialogclient.cpp \
@@ -24,7 +23,8 @@ SOURCES += main.cpp\
     widgetclient.cpp \
     dialoglistebiens.cpp \
     widgetbien.cpp \
-    Bien.cpp
+    Bien.cpp \
+    dialogrecherchebiens.cpp
     # mainwindow.cpp \
 
 HEADERS  +=     dialogaccueil.h \
@@ -38,7 +38,8 @@ HEADERS  +=     dialogaccueil.h \
     widgetclient.h \
     dialoglistebiens.h \
     widgetbien.h \
-    Bien.h
+    Bien.h \
+    dialogrecherchebiens.h
     # mainwindow.h \
 
 FORMS    += mainwindow.ui \
@@ -49,12 +50,14 @@ FORMS    += mainwindow.ui \
     dialogbien.ui \
     dialogsouhait.ui \    
     souhait.ui \
-    # listeSouhaits.ui \
-    # listeBiens.ui \
-    # bien.ui \
     widgetclient.ui \
     dialoglistebiens.ui \
     widgetbien.ui
+    listeSouhaits.ui \
+    listeBiens.ui \
+    bien.ui \
+    widgetclient.ui \
+    dialogrecherchebiens.ui
 
 RESOURCES += \
     ressources.qrc

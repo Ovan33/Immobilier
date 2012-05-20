@@ -25,6 +25,8 @@
         <file alias="add_bien96">images/bien_add_96x96.png</file>
         <file alias="add_souhait48">images/souhait_add_48x48.png</file>
         <file alias="add_souhait96">images/souhait_add_96x96.png</file>
+        <file alias="add_48">images/ajouter_48x48.png</file>
+        <file alias="add_96">images/ajouter_96x96.png</file>
         <file alias="settings">ressources/settings.xml</file>
     </qresource>
 </RCC>
