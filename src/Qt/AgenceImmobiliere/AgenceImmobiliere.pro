@@ -53,5 +53,4 @@ FORMS    += mainwindow.ui \
     dialogrecherchebiens.ui \
     widgetbien.ui
 
-RESOURCES += \
-    ressources.qrc
+RESOURCES += ressources.qrc
