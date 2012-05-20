@@ -12,6 +12,7 @@
 #include <dialogclient.h>
 #include <Client.h>
 #include <QList>
+#include <dialoglistebiens.h>
 
 namespace Ui {
     class DialogAccueil;
@@ -30,17 +31,21 @@ private:
     Ui::barreMenuFiche m_menu;
 
     BDD *m_db;
+    DialogClient *m_dialogClient;
+
+    DialogListeBiens *m_dialogListeBiens;
     DialogBien *m_dialogBien;
     DialogSouhait *m_dialogSouhait;
-    DialogClient *m_dialogClient;
-    QList<Client *> m_listeClients;
     Client *m_clientCourant;
+    QList<Client *> m_listeClients;
 
 public slots:
     void reset();
     void chercherClients();
     void nouveauClient();
     void ouvrirClient(int);
+    void ouvrirListeSouhaits(int);
+    void ouvrirListeBiens(int);
 };
 
 #endif // DIALOGACCUEIL_H

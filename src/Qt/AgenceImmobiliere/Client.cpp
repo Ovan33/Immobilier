@@ -3,7 +3,8 @@
 /*
   Constructeur
 */
-Client::Client(int num_c, QString nom, QString adresse, QString tel, Ville &ville) :
+//Client::Client(int num_c, QString nom, QString adresse, QString tel, Ville &ville) :
+Client::Client(int num_c, QString nom, QString adresse, QString tel, Ville *ville) :
     QObject()
 {
     this->m_num = num_c;
@@ -53,9 +54,14 @@ QString Client::getTel()
     return this->m_tel;
 }
 
-Ville& Client::getVille()
+Ville* Client::getVille()
 {
     return this->m_ville;
+}
+
+int Client::getNum()
+{
+    return this->m_num;
 }
 
 bool Client::sauvegarder()
@@ -66,7 +72,7 @@ bool Client::sauvegarder()
     {
     case (0):
         requete = "INSERT INTO clients VALUES(default,";
-        requete += this->getVille().getNum();
+        requete += this->getVille()->getNum();
         requete += ",NULL,'";
         requete += this->getNom() + "','" + this->getAdresse() + "','" + this->getTel();
         requete += "')";
@@ -78,7 +84,7 @@ bool Client::sauvegarder()
         requete += "set nom_c=" + this->m_nom +",";
         requete += "set adresse_c=" + this->m_adresse +",";
         requete += "set tel_c=" + this->m_tel +",";
-        requete += "set num_v=" + this->m_ville.getNum();
+        requete += "set num_v=" + this->m_ville->getNum();
         requete += " ";
         requete += "where num_c=" + this->m_num;
     }

@@ -46,8 +46,6 @@ DialogBien::DialogBien(Bien *bien, QWidget *parent) :
     //    QObject::connect(m_menu.pushButton_1, SIGNAL(clicked()), this, SLOT(maMethode()));
     QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), this, SLOT(close()));
     QObject::connect(m_menu.pushButton_3, SIGNAL(clicked()), qApp, SLOT(quit()));
-
-
 }
 
 

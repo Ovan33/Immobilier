@@ -28,9 +28,9 @@ DialogClient::DialogClient(Client *client, QWidget *parent) :
 
     ui->lineEdit_Nom->setText(m_client->getNom());
     ui->lineEdit_Adresse->setText(m_client->getAdresse());
-    ui->lineEdit_CodePostal->setText(m_client->getVille().getCodePostal());
+    ui->lineEdit_CodePostal->setText(m_client->getVille()->getCodePostal());
     ui->lineEdit_Telephone->setText(m_client->getTel());
-    ui->comboBox_Villes->addItem(m_client->getVille().getNom());
+    ui->comboBox_Villes->addItem(m_client->getVille()->getNom());
 
     // Signaux et Slots
     // Boutons de menu

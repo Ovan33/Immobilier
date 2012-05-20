@@ -90,40 +90,41 @@ void DialogAccueil::chercherClients()
                     while (resultat.next())
                     {
                         WidgetClient *clientUi = new WidgetClient();
-                        Ville ville(resultat.value(4).toString(),resultat.value(5).toString());
-                        // Client client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville);
+                        Ville *ville = new Ville(resultat.value(4).toString(),resultat.value(5).toString());
                         Client *client = new Client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville);
                         this->m_listeClients.append(client);
                         int nbBiens = resultat.value(6).toInt();
                         int nbSouhaits = resultat.value(7).toInt();
-                        //clientUi->setNom(client.getNom());
                         clientUi->setNom(client->getNom());
-                        // clientUi->setVille(ville.getNom());
-                        clientUi->setVille(ville.getNom());
-                        // clientUi->setAdresse(client.getAdresse());
+                        clientUi->setVille(ville->getNom());
                         clientUi->setAdresse(client->getAdresse());
-                        //clientUi->setTelephone(client.getTel());
                         clientUi->setTelephone(client->getTel());
-                        //clientUi->setCodePostal(ville.getCodePostal());
-                        clientUi->setCodePostal(ville.getCodePostal());
-                        //Nb souhait = 0
-                        if (nbBiens < 1)
+                        clientUi->setCodePostal(ville->getCodePostal());
+
+                        //NbSouhait = 0
+                        if (nbSouhaits < 1)
                         {
                             clientUi->setImageSouhait(QPixmap(":/app/add_souhait96"));
                             m_dialogSouhait = new DialogSouhait();
                             QObject::connect(clientUi->getBoutonSouhait(),SIGNAL(clicked()),m_dialogSouhait,SLOT(exec()));
                         } else {
-                        // Sinon slot si au moins un bien
+                            QSignalMapper *mapperSouhait = new QSignalMapper(this);
+                            QObject::connect(clientUi->getBoutonSouhait(),SIGNAL(clicked()),mapperSouhait,SLOT(map()));
+                            mapperSouhait->setMapping(clientUi->getBoutonSouhait(),this->m_listeClients.indexOf(client));
+                            connect(mapperSouhait,SIGNAL(mapped(int)),this,SLOT(ouvrirListeSouhaits(int)));
                         }
 
-                        //Nb bien = 0
-                        if (nbSouhaits < 1)
+                        //NbBien = 0
+                        if (nbBiens < 1)
                         {
                             clientUi->setImageBien(QPixmap(":/app/add_bien96"));
                             m_dialogBien = new DialogBien();
                             QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()), m_dialogBien,SLOT(exec()));
                         } else {
-                        // Slot si au moins un souhait
+                            QSignalMapper *mapperBien = new QSignalMapper(this);
+                            QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()),mapperBien,SLOT(map()));
+                            mapperBien->setMapping(clientUi->getBoutonBien(),this->m_listeClients.indexOf(client));
+                            connect(mapperBien,SIGNAL(mapped(int)),this,SLOT(ouvrirListeBiens(int)));
                         }
 
                         QSignalMapper *mapper = new QSignalMapper(this);
@@ -145,7 +146,7 @@ void DialogAccueil::chercherClients()
 
 void DialogAccueil::nouveauClient()
 {
-    Ville ville;
+    Ville *ville = new Ville();
     m_clientCourant = new Client(0,ui->lineEdit_Recherche->text(),QString(""),QString(""),ville);
     this->m_dialogClient = new DialogClient(m_clientCourant);
     m_dialogClient->exec();
@@ -158,3 +159,18 @@ void DialogAccueil::ouvrirClient(int indexClient)
     m_dialogClient->exec();
 }
 
+void DialogAccueil::ouvrirListeSouhaits(int indexClient)
+{
+    /*
+    m_clientCourant = this->m_listeClients.at(indexClient);
+    this->m_ = new DialogSouhait(m_clientCourant);
+    m_dialogSouhait->exec();
+    */
+}
+
+void DialogAccueil::ouvrirListeBiens(int indexClient)
+{
+    m_clientCourant = this->m_listeClients.at(indexClient);
+    this->m_dialogListeBiens = new DialogListeBiens(m_clientCourant);
+    m_dialogListeBiens->exec();
+}

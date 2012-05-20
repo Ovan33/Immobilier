@@ -10,14 +10,16 @@ class Client : public QObject
 {
 
 public:
-    Client (int num, QString nom,QString adresse,QString tel, Ville &ville);
+    //Client (int num, QString nom,QString adresse,QString tel, Ville &ville);
+    Client (int num, QString nom,QString adresse,QString tel, Ville *ville);
     ~Client ();
     void setAdresse (QString adr);
     void setTelephone (QString tel);
+    int getNum();
     QString getNom();
     QString getAdresse();
     QString getTel();
-    Ville& getVille();
+    Ville* getVille();
     bool sauvegarder();
 
 private:
@@ -26,7 +28,7 @@ private:
     QString m_nom;
     QString m_adresse;
     QString m_tel;
-    Ville m_ville;
+    Ville *m_ville;
     BDD *m_db;
 };
 

@@ -5,7 +5,7 @@
 //{
 //}
 
-Bien::Bien(unsigned int prix, QDate date, unsigned int surfHab, unsigned int surfJar, Ville ville, Client *client)
+Bien::Bien(unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client)
 {
     this->m_prixVente = prix;
     this->m_dateMiseVente = date;
@@ -51,4 +51,9 @@ int Bien::getSurf(typeSurf)
 QDate Bien::getDate()
 {
     return this->m_dateMiseVente;
+}
+
+Client* Bien::getClient()
+{
+    return this->m_client;
 }

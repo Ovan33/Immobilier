@@ -2,6 +2,7 @@
 #define DIALOGSOUHAIT_H
 
 #include <QDialog>
+#include <Client.h>
 
 namespace Ui {
     class DialogSouhait;
@@ -13,6 +14,7 @@ class DialogSouhait : public QDialog
 
 public:
     explicit DialogSouhait(QWidget *parent = 0);
+    // DialogSouhait(Bien *bien, QWidget *parent=0);
     // DialogSouhait(Client *client);
     ~DialogSouhait();
 

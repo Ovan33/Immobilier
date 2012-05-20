@@ -18,14 +18,14 @@ private:
     QDate m_dateMiseVente;
     unsigned int m_surfaceHabitable;
     unsigned int m_surfaceJardin;
-    Ville m_ville;
+    Ville *m_ville;
     Client *m_client;
 
 public:
     enum typeSurf {habitation,jardin};
 
   //  explicit Bien(QObject *parent = 0);
-    Bien(unsigned int prix, QDate date, unsigned int surfHab, unsigned int surfJar, Ville ville, Client *client);
+    Bien(unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client);
 
     void setPrix(unsigned int prix);
     void setDate(QDate date);
@@ -33,6 +33,7 @@ public:
 
     int getPrix();
     int getSurf(typeSurf);
+    Client* getClient();
     QDate getDate();
 
 signals:
