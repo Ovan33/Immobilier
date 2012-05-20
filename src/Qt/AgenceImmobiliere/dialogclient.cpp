@@ -61,6 +61,18 @@ void DialogClient::valider()
     }
     else
     {   // Si Ok
+        m_client->setAdresse(ui->lineEdit_Adresse->text());
+        m_client->setNom(ui->lineEdit_Nom->text());
+        int tmp_numVille;
+        for (int i =0; i < m_listeVilles.size(); i++)
+        {
+            if (m_listeVilles[i]->getNom()==ui->comboBox_Villes->currentText())
+                tmp_numVille = m_listeVilles[i]->getNum();
+        }
+
+        Ville *ville = new Ville(tmp_numVille, ui->comboBox_Villes->currentText(),ui->lineEdit_CodePostal->text());
+        m_client->setVille(ville);
+        m_client->setTelephone(ui->lineEdit_Telephone->text());
         // Sauvegarder le client
         if (m_client->sauvegarder())
         {
@@ -133,18 +145,14 @@ void DialogClient::chercherVilles()
                 {
                     while (resultat.next())
                     {
-                        Ville *ville = new Ville(resultat.value(1).toString(), resultat.value(2).toString());
+                        Ville *ville = new Ville(resultat.value(0).toInt(), resultat.value(1).toString(), resultat.value(2).toString());
                         m_listeVilles.append(ville);
                         qDebug() << ville->getNom();
                         ui->comboBox_Villes->addItem(ville->getNom());
                     }
                 }
-                //ui->comboBox_Villes->setCurrentIndex(0);
-                ui->comboBox_Villes->setItemText(0,m_listeVilles.at(0)->getNom());
             }
         }
         m_db->close();
-        // insertion des valeurs dans la comboBox
     }
-
 }

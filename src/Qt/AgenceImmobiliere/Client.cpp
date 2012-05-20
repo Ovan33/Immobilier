@@ -72,7 +72,7 @@ bool Client::sauvegarder()
     {
     case (0):
         requete = "INSERT INTO clients VALUES(default,";
-        requete += this->getVille()->getNum();
+        requete += QString::number(this->getVille()->getNum());
         requete += ",NULL,'";
         requete += this->getNom() + "','" + this->getAdresse() + "','" + this->getTel();
         requete += "')";
@@ -92,6 +92,7 @@ bool Client::sauvegarder()
     if (m_db->ouvrir())
     {
         QSqlQuery sauvegarde;
+        qDebug() << requete;
         if (sauvegarde.exec(requete))
             res = true;
         else
@@ -99,5 +100,15 @@ bool Client::sauvegarder()
     }
     m_db->close();
     return res;
+}
+
+void Client::setNom(QString nom)
+{
+    this->m_nom=nom;
+}
+
+void Client::setVille(Ville *ville)
+{
+    this->m_ville = ville;
 }
 

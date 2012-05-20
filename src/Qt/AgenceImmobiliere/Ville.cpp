@@ -5,12 +5,12 @@ Ville::Ville(QObject *parent) :
 {
 }
 
-Ville::Ville(QString nom, QString codePostal) :
+Ville::Ville(int num, QString nom, QString codePostal) :
     QObject()
 {
     this->m_nom = nom;
     this->m_codePostal = codePostal;
-    this->m_num = 0;
+    this->m_num = num;
 }
 Ville::~Ville()
 {

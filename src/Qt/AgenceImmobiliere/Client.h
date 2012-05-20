@@ -15,6 +15,8 @@ public:
     ~Client ();
     void setAdresse (QString adr);
     void setTelephone (QString tel);
+    void setNom(QString nom);
+    void setVille(Ville *ville);
     int getNum();
     QString getNom();
     QString getAdresse();

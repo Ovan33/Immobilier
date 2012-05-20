@@ -64,14 +64,14 @@ void DialogAccueil::chercherClients()
     else
     {
         QString requete = "select CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c, ";
-        requete += "VILLES.nom_v, VILLES.code_postal_v, ";
+        requete += "VILLES.nom_v, VILLES.code_postal_v, VILLES.num_v,";
         requete += "(select count(BIENS.num_b) from Biens where biens.num_c=clients.num_c) as NbBiens, ";
         requete += "(select count(SOUHAITS.num_s) from Souhaits where souhaits.num_c=clients.num_c) as NbSouhaits ";
         requete += "from CLIENTS INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V ";
         requete += "left outer JOIN BIENS on BIENS.num_c=CLIENTS.num_c ";
         requete += "left outer JOIN SOUHAITS on SOUHAITS.num_c=CLIENTS.num_c ";
         requete += "where CLIENTS.nom_c like'" + client + "%'";
-        requete += "group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v ";
+        requete += "group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v,villes.num_v ";
         requete += "order by clients.num_c";
 
         m_db = new BDD();
@@ -90,7 +90,7 @@ void DialogAccueil::chercherClients()
                     while (resultat.next())
                     {
                         WidgetClient *clientUi = new WidgetClient();
-                        Ville *ville = new Ville(resultat.value(4).toString(),resultat.value(5).toString());
+                        Ville *ville = new Ville(resultat.value(6).toInt(),resultat.value(4).toString(),resultat.value(5).toString());
                         Client *client = new Client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville);
                         this->m_listeClients.append(client);
                         int nbBiens = resultat.value(6).toInt();
