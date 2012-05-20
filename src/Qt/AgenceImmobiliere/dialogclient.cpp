@@ -19,6 +19,16 @@ DialogClient::DialogClient(Client *client, QWidget *parent) :
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
     this->setWindowTitle("Fiche client - " + client->getNom());
     m_client = client;
+
+    // debug infos
+    qDebug()    << "NumA : " << m_client->getNumA() << endl
+                << "Nom : " << m_client->getNom() << endl
+                << "NumC : " << m_client->getNum() << endl
+                << "Adr : "<< m_client->getAdresse() << endl
+                << "tel : " << m_client->getTel() << endl
+                << "NumVille : " << m_client->getVille()->getNum();
+    // debug infos
+
     m_menu.setupUi(ui->widget_barreMenu);
     if (m_client->getNom().isEmpty())
         m_menu.label_fenetre->setText("Nouveau client");
@@ -61,26 +71,20 @@ void DialogClient::valider()
     }
     else
     {   // Si Ok
-        m_client->setAdresse(ui->lineEdit_Adresse->text());
-        m_client->setNom(ui->lineEdit_Nom->text());
-        int tmp_numVille;
-        for (int i =0; i < m_listeVilles.size(); i++)
-        {
-            if (m_listeVilles[i]->getNom()==ui->comboBox_Villes->currentText())
-                tmp_numVille = m_listeVilles[i]->getNum();
-        }
-
-        Ville *ville = new Ville(tmp_numVille, ui->comboBox_Villes->currentText(),ui->lineEdit_CodePostal->text());
+        m_client->setAdresse(ui->lineEdit_Adresse->text().toUpper());
+        m_client->setNom(ui->lineEdit_Nom->text().toUpper());
+        Ville *ville = chercherVille();
         m_client->setVille(ville);
         m_client->setTelephone(ui->lineEdit_Telephone->text());
         // Sauvegarder le client
         if (m_client->sauvegarder())
         {
+            QMessageBox::information(this,"Données sauvegardées","Client sauvegardé");
             this->close();
         }
         else
         {
-            QMessageBox::critical(this,"Sauvegarde impossible","Le client n'a pas été sauvegardé. Vérifiez les données entrées et retentez une sauvegarde");
+            QMessageBox::critical(this,"Sauvegarde impossible","Le client n'a pas été sauvegardé. Vérifiez vos données !");
         }
     }
 }
@@ -155,4 +159,48 @@ void DialogClient::chercherVilles()
         }
         m_db->close();
     }
+}
+
+Ville* DialogClient::chercherVille()
+{
+    Ville *ville;
+    QString requete = "select * from villes where nom_v='";
+    requete += ui->comboBox_Villes->currentText();
+    requete += "' and CODE_POSTAL_V='";
+    requete += ui->lineEdit_CodePostal->text();
+    requete += "'";
+
+    //Debug Infos
+    qDebug() << requete;
+    //FIN
+
+    m_db = new BDD();
+    if (m_db->ouvrir())
+    {
+        QSqlQuery resultat;
+        if (resultat.exec(requete))
+        {
+            if (resultat.size() < 1)
+                QMessageBox::information(this,"Recherche ville", "Aucune ville ne correspond à ce code postal");
+            else if (resultat.size() > 1)
+                QMessageBox::information(this,"Recherche ville", "Trop de résultats");
+            else while (resultat.next())
+            {
+                //Debug Infos
+                qDebug()    << resultat.value(0).toInt()
+                            << resultat.value(1).toString()
+                            << resultat.value(2).toString()
+                            << endl;
+                // FIN
+                ville = new Ville(resultat.value(0).toInt(), resultat.value(1).toString(), resultat.value(2).toString());
+                //Debug Infos
+                qDebug()    << ville->getNom()
+                            << ville->getNum()
+                            << ville->getCodePostal();
+                // FIN
+            }
+        }
+    }
+    m_db->close();
+    return ville;
 }

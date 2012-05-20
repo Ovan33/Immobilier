@@ -28,6 +28,7 @@ private:
     BDD *m_db;
     bool changed;
     bool checkData();
+    Ville* chercherVille();
 
 public slots:
     void valider();

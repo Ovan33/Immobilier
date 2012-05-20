@@ -10,14 +10,15 @@ class Client : public QObject
 {
 
 public:
-    //Client (int num, QString nom,QString adresse,QString tel, Ville &ville);
-    Client (int num, QString nom,QString adresse,QString tel, Ville *ville);
+    Client (int num, QString nom,QString adresse,QString tel, Ville *ville, int numA);
     ~Client ();
     void setAdresse (QString adr);
     void setTelephone (QString tel);
     void setNom(QString nom);
     void setVille(Ville *ville);
+    void setNumA(int num);
     int getNum();
+    int getNumA();
     QString getNom();
     QString getAdresse();
     QString getTel();

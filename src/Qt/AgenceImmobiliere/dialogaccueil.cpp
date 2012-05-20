@@ -44,6 +44,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 DialogAccueil::~DialogAccueil()
 {
     delete m_db;
+    // delete m_dialogListeBiens;
     // delete m_clientCourant;
     delete ui;
 }
@@ -64,14 +65,14 @@ void DialogAccueil::chercherClients()
     else
     {
         QString requete = "select CLIENTS.NUM_C, CLIENTS.nom_c, CLIENTS.adresse_c, CLIENTS.tel_c, ";
-        requete += "VILLES.nom_v, VILLES.code_postal_v, VILLES.num_v,";
+        requete += "VILLES.nom_v, VILLES.code_postal_v, VILLES.num_v,CLIENTS.NUM_A,";
         requete += "(select count(BIENS.num_b) from Biens where biens.num_c=clients.num_c) as NbBiens, ";
         requete += "(select count(SOUHAITS.num_s) from Souhaits where souhaits.num_c=clients.num_c) as NbSouhaits ";
         requete += "from CLIENTS INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V ";
         requete += "left outer JOIN BIENS on BIENS.num_c=CLIENTS.num_c ";
         requete += "left outer JOIN SOUHAITS on SOUHAITS.num_c=CLIENTS.num_c ";
         requete += "where CLIENTS.nom_c like'" + client + "%'";
-        requete += "group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v,villes.num_v ";
+        requete += "group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v,villes.num_v,CLIENTS.NUM_A ";
         requete += "order by clients.num_c";
 
         m_db = new BDD();
@@ -91,10 +92,16 @@ void DialogAccueil::chercherClients()
                     {
                         WidgetClient *clientUi = new WidgetClient();
                         Ville *ville = new Ville(resultat.value(6).toInt(),resultat.value(4).toString(),resultat.value(5).toString());
-                        Client *client = new Client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville);
+                        // Debug Infos
+                        qDebug()    << "NumV : " << ville->getNum() << endl
+                                    << "NomV : " << ville->getNom() << endl
+                                    << "CP : " << ville->getCodePostal();
+                        // Fin
+                        Client *client = new Client(resultat.value(0).toInt(),resultat.value(1).toString(),resultat.value(2).toString(),resultat.value(3).toString(),ville,resultat.value(7).toInt());
                         this->m_listeClients.append(client);
-                        int nbBiens = resultat.value(6).toInt();
-                        int nbSouhaits = resultat.value(7).toInt();
+
+                        int nbBiens = resultat.value(8).toInt();
+                        int nbSouhaits = resultat.value(9).toInt();
                         clientUi->setNom(client->getNom());
                         clientUi->setVille(ville->getNom());
                         clientUi->setAdresse(client->getAdresse());
@@ -147,14 +154,22 @@ void DialogAccueil::chercherClients()
 void DialogAccueil::nouveauClient()
 {
     Ville *ville = new Ville();
-    m_clientCourant = new Client(0,ui->lineEdit_Recherche->text(),QString(""),QString(""),ville);
+    m_clientCourant = new Client(0,ui->lineEdit_Recherche->text(),QString(""),QString(""),ville,0);
     this->m_dialogClient = new DialogClient(m_clientCourant);
     m_dialogClient->exec();
 }
 
 void DialogAccueil::ouvrirClient(int indexClient)
 {
-    m_clientCourant = this->m_listeClients.at(indexClient);
+    // Debug Infos
+    qDebug()    << "NumA : " << m_listeClients[indexClient]->getNumA() << endl
+                << "Nom : " << m_listeClients[indexClient]->getNom() << endl
+                << "NumC : " << m_listeClients[indexClient]->getNum() << endl
+                << "Adr : "<< m_listeClients[indexClient]->getAdresse() << endl
+                << "tel : " << m_listeClients[indexClient]->getTel() << endl
+                << "NumVille : " << m_listeClients[indexClient]->getVille()->getNum();
+    //Fin
+    m_clientCourant = this->m_listeClients[indexClient];
     this->m_dialogClient = new DialogClient(m_clientCourant);
     m_dialogClient->exec();
 }
@@ -170,7 +185,8 @@ void DialogAccueil::ouvrirListeSouhaits(int indexClient)
 
 void DialogAccueil::ouvrirListeBiens(int indexClient)
 {
-    m_clientCourant = this->m_listeClients.at(indexClient);
+    qDebug() << m_listeClients[indexClient]->getNom() << " " << m_listeClients[indexClient]->getNum();
+    m_clientCourant = this->m_listeClients[indexClient];
     this->m_dialogListeBiens = new DialogListeBiens(m_clientCourant);
     m_dialogListeBiens->exec();
 }
