@@ -17,7 +17,6 @@ DialogListeBiens::DialogListeBiens(Client *client, QWidget *parent) :
 {
     ui->setupUi(this);
     m_client = client;
-    qDebug() << m_client->getNum();
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
     this->setWindowTitle("Liste des biens");
     m_menu.setupUi(ui->widget_barreMenu);
@@ -50,10 +49,6 @@ DialogListeBiens::~DialogListeBiens()
 void DialogListeBiens::chercherBiens()
 {
     QString requete = "select * from biens where num_c=" + QString::number(m_client->getNum());
-    // requete += m_client->getNum();
-    // requete +=
-    qDebug() << m_client->getNum();
-    qDebug() << requete;
     // Exécution de la requête //
 
     m_db = new BDD();

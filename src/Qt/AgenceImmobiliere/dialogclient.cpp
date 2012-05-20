@@ -1,6 +1,7 @@
 #include "dialogclient.h"
 #include "ui_dialogclient.h"
 #include <QMessageBox>
+#include <Ville.h>
 
 DialogClient::DialogClient(QWidget *parent) :
     QDialog(parent),
@@ -43,6 +44,7 @@ DialogClient::DialogClient(Client *client, QWidget *parent) :
     QObject::connect(ui->lineEdit_Nom,SIGNAL(textChanged(QString)),this,SLOT(changerLabel(QString)));
     QObject::connect(ui->lineEdit_Telephone,SIGNAL(textChanged(QString)),this,SLOT(setEtat(QString)));
     QObject::connect(ui->comboBox_Villes,SIGNAL(currentIndexChanged(QString)),this,SLOT(setEtat(QString)));
+    QObject::connect(ui->button_ChercherVilles,SIGNAL(clicked()),this,SLOT(chercherVilles()));
 }
 
 DialogClient::~DialogClient()
@@ -107,4 +109,42 @@ void DialogClient::setEtat(QString value)
 void DialogClient::changerLabel(QString value)
 {
     m_menu.label_fenetre->setText(value);
+}
+
+void DialogClient::chercherVilles()
+{
+    if (ui->lineEdit_CodePostal->text().isEmpty())
+        QMessageBox::information(this,"Données incorrectes","Merci de renseigner le code postal");
+    else
+    {
+        QString requete = "select * from VILLES where CODE_POSTAL_V='" + ui->lineEdit_CodePostal->text();
+        requete += "' order by nom_v";
+        qDebug() << requete;
+        // pour chaque res, création d'une ville
+        m_db = new BDD();
+        if (m_db->ouvrir())
+        {
+            QSqlQuery resultat;
+            if (resultat.exec(requete))
+            {
+                if (resultat.size() < 1)
+                    QMessageBox::information(this,"Recherche client", "Aucune ville ne correspond à ce code postal");
+                else
+                {
+                    while (resultat.next())
+                    {
+                        Ville *ville = new Ville(resultat.value(1).toString(), resultat.value(2).toString());
+                        m_listeVilles.append(ville);
+                        qDebug() << ville->getNom();
+                        ui->comboBox_Villes->addItem(ville->getNom());
+                    }
+                }
+                //ui->comboBox_Villes->setCurrentIndex(0);
+                ui->comboBox_Villes->setItemText(0,m_listeVilles.at(0)->getNom());
+            }
+        }
+        m_db->close();
+        // insertion des valeurs dans la comboBox
+    }
+
 }
