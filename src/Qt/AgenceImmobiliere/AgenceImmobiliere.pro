@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     Parametre.cpp \
     Client.cpp \
     Ville.cpp \
-    widgetclient.cpp
+    widgetclient.cpp \
+    dialogrecherchebiens.cpp
     # mainwindow.cpp \
 
 HEADERS  +=     dialogaccueil.h \
@@ -32,7 +33,8 @@ HEADERS  +=     dialogaccueil.h \
     Parametre.h \
     Client.h \
     Ville.h \
-    widgetclient.h
+    widgetclient.h \
+    dialogrecherchebiens.h
     # mainwindow.h \
 
 FORMS    += mainwindow.ui \
@@ -46,7 +48,8 @@ FORMS    += mainwindow.ui \
     listeSouhaits.ui \
     listeBiens.ui \
     bien.ui \
-    widgetclient.ui
+    widgetclient.ui \
+    dialogrecherchebiens.ui
 
 RESOURCES += \
     ressources.qrc
