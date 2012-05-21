@@ -7,6 +7,7 @@
 Client::Client(int num_c, QString nom, QString adresse, QString tel, Ville *ville, int numA) :
     QObject()
 {
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
     this->m_num = num_c;
     this->m_nom = nom;
     this->m_adresse = adresse;
@@ -77,56 +78,73 @@ void Client::setNumA(int numA)
 
 bool Client::sauvegarder()
 {
-    QString requete;
-    bool res;
-
-    // debug infos
-    qDebug()    << "NumA : " << this->m_num_a << endl
-                << "Nom : " << this->m_nom << endl
-                << "NumC : " << this->m_num << endl
-                << "Adr : "<< this->m_adresse << endl
-                << "tel : " << this->m_tel << endl
-                << "NumVille : " << this->m_ville->getNum();
-    // debug infos
-
-    switch(this->m_num)
-    {
-    case (0):
-        requete = "INSERT INTO clients VALUES(default,";
-        requete += QString::number(this->getVille()->getNum());
-        requete += ",NULL,'";
-        requete += this->getNom() + "','" + this->getAdresse() + "','" + this->getTel();
-        requete += "')";
-        break;
-    default:
-        requete = "update clients ";
-        requete += "set num_a=";
-        requete += QString::number(this->m_num_a);
-        requete += ",";
-        requete += "nom_c='";
-        requete += this->m_nom;
-        requete += "',";
-        requete += "adresse_c='";
-        requete += this->m_adresse;
-        requete += "',";
-        requete += "tel_c='";
-        requete += this->m_tel;
-        requete += "',";
-        requete += "num_v=";
-        requete += QString::number(this->getVille()->getNum());
-        requete += " ";
-        requete += "where num_c=";
-        requete += QString::number(this->m_num);
-    }
-    // Debug Infos
-    qDebug() << requete;
-    // Fin
+    // QString requete;
     m_db = new BDD();
+    bool res;
     if (m_db->ouvrir())
     {
-        QSqlQuery sauvegarde;
-        qDebug() << requete;
-        if (sauvegarde.exec(requete))
+    QSqlQuery requete(m_db->getDb());
+
+
+        // debug infos
+        qDebug()    << "NumA : " << this->m_num_a << endl
+                    << "Nom : " << this->m_nom << endl
+                    << "NumC : " << this->m_num << endl
+                    << "Adr : "<< this->m_adresse << endl
+                    << "tel : " << this->m_tel << endl
+                    << "NumVille : " << this->m_ville->getNum();
+        // debug infos
+
+        switch(this->m_num)
+        {
+        case (0):
+            /*
+            requete = "INSERT INTO clients VALUES(default,";
+            requete += QString::number(this->getVille()->getNum());
+            requete += ",NULL,'";
+            requete += this->getNom() + "','" + this->getAdresse() + "','" + this->getTel();
+            requete += "')";
+            break;
+            */
+
+            //requete.prepare("INSERT INTO clients VALUES(default,?,NULL,?,?,?)");
+            requete.prepare("INSERT INTO clients VALUES(default,:numVille,NULL,:nomClient,:adresse,:telephone)");
+            requete.bindValue(":numVille",QString::number(this->getVille()->getNum()));
+            requete.bindValue(":nomClient",this->getNom());
+            requete.bindValue(":adresse",this->getAdresse());
+            requete.bindValue(":telephone",this->getTel());
+            break;
+        default:
+            qDebug() << "cas par défaut";
+            /*
+            requete = "update clients ";
+            requete += "set num_a=";
+            requete += QString::number(this->m_num_a);
+            requete += ",";
+            requete += "nom_c='";
+            requete += this->m_nom;
+            requete += "',";
+            requete += "adresse_c='";
+            requete += this->m_adresse;
+            requete += "',";
+            requete += "tel_c='";
+            requete += this->m_tel;
+            requete += "',";
+            requete += "num_v=";
+            requete += QString::number(this->getVille()->getNum());
+            requete += " ";
+            requete += "where num_c=";
+            requete += QString::number(this->m_num);
+            */
+        }
+        // Debug Infos
+        // qDebug() << requete;
+        // Fin
+
+
+        // QSqlQuery sauvegarde;
+        qDebug() << requete.lastQuery();
+        if (requete.exec())
             res = true;
         else
             res = false;

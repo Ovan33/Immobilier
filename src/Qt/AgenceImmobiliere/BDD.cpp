@@ -46,3 +46,8 @@ bool BDD::ouvrir()
 {
     return m_db.open();
 }
+
+QSqlDatabase BDD::getDb()
+{
+    return this->m_db;
+}

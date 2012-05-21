@@ -28,6 +28,9 @@ public:
     // Ouvre la connection
     bool ouvrir();
 
+    QSqlDatabase getDb();
+
+
 private:
     QSqlDatabase m_db;
     Parametre *m_settings;
