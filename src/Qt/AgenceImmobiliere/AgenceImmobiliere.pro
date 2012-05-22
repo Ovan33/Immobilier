@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     dialoglistebiens.cpp \
     widgetbien.cpp \
     dialogrecherchebiens.cpp \
-    Bien.cpp
+    Bien.cpp \
+    Souhait.cpp
 
 HEADERS  +=     dialogaccueil.h \
     dialogclient.h \
@@ -38,7 +39,8 @@ HEADERS  +=     dialogaccueil.h \
     dialoglistebiens.h \
     widgetbien.h \
     dialogrecherchebiens.h \
-    Bien.h
+    Bien.h \
+    Souhait.h
 
 FORMS    += mainwindow.ui \
     barreMenuFiche.ui \
