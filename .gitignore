@@ -18,3 +18,4 @@ ListWidget-build-desktop/
 */*.user
 *.user
 *.user.*
+tests.sql
