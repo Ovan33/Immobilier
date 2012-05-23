@@ -24,7 +24,7 @@ DialogListeBiens::DialogListeBiens(Client *client, QWidget *parent) :
     m_menu.image_fenetre->setPixmap(QPixmap(":/app/bien96"));
     m_menu.pushButton_3->setVisible(false);
     // Bouton de fermeture
-    m_menu.pushButton_1->setIcon(QIcon(":/app/annuler96"));
+    m_menu.pushButton_1->setIcon(QIcon(":/app/back96"));
     m_menu.pushButton_1->setToolTip("Fermer la fenêtre");
     // Bouton Quitter
     m_menu.pushButton_2->setIcon(QIcon(":/app/quitter96"));
@@ -35,10 +35,11 @@ DialogListeBiens::DialogListeBiens(Client *client, QWidget *parent) :
     ui->tableWidget_listeBiens->horizontalHeader()->hide();
     //Informations client
     ui->label_NomClient->setText(client->getNom());
-    // Chercher et afficher les biens
     chercherBiens();
     // SIGNAUX et SLOTS
-    // QObject::connect(ui->pushButton_ajouterBien,SIGNAL(clicked()),m_dialogBien,SLOT(exec()));
+    QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
+    QObject::connect(m_menu.pushButton_2,SIGNAL(clicked()),qApp,SLOT(quit()));
+    QObject::connect(ui->pushButton_ajouterBien, SIGNAL(clicked()),this,SLOT(nouveauBien()));
 }
 
 DialogListeBiens::~DialogListeBiens()
@@ -48,34 +49,36 @@ DialogListeBiens::~DialogListeBiens()
 
 void DialogListeBiens::chercherBiens()
 {
-    QString requete = "select * from biens where num_c=" + QString::number(m_client->getNum());
-    // Exécution de la requête //
-
     m_db = new BDD();
     if (m_db->ouvrir())
     {
-        QSqlQuery resultat;
-        if (resultat.exec(requete))
+        QSqlQuery requete(m_db->getDb());
+        requete.prepare("select * from biens where num_c=:numClient");
+        requete.bindValue(":numClient",QString::number(m_client->getNum()));
+        if (requete.exec())
         {
-            if (resultat.size() < 1)
+            if (requete.size() < 1)
                 QMessageBox::information(this,"Recherche client", "Aucun bien trouvé");
             else
             {
                 // Initialisations
-                ui->tableWidget_listeBiens->setRowCount(resultat.size());
+                ui->tableWidget_listeBiens->setRowCount(requete.size());
                 int ligne = 0;
-                while (resultat.next())
+                while (requete.next())
                 {
                     WidgetBien *bienUi = new WidgetBien();
                     Ville *ville = new Ville();
-                    QDate date(resultat.value(4).toString().left(4).toInt(),resultat.value(4).toString().mid(5,2).toInt(),resultat.value(4).toString().right(2).toInt());
-                    Bien *bien = new Bien(resultat.value(3).toUInt(),date,resultat.value(5).toUInt(),resultat.value(6).toUInt(),ville,m_client);
+                    //QDate date(requete.value(4).toString().left(4).toInt(),requete.value(4).toString().mid(5,2).toInt(),requete.value(4).toString().right(2).toInt());
+                    QDate date(requete.value(4).toDate());
+                    Bien *bien = new Bien(requete.value(3).toUInt(),date,requete.value(5).toUInt(),requete.value(6).toUInt(),ville,m_client);
                     this->m_listeBiens.append(bien);
                     ui->label_NomClient->setText(bien->getClient()->getNom());
                     bienUi->setPrixVente(bien->getPrix());
                     bienUi->setSurfaceHabitable(bien->getSurf(Bien::habitation));
                     bienUi->setSurfaceJardin(bien->getSurf(Bien::jardin));
-                    // Manque la date
+                    bienUi->setDateMiseVente(date);
+                    bienUi->getBoutonDate()->setDisabled(true);
+
                     ui->tableWidget_listeBiens->setColumnWidth(0,ui->tableWidget_listeBiens->width());
                     ui->tableWidget_listeBiens->setRowHeight(ligne,bienUi->height());
                     ui->tableWidget_listeBiens->setCellWidget(ligne,0,bienUi);
@@ -85,4 +88,13 @@ void DialogListeBiens::chercherBiens()
         }
     }
     m_db->close();
+}
+
+void DialogListeBiens::nouveauBien()
+{
+    // Bien(unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client);
+    QDate date = QDate::currentDate();
+    Bien *bien = new Bien(0,date,0,0, new Ville(),m_client);
+    m_dialogBien = new DialogBien(bien,this);
+    m_dialogBien->exec();
 }

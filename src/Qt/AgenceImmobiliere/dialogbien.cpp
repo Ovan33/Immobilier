@@ -31,7 +31,7 @@ DialogBien::DialogBien(Bien *bien, QWidget *parent) :
     ui->setupUi(this);
     m_bien = bien;
 
-    this->setWindowTitle("Gestion de biens immobiliers - Bien");
+    this->setWindowTitle("Gestion de biens immobiliers");
 
     // Création de la barre de menu
     m_menu.setupUi(ui->widget_barreMenu);
@@ -42,10 +42,13 @@ DialogBien::DialogBien(Bien *bien, QWidget *parent) :
     m_menu.pushButton_2->setToolTip("Annuler");
     m_menu.pushButton_3->setToolTip("Quitter l'application");
 
+    ui->label_NomClient->setText(bien->getClient()->getNom());
+
     // SIGNAUX et SLOTS
-    //    QObject::connect(m_menu.pushButton_1, SIGNAL(clicked()), this, SLOT(maMethode()));
-    QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), this, SLOT(close()));
+    // QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), this, SLOT(close()));
     QObject::connect(m_menu.pushButton_3, SIGNAL(clicked()), qApp, SLOT(quit()));
+
+    QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
 }
 
 

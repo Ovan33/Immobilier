@@ -27,3 +27,15 @@ void WidgetBien::setSurfaceJardin(int surf)
 {
     ui->label_SurfaceJardin->setText(QString::number(surf));
 }
+
+void WidgetBien::setDateMiseVente(QDate date)
+{
+    ui->dateEdit_dateMiseVente->setDate(date);
+}
+
+QDateEdit* WidgetBien::getBoutonDate()
+{
+    return ui->dateEdit_dateMiseVente;
+}
+
+

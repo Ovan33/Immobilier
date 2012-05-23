@@ -71,32 +71,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a>00017 {
 <a name="l00018"></a>00018 
 <a name="l00019"></a>00019 <span class="keyword">public</span>:
-<a name="l00028"></a>00028     <a class="code" href="class_client.html#afe10988e660140a493f4c7460c961dee" title="Constructeur.">Client</a> (<span class="keywordtype">int</span> num, QString nom,QString adresse,QString tel, <a class="code" href="class_ville.html">Ville</a> *ville, <span class="keywordtype">int</span> numA);
-<a name="l00029"></a>00029     ~<a class="code" href="class_client.html">Client</a> ();
-<a name="l00030"></a>00030     <span class="keywordtype">void</span> setAdresse (QString adr);
-<a name="l00031"></a>00031     <span class="keywordtype">void</span> setTelephone (QString tel);
-<a name="l00032"></a>00032     <span class="keywordtype">void</span> setNom(QString nom);
-<a name="l00033"></a>00033     <span class="keywordtype">void</span> setVille(<a class="code" href="class_ville.html">Ville</a> *ville);
-<a name="l00034"></a>00034     <span class="keywordtype">void</span> setNumA(<span class="keywordtype">int</span> num);
-<a name="l00035"></a>00035     <span class="keywordtype">int</span> getNum();
-<a name="l00036"></a>00036     <span class="keywordtype">int</span> getNumA();
-<a name="l00037"></a>00037     QString getNom();
-<a name="l00038"></a>00038     QString getAdresse();
-<a name="l00039"></a>00039     QString getTel();
-<a name="l00040"></a>00040     <a class="code" href="class_ville.html">Ville</a>* getVille();
-<a name="l00041"></a>00041     <span class="keywordtype">bool</span> sauvegarder();
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <span class="keyword">private</span>:
-<a name="l00044"></a>00044     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_num;
-<a name="l00045"></a>00045     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_num_a;
-<a name="l00046"></a>00046     QString m_nom;
-<a name="l00047"></a>00047     QString m_adresse;
-<a name="l00048"></a>00048     QString m_tel;
-<a name="l00049"></a>00049     <a class="code" href="class_ville.html">Ville</a> *m_ville;
-<a name="l00050"></a>00050     <a class="code" href="class_b_d_d.html">BDD</a> *m_db;
-<a name="l00051"></a>00051 };
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 <span class="preprocessor">#endif // CLIENT_H</span>
+<a name="l00029"></a>00029     <a class="code" href="class_client.html#afe10988e660140a493f4c7460c961dee" title="Constructeur.">Client</a> (<span class="keywordtype">int</span> num, QString nom,QString adresse,QString tel, <a class="code" href="class_ville.html">Ville</a> *ville, <span class="keywordtype">int</span> numA);
+<a name="l00030"></a>00030 
+<a name="l00034"></a>00034     <a class="code" href="class_client.html#a840e519ca781888cbd54181572ebe3a7" title="Destructeur.">~Client</a> ();
+<a name="l00035"></a>00035 
+<a name="l00042"></a>00042     <span class="keywordtype">void</span> <a class="code" href="class_client.html#ab03f0f360c0f6fc8a4012311c06a000b" title="Modifier l&amp;#39;adresse Permet de modifier l&amp;#39;adresse.">setAdresse</a> (QString adr);
+<a name="l00043"></a>00043 
+<a name="l00050"></a>00050     <span class="keywordtype">void</span> <a class="code" href="class_client.html#a739c6ffbf7e4e4e1d4e17734d1aecf6a" title="Modifier le téléphone Permet de modifier le téléphone.">setTelephone</a> (QString tel);
+<a name="l00051"></a>00051 
+<a name="l00058"></a>00058     <span class="keywordtype">void</span> <a class="code" href="class_client.html#a2c18a5d97f8e4256f8e3c74f4e36a30d" title="Modifier le nom Permet de modifier le nom.">setNom</a>(QString nom);
+<a name="l00059"></a>00059 
+<a name="l00066"></a>00066     <span class="keywordtype">void</span> <a class="code" href="class_client.html#ade6e10470c0b9ff80969198a3d79a043" title="Modifier la ville Permet de modifier la ville.">setVille</a>(<a class="code" href="class_ville.html">Ville</a> *ville);
+<a name="l00067"></a>00067 
+<a name="l00074"></a>00074     <span class="keywordtype">void</span> <a class="code" href="class_client.html#a7eb8481bcd46358ec23b432bc42f3547" title="Modifier le numéro d&amp;#39;agent Permet de modifier le numéro d&amp;#39;agent.">setNumA</a>(<span class="keywordtype">int</span> num);
+<a name="l00075"></a>00075 
+<a name="l00081"></a>00081     <span class="keywordtype">int</span> <a class="code" href="class_client.html#a629bc52d0e808126b609e2587d5f4bc5" title="Obtenir le numéro client Permet d&amp;#39;obtenir le numéro du client.">getNum</a>();
+<a name="l00082"></a>00082 
+<a name="l00088"></a>00088     <span class="keywordtype">int</span> <a class="code" href="class_client.html#a7dc0e3c018a69117f74edb438423637e" title="Obtenir le numéro d&amp;#39;agent Permet d&amp;#39;obtenir le numéro de l&amp;#39;agent affecté au client...">getNumA</a>();
+<a name="l00089"></a>00089 
+<a name="l00095"></a>00095     QString <a class="code" href="class_client.html#a30548b258be7460ba645c351c3123129" title="Obtenir le nom Permet d&amp;#39;obtenir le nom du client.">getNom</a>();
+<a name="l00096"></a>00096 
+<a name="l00102"></a>00102     QString <a class="code" href="class_client.html#a09b91feede0b5f7fb40c61c784ab169c" title="Obtenir l&amp;#39;adresse Permet d&amp;#39;obtenir l&amp;#39;adresse du client.">getAdresse</a>();
+<a name="l00103"></a>00103 
+<a name="l00109"></a>00109     QString <a class="code" href="class_client.html#a52040773d95c87950f5834dc758cb01c" title="Obtenir le téléphone Permet d&amp;#39;obtenir le téléphone du client.">getTel</a>();
+<a name="l00110"></a>00110 
+<a name="l00116"></a>00116     <a class="code" href="class_ville.html">Ville</a>* <a class="code" href="class_client.html#a6eda3532fe3315e84391d4933b86b211" title="Obtenir la ville Permet d&amp;#39;obtenir la ville du client.">getVille</a>();
+<a name="l00117"></a>00117 
+<a name="l00123"></a>00123     <span class="keywordtype">bool</span> <a class="code" href="class_client.html#a53876dd0d4aa873279ec90d802466e94" title="Sauvegarder le client Permet de sauvegarder le client dans la base de données. Si le client n&amp;#39;exi...">sauvegarder</a>();
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125 <span class="keyword">private</span>:
+<a name="l00126"></a>00126     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_num;
+<a name="l00127"></a>00127     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_num_a;
+<a name="l00128"></a>00128     QString m_nom;
+<a name="l00129"></a>00129     QString m_adresse;
+<a name="l00130"></a>00130     QString m_tel;
+<a name="l00131"></a>00131     <a class="code" href="class_ville.html">Ville</a> *m_ville;
+<a name="l00132"></a>00132     <a class="code" href="class_b_d_d.html">BDD</a> *m_db;
+<a name="l00133"></a>00133 };
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135 <span class="preprocessor">#endif // CLIENT_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -113,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Tue May 22 2012 17:51:45 for Agence Immobilière by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Wed May 23 2012 11:48:05 for Agence Immobilière by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
