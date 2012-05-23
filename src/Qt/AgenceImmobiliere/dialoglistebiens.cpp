@@ -24,7 +24,7 @@ DialogListeBiens::DialogListeBiens(Client *client, QWidget *parent) :
     m_menu.image_fenetre->setPixmap(QPixmap(":/app/bien96"));
     m_menu.pushButton_3->setVisible(false);
     // Bouton de fermeture
-    m_menu.pushButton_1->setIcon(QIcon(":/app/annuler96"));
+    m_menu.pushButton_1->setIcon(QIcon(":/app/back96"));
     m_menu.pushButton_1->setToolTip("Fermer la fenêtre");
     // Bouton Quitter
     m_menu.pushButton_2->setIcon(QIcon(":/app/quitter96"));
