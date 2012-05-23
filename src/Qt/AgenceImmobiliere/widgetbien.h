@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QDateEdit>
 #include <Ville.h>
 #include <QDate>
 
@@ -23,6 +24,7 @@ public:
     int getPrixVente();
     int getSurfaceHabitable();
     int getSurfaceJardin();
+    QDateEdit* getBoutonDate();
     Ville* getVille();
 
     void setPrixVente(int prix);
@@ -30,7 +32,7 @@ public:
     void setSurfaceJardin(int surf);
     void setVille(QString ville);
     void setCodePostal(QString cp);
-    QDate setDateMiseVente(QDate date);
+    void setDateMiseVente(QDate date);
 
 private:
     Ui::WidgetBien *ui;
