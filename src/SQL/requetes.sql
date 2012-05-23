@@ -35,3 +35,12 @@ LEFT OUTER JOIN SOUHAITS on SOUHAITS.num_c=CLIENTS.num_c
 where CLIENTS.nom_c like '%'
 group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v
 order by clients.num_c
+
+/* Obtenir un souhait et les villes correspondantes */
+SELECT souhaits.num_s, souhaits.num_c, souhaits.budget_max_s, souhaits.surface_hab_min_s, 
+souhaits.surface_jardin_min_s, villes.num_v FROM souhaits 
+INNER JOIN clients ON souhaits.num_c = clients.num_c
+INNER JOIN villes_souhaitees ON souhaits.num_s = villes_souhaitees.num_s
+INNER JOIN villes ON villes_souhaitees.num_v = villes.num_v
+Where souhaits.num_s = 2;
+
