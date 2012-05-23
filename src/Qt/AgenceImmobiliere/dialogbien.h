@@ -18,7 +18,6 @@ public:
     explicit DialogBien(QWidget *parent = 0);
     DialogBien(Bien *bien, QWidget *parent=0);
     DialogBien(Client *client, QWidget *parent=0);
-
     ~DialogBien();
 
 private:

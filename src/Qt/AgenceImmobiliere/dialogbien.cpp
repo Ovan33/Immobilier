@@ -45,8 +45,10 @@ DialogBien::DialogBien(Bien *bien, QWidget *parent) :
     ui->label_NomClient->setText(bien->getClient()->getNom());
 
     // SIGNAUX et SLOTS
-    QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), this, SLOT(close()));
+    // QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), this, SLOT(close()));
     QObject::connect(m_menu.pushButton_3, SIGNAL(clicked()), qApp, SLOT(quit()));
+
+    QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
 }
 
 

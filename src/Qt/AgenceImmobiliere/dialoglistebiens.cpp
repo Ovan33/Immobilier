@@ -37,6 +37,8 @@ DialogListeBiens::DialogListeBiens(Client *client, QWidget *parent) :
     ui->label_NomClient->setText(client->getNom());
     chercherBiens();
     // SIGNAUX et SLOTS
+    QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
+    QObject::connect(m_menu.pushButton_2,SIGNAL(clicked()),qApp,SLOT(quit()));
 }
 
 DialogListeBiens::~DialogListeBiens()
