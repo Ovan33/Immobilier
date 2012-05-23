@@ -39,6 +39,7 @@ DialogListeBiens::DialogListeBiens(Client *client, QWidget *parent) :
     // SIGNAUX et SLOTS
     QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
     QObject::connect(m_menu.pushButton_2,SIGNAL(clicked()),qApp,SLOT(quit()));
+    QObject::connect(ui->pushButton_ajouterBien, SIGNAL(clicked()),this,SLOT(nouveauBien()));
 }
 
 DialogListeBiens::~DialogListeBiens()
@@ -87,4 +88,13 @@ void DialogListeBiens::chercherBiens()
         }
     }
     m_db->close();
+}
+
+void DialogListeBiens::nouveauBien()
+{
+    // Bien(unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client);
+    QDate date = QDate::currentDate();
+    Bien *bien = new Bien(0,date,0,0, new Ville(),m_client);
+    m_dialogBien = new DialogBien(bien,this);
+    m_dialogBien->exec();
 }

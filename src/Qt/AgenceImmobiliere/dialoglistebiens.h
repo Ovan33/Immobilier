@@ -32,6 +32,9 @@ private:
     BDD *m_db;
 
     void chercherBiens();
+
+public slots:
+    void nouveauBien();
 };
 
 #endif // DIALOGLISTEBIENS_H
