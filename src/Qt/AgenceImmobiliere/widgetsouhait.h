@@ -4,19 +4,27 @@
 #include <QWidget>
 
 namespace Ui {
-class widgetSouhait;
+    class WidgetSouhait;
 }
 
-class widgetSouhait : public QWidget
+class WidgetSouhait : public QWidget
 {
     Q_OBJECT
     
 public:
-    explicit widgetSouhait(QWidget *parent = 0);
-    ~widgetSouhait();
+    explicit WidgetSouhait(QWidget *parent = 0);
+    ~WidgetSouhait();
+
+    void setBudgetMax(unsigned int budget);
+    void setSurfaceHabitableSouhaitee(unsigned int surf);
+    void setSurfaceJardinSouhaitee(unsigned int surf);
+
+    int getBudgetMax();
+    int getSurfaceHabitableSouhaitee();
+    int getSurfaceJardinSouhaitee();
     
 private:
-    Ui::widgetSouhait *ui;
+    Ui::WidgetSouhait *ui;
 };
 
 #endif // WIDGETSOUHAIT_H
