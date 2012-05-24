@@ -176,11 +176,11 @@ void DialogAccueil::ouvrirClient(int indexClient)
 
 void DialogAccueil::ouvrirListeSouhaits(int indexClient)
 {
-    /*
-    m_clientCourant = this->m_listeClients.at(indexClient);
-    this->m_ = new DialogSouhait(m_clientCourant);
-    m_dialogSouhait->exec();
-    */
+
+    m_clientCourant = this->m_listeClients[indexClient];
+    this->m_dialogListeSouhaits= new DialogListeSouhait(m_clientCourant);
+    m_dialogListeSouhaits->exec();
+
 }
 
 void DialogAccueil::ouvrirListeBiens(int indexClient)
