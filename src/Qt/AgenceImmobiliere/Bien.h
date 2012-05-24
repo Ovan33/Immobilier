@@ -12,6 +12,7 @@
 #include <QDate>
 #include "Ville.h"
 #include "Client.h"
+#include <BDD.h>
 
 
 class Bien : public QObject
@@ -26,6 +27,7 @@ private:
     unsigned int m_surfaceJardin;
     Ville *m_ville;
     Client *m_client;
+    BDD *m_db;
 
 public:
     /*!

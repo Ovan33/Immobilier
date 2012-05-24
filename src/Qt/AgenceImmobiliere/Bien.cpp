@@ -75,3 +75,46 @@ void Bien::setSurfJardin(int surf)
 {
     this->m_surfaceJardin = surf;
 }
+
+bool Bien::sauvegarder()
+{
+    m_db = new BDD();
+    bool res;
+    if (m_db->ouvrir())
+    {
+        QSqlQuery requete(m_db->getDb());
+        // debug infos
+        qDebug()    << "NumBien : " << this->m_num << endl
+                    << "Mise en vente : " << this->m_dateMiseVente.toString() << endl
+                    << "NumClient : " << this->m_client->getNum() << endl
+                    << "NumVille : "<< this->m_ville->getNum() << endl;
+        // debug info
+        switch(this->m_num)
+        {
+        case (0):
+            requete.prepare("INSERT INTO biens VALUES(default,:numVille,:numClient,:prixVente,:dateVente,:surfHab,:surfJard)");
+            requete.bindValue(":numVille",this->m_ville->getNum());
+            requete.bindValue(":numClient", this->m_client->getNum());
+            requete.bindValue(":prixVente",this->m_prixVente);
+            requete.bindValue(":dateVente",this->m_dateMiseVente);
+            requete.bindValue(":surfHab",this->m_surfaceHabitable);
+            requete.bindValue(":surfJard", this->m_surfaceJardin);
+            break;
+        default:
+            requete.prepare("update biens set num_v=:numVille,num_c=:numClient,prix_vente_b=:prixVente,date_mise_en_vente_b=:dateVente,surface_hab_b=:surfHab,surface_jardin_b=:surfJard where num_b=:numB");
+            requete.bindValue(":numVille",this->m_ville->getNum());
+            requete.bindValue(":numClient", this->m_client->getNum());
+            requete.bindValue(":prixVente",this->m_prixVente);
+            requete.bindValue(":dateVente",this->m_dateMiseVente);
+            requete.bindValue(":surfHab",this->m_surfaceHabitable);
+            requete.bindValue(":surfJard", this->m_surfaceJardin);
+            requete.bindValue(":numB",this->m_num);
+        }
+        if (requete.exec())
+            res = true;
+        else
+            res = false;
+    }
+    return res;
+    m_db->close();
+}

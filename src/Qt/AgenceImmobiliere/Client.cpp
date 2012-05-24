@@ -78,7 +78,7 @@ bool Client::sauvegarder()
     bool res;
     if (m_db->ouvrir())
     {
-    QSqlQuery requete(m_db->getDb());
+        QSqlQuery requete(m_db->getDb());
         // debug infos
         qDebug()    << "NumA : " << this->m_num_a << endl
                     << "Nom : " << this->m_nom << endl
