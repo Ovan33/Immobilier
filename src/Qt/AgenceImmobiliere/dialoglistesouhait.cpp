@@ -65,6 +65,7 @@ void DialogListeSouhait::chercherSouhait()
                 while (requete.next())
                 {
                     WidgetSouhait *souhaitUi = new WidgetSouhait();
+                    /*
                     // Debug Infos
                     qDebug()    << requete.value(0) << endl
                                 << requete.value(1) << endl
@@ -72,8 +73,9 @@ void DialogListeSouhait::chercherSouhait()
                                 << requete.value(3) << endl
                                 << requete.value(4) << endl;
                                 //<< requete.value(5) << endl;
-                    //Fin
+                    //Fin*/
                     // num_s, num_c, budget_max_s, surface_hab_min_s, surface_jardin_min_s
+
                     Ville *ville = new Ville();
                     Souhait *souhait = new Souhait(requete.value(2).toInt(), requete.value(3).toInt(), requete.value(4).toInt(),ville);
 
@@ -92,29 +94,4 @@ void DialogListeSouhait::chercherSouhait()
         }
         m_db->close();
     }
-//    while (requete.next())
-//                {
-//                    WidgetBien *bienUi = new WidgetBien();
-//                    Ville *ville = new Ville();
-//                    //QDate date(requete.value(4).toString().left(4).toInt(),requete.value(4).toString().mid(5,2).toInt(),requete.value(4).toString().right(2).toInt());
-//                    QDate date(requete.value(4).toDate());
-//                    Bien *bien = new Bien(requete.value(3).toUInt(),date,requete.value(5).toUInt(),requete.value(6).toUInt(),ville,m_client);
-//                    this->m_listeBiens.append(bien);
-//                    ui->label_NomClient->setText(bien->getClient()->getNom());
-//                    bienUi->setPrixVente(bien->getPrix());
-//                    bienUi->setSurfaceHabitable(bien->getSurf(Bien::habitation));
-//                    bienUi->setSurfaceJardin(bien->getSurf(Bien::jardin));
-//                    bienUi->setDateMiseVente(date);
-//                    bienUi->getBoutonDate()->setDisabled(true);
-
-//                    ui->tableWidget_listeBiens->setColumnWidth(0,ui->tableWidget_listeBiens->width());
-//                    ui->tableWidget_listeBiens->setRowHeight(ligne,bienUi->height());
-//                    ui->tableWidget_listeBiens->setCellWidget(ligne,0,bienUi);
-//                    ligne++;
-//                }
-//            }
-//        }
-//    }
-//    m_db->close();
-
 }
