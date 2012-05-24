@@ -27,19 +27,15 @@ DialogBien::DialogBien(Bien *bien, QWidget *parent) :
     ui->lineEdit_CodePostal->setText(m_bien->getVille()->getCodePostal());
     ui->spinBox_SurfaceHabitable->setValue(m_bien->getSurfHabitable());
     ui->spinBox_SurfaceJardin->setValue(m_bien->getSurfJardin());
-    qDebug() << "surface habitable : " << m_bien->getSurfHabitable();
-    qDebug() << "surface jardin : " << m_bien->getSurfJardin();
-
     ui->dateEdit_DateMiseVente->setDate(m_bien->getDate());
     ui->comboBox_Ville->setCurrentIndex(0);
-    // ui->comboBox_Ville->setItemText(m_bien->getVille()->getNom());
+    ui->button_ModifierBien->setVisible(false);
+    ui->button_Supprimer->setVisible(false);
 
     // SIGNAUX et SLOTS
     QObject::connect(m_menu.pushButton_3, SIGNAL(clicked()), qApp, SLOT(quit()));
     QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
 }
-
-
 
 DialogBien::~DialogBien()
 {

@@ -42,3 +42,9 @@ QPushButton * WidgetBien::getBoutonDialogBien()
 {
     return ui->pushButton_modifierBien;
 }
+
+void WidgetBien::setVille(QString ville)
+{
+    ui->label_Ville->setText(ville);
+}
+

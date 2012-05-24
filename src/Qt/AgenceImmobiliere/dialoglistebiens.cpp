@@ -71,17 +71,31 @@ void DialogListeBiens::chercherBiens()
                            << "Surface Habitable : " << requete.value(5).toUInt() << endl
                            << "Surface jardin : " << requete.value(6).toUInt() << endl;
                     WidgetBien *bienUi = new WidgetBien();
-                    Ville *ville = new Ville();
+                    Ville *ville;
+                    QSqlQuery req_ville(m_db->getDb());
+                    req_ville.prepare("select * from Villes where num_v=:numVille");
+                    req_ville.bindValue(":numVille",requete.value(1).toUInt());
+                    if (req_ville.exec())
+                    {
+                        if (req_ville.size()>1)
+                            QMessageBox::information(this,"Recherche des villes", "Plus d'une ville trouvé");
+                        else while (req_ville.next())
+                        {
+                            qDebug() << "numVille : " << req_ville.value(0).toUInt() << endl
+                                   << "nomVille : " << req_ville.value(1).toString() << endl
+                                   << "CP : " << req_ville.value(2).toString() << endl;
+                            ville = new Ville(req_ville.value(0).toInt(), req_ville.value(1).toString(),req_ville.value(2).toString());
+                        }
+                    }
                     QDate date(requete.value(4).toDate());
-                    // Bien(unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client);
-                    // Bien *bien = new Bien(requete.value(3).toUInt(),date,requete.value(5).toUInt(),requete.value(6).toUInt(),ville,m_client);
-                    Bien *bien = new Bien(requete.value(0).toUInt(),date,requete.value(5).toUInt(),requete.value(6).toUInt(),ville,m_client);
+                    Bien *bien = new Bien(requete.value(0).toUInt(),requete.value(3).toUInt(),date,requete.value(5).toUInt(),requete.value(6).toUInt(),ville,m_client);
                     this->m_listeBiens.append(bien);
                     ui->label_NomClient->setText(bien->getClient()->getNom());
                     bienUi->setPrixVente(bien->getPrix());
                     bienUi->setSurfaceHabitable(bien->getSurfHabitable());
                     bienUi->setSurfaceJardin(bien->getSurfJardin());
                     bienUi->setDateMiseVente(date);
+                    bienUi->setVille(ville->getNom());
                     bienUi->getBoutonDate()->setDisabled(true);
 
                     ui->tableWidget_listeBiens->setColumnWidth(0,ui->tableWidget_listeBiens->width());
