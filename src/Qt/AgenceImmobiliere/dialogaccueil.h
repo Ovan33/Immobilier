@@ -15,6 +15,7 @@
 #include <dialoglistebiens.h>
 #include <dialoglistesouhait.h>
 
+
 namespace Ui {
     class DialogAccueil;
 }
@@ -45,6 +46,7 @@ public slots:
     void reset();
     void chercherClients();
     void nouveauClient();
+    void nouveauBien(int);
     void ouvrirClient(int);
     void ouvrirListeSouhaits(int);
     void ouvrirListeBiens(int);

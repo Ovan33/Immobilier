@@ -131,8 +131,12 @@ void DialogAccueil::chercherClients()
                         {
                             clientUi->setImageBien(QPixmap(":/app/add_bien96"));
                             clientUi->getBoutonBien()->setToolTip("Créer un nouveau bien pour ce client");
-                            m_dialogBien = new DialogBien();
-                            QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()), m_dialogBien,SLOT(exec()));
+                            // m_dialogBien = new DialogBien();
+                            QSignalMapper *mapperBien = new QSignalMapper(this);
+                            QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()),mapperBien,SLOT(map()));
+                            mapperBien->setMapping(clientUi->getBoutonBien(),this->m_listeClients.indexOf(client));
+                            connect(mapperBien,SIGNAL(mapped(int)),this,SLOT(nouveauBien(int)));
+                            // QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()), m_dialogBien,SLOT(exec()));
                         } else {
                             clientUi->getBoutonBien()->setToolTip("Accéder à la liste des biens de ce client");
                             QSignalMapper *mapperBien = new QSignalMapper(this);
@@ -185,11 +189,9 @@ void DialogAccueil::ouvrirClient(int indexClient)
 
 void DialogAccueil::ouvrirListeSouhaits(int indexClient)
 {
-
     m_clientCourant = this->m_listeClients[indexClient];
     this->m_dialogListeSouhaits= new DialogListeSouhait(m_clientCourant);
     m_dialogListeSouhaits->exec();
-
 }
 
 void DialogAccueil::ouvrirListeBiens(int indexClient)
@@ -198,4 +200,14 @@ void DialogAccueil::ouvrirListeBiens(int indexClient)
     m_clientCourant = this->m_listeClients[indexClient];
     this->m_dialogListeBiens = new DialogListeBiens(m_clientCourant);
     m_dialogListeBiens->exec();
+}
+
+void DialogAccueil::nouveauBien(int indexClient)
+{
+    qDebug() << m_listeClients[indexClient]->getNom() << " " << m_listeClients[indexClient]->getNum();
+    m_clientCourant = this->m_listeClients[indexClient];
+    QDate date = QDate::currentDate();
+    Bien *bien = new Bien(0,0,date,0,0,new Ville(),m_clientCourant);
+    this->m_dialogBien = new DialogBien(bien);
+    m_dialogBien->exec();
 }
