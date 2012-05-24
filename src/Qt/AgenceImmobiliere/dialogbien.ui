@@ -50,6 +50,9 @@
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="buddy">
+          <cstring>spinBox_prixVente</cstring>
+         </property>
         </widget>
        </item>
        <item row="2" column="0">
@@ -71,6 +74,9 @@
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>spinBox_SurfaceHabitable</cstring>
          </property>
         </widget>
        </item>
@@ -195,6 +201,9 @@
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="buddy">
+          <cstring>spinBox_SurfaceJardin</cstring>
+         </property>
         </widget>
        </item>
        <item row="0" column="1">
@@ -217,6 +226,9 @@
          </property>
          <property name="text">
           <string>Date de mise en vente</string>
+         </property>
+         <property name="buddy">
+          <cstring>dateEdit_DateMiseVente</cstring>
          </property>
         </widget>
        </item>
@@ -296,6 +308,17 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>dateEdit_DateMiseVente</tabstop>
+  <tabstop>spinBox_prixVente</tabstop>
+  <tabstop>spinBox_SurfaceHabitable</tabstop>
+  <tabstop>spinBox_SurfaceJardin</tabstop>
+  <tabstop>lineEdit_CodePostal</tabstop>
+  <tabstop>button_ChercherVilles</tabstop>
+  <tabstop>comboBox_Ville</tabstop>
+  <tabstop>button_ModifierBien</tabstop>
+  <tabstop>button_Supprimer</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

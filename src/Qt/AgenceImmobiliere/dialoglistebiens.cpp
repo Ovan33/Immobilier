@@ -3,6 +3,7 @@
 #include <Bien.h>
 #include <widgetbien.h>
 #include <QMessageBox>
+#include <QDebug>
 
 DialogListeBiens::DialogListeBiens(QWidget *parent) :
     QDialog(parent),
@@ -31,8 +32,10 @@ DialogListeBiens::DialogListeBiens(Client *client, QWidget *parent) :
     m_menu.pushButton_2->setToolTip("Quitter l'application");
     ui->pushButton_ajouterBien->setToolTip("Créer un nouveau bien");
     ui->tableWidget_listeBiens->setColumnCount(1);
-    ui->tableWidget_listeBiens->verticalHeader()->hide();
-    ui->tableWidget_listeBiens->horizontalHeader()->hide();
+    // ui->tableWidget_listeBiens->setColumnWidth(1,600);
+    qDebug() << "largeur : " <<ui->tableWidget_listeBiens->columnWidth(0) << endl;
+    // ui->tableWidget_listeBiens->verticalHeader()->hide();
+    // ui->tableWidget_listeBiens->horizontalHeader()->hide();
     //Informations client
     ui->label_NomClient->setText(client->getNom());
     chercherBiens();
@@ -98,7 +101,7 @@ void DialogListeBiens::chercherBiens()
                     bienUi->setVille(ville->getNom());
                     bienUi->getBoutonDate()->setDisabled(true);
 
-                    ui->tableWidget_listeBiens->setColumnWidth(0,ui->tableWidget_listeBiens->width());
+                    // ui->tableWidget_listeBiens->setColumnWidth(0,ui->tableWidget_listeBiens->width());
                     ui->tableWidget_listeBiens->setRowHeight(ligne,bienUi->height());
                     ui->tableWidget_listeBiens->setCellWidget(ligne,0,bienUi);
 

@@ -118,7 +118,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Liste des biens:</string>
+        <string>Liste des biens</string>
        </property>
       </widget>
      </item>
