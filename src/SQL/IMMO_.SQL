@@ -216,3 +216,34 @@ ALTER TABLE VILLES_SOUHAITEES ADD
 -- -----------------------------------------------------------------------------
 --                FIN DE GENERATION
 -- -----------------------------------------------------------------------------
+
+
+----------------------------------
+select clients.num_c, count(biens.num_b) as NbBiens
+from clients
+left outer join biens on clients.num_c=biens.num_c
+where clients.nom_c like 'DUP%'
+group by clients.num_c
+
+select 	CLIENTS.NUM_C, 
+	CLIENTS.nom_c, 
+	CLIENTS.adresse_c, 
+	CLIENTS.tel_c, 
+	VILLES.nom_v, 
+	VILLES.code_postal_v, 
+	(select count(BIENS.num_b) from Biens where biens.num_c=clients.num_c) as NbBiens,
+	(select count(SOUHAITS.num_s) from Souhaits where souhaits.num_c=clients.num_c) as NbSouhaits
+from CLIENTS 
+INNER JOIN VILLES on VILLES.NUM_V=CLIENTS.NUM_V
+left outer JOIN BIENS on BIENS.num_c=CLIENTS.num_c
+left outer JOIN SOUHAITS on SOUHAITS.num_c=CLIENTS.num_c
+where CLIENTS.num_c=4
+group by clients.num_c, clients.nom_c, clients.adresse_c,clients.tel_c, villes.nom_v,villes.code_postal_v
+order by clients.num_c
+
+select * from biens
+order by num_c
+
+select * from souhaits
+where num_c=3
+order by num_c
