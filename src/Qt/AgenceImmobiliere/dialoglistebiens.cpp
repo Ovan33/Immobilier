@@ -19,7 +19,7 @@ DialogListeBiens::DialogListeBiens(Client *client, QWidget *parent) :
     ui->setupUi(this);
     m_client = client;
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
-    this->setWindowTitle("Liste des biens");
+    this->setWindowTitle("Gestion de biens immobiliers");
     m_menu.setupUi(ui->widget_barreMenu);
     m_menu.label_fenetre->setText("Biens");
     m_menu.image_fenetre->setPixmap(QPixmap(":/app/bien96"));
