@@ -12,7 +12,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
 {
     ui->setupUi(this);
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
-    this->setWindowTitle("Accueil");
+    this->setWindowTitle("Gestion de biens immobiliers");
     //this->m_listeClients = new QList<Client>();
     // Création de la barre de menu
     m_menu.setupUi(ui->widget_barreMenu);
@@ -115,9 +115,11 @@ void DialogAccueil::chercherClients()
                         if (nbSouhaits < 1)
                         {
                             clientUi->setImageSouhait(QPixmap(":/app/add_souhait96"));
+                            clientUi->getBoutonSouhait()->setToolTip("Créer un nouveau souhait pour ce client");
                             m_dialogSouhait = new DialogSouhait();
                             QObject::connect(clientUi->getBoutonSouhait(),SIGNAL(clicked()),m_dialogSouhait,SLOT(exec()));
                         } else {
+                            clientUi->getBoutonSouhait()->setToolTip("Accéder à la liste des souhaits de ce client");
                             QSignalMapper *mapperSouhait = new QSignalMapper(this);
                             QObject::connect(clientUi->getBoutonSouhait(),SIGNAL(clicked()),mapperSouhait,SLOT(map()));
                             mapperSouhait->setMapping(clientUi->getBoutonSouhait(),this->m_listeClients.indexOf(client));
@@ -128,16 +130,20 @@ void DialogAccueil::chercherClients()
                         if (nbBiens < 1)
                         {
                             clientUi->setImageBien(QPixmap(":/app/add_bien96"));
+                            clientUi->getBoutonBien()->setToolTip("Créer un nouveau bien pour ce client");
                             m_dialogBien = new DialogBien();
                             QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()), m_dialogBien,SLOT(exec()));
                         } else {
+                            clientUi->getBoutonBien()->setToolTip("Accéder à la liste des biens de ce client");
                             QSignalMapper *mapperBien = new QSignalMapper(this);
                             QObject::connect(clientUi->getBoutonBien(),SIGNAL(clicked()),mapperBien,SLOT(map()));
                             mapperBien->setMapping(clientUi->getBoutonBien(),this->m_listeClients.indexOf(client));
                             connect(mapperBien,SIGNAL(mapped(int)),this,SLOT(ouvrirListeBiens(int)));
+
                         }
 
                         QSignalMapper *mapper = new QSignalMapper(this);
+                        clientUi->getBoutonClient()->setToolTip("Ouvrir la fiche client");
                         QObject::connect(clientUi->getBoutonClient(),SIGNAL(clicked()),mapper,SLOT(map()));
                         mapper->setMapping(clientUi->getBoutonClient(),this->m_listeClients.indexOf(client));
                         connect(mapper,SIGNAL(mapped(int)),this,SLOT(ouvrirClient(int)));
