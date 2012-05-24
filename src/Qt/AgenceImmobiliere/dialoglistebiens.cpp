@@ -66,22 +66,48 @@ void DialogListeBiens::chercherBiens()
                 int ligne = 0;
                 while (requete.next())
                 {
+                    qDebug() << "numB : " << requete.value(0).toUInt() << endl
+                           << "numV : " << requete.value(1).toUInt() << endl
+                           << "Surface Habitable : " << requete.value(5).toUInt() << endl
+                           << "Surface jardin : " << requete.value(6).toUInt() << endl;
                     WidgetBien *bienUi = new WidgetBien();
-                    Ville *ville = new Ville();
-                    //QDate date(requete.value(4).toString().left(4).toInt(),requete.value(4).toString().mid(5,2).toInt(),requete.value(4).toString().right(2).toInt());
+                    Ville *ville;
+                    QSqlQuery req_ville(m_db->getDb());
+                    req_ville.prepare("select * from Villes where num_v=:numVille");
+                    req_ville.bindValue(":numVille",requete.value(1).toUInt());
+                    if (req_ville.exec())
+                    {
+                        if (req_ville.size()>1)
+                            QMessageBox::information(this,"Recherche des villes", "Plus d'une ville trouvé");
+                        else while (req_ville.next())
+                        {
+                            qDebug() << "numVille : " << req_ville.value(0).toUInt() << endl
+                                   << "nomVille : " << req_ville.value(1).toString() << endl
+                                   << "CP : " << req_ville.value(2).toString() << endl;
+                            ville = new Ville(req_ville.value(0).toInt(), req_ville.value(1).toString(),req_ville.value(2).toString());
+                        }
+                    }
                     QDate date(requete.value(4).toDate());
-                    Bien *bien = new Bien(requete.value(3).toUInt(),date,requete.value(5).toUInt(),requete.value(6).toUInt(),ville,m_client);
+                    Bien *bien = new Bien(requete.value(0).toUInt(),requete.value(3).toUInt(),date,requete.value(5).toUInt(),requete.value(6).toUInt(),ville,m_client);
                     this->m_listeBiens.append(bien);
                     ui->label_NomClient->setText(bien->getClient()->getNom());
                     bienUi->setPrixVente(bien->getPrix());
-                    bienUi->setSurfaceHabitable(bien->getSurf(Bien::habitation));
-                    bienUi->setSurfaceJardin(bien->getSurf(Bien::jardin));
+                    bienUi->setSurfaceHabitable(bien->getSurfHabitable());
+                    bienUi->setSurfaceJardin(bien->getSurfJardin());
                     bienUi->setDateMiseVente(date);
+                    bienUi->setVille(ville->getNom());
                     bienUi->getBoutonDate()->setDisabled(true);
 
                     ui->tableWidget_listeBiens->setColumnWidth(0,ui->tableWidget_listeBiens->width());
                     ui->tableWidget_listeBiens->setRowHeight(ligne,bienUi->height());
                     ui->tableWidget_listeBiens->setCellWidget(ligne,0,bienUi);
+
+                    QSignalMapper *mapper = new QSignalMapper(this);
+                    QObject::connect(bienUi->getBoutonDialogBien(),SIGNAL(clicked()),mapper,SLOT(map()));
+                    //mapper->setMapping(clientUi->getBoutonClient(),this->m_listeClients.indexOf(client));
+                    mapper->setMapping(bienUi->getBoutonDialogBien(),this->m_listeBiens.indexOf(bien));
+                    connect(mapper,SIGNAL(mapped(int)),this,SLOT(ouvrirBien(int)));
+
                     ligne++;
                 }
             }
@@ -96,5 +122,12 @@ void DialogListeBiens::nouveauBien()
     QDate date = QDate::currentDate();
     Bien *bien = new Bien(0,date,0,0, new Ville(),m_client);
     m_dialogBien = new DialogBien(bien,this);
+    m_dialogBien->exec();
+}
+
+void DialogListeBiens::ouvrirBien(int indexBien)
+{
+    m_bienCourant = this->m_listeBiens[indexBien];
+    this->m_dialogBien = new DialogBien(m_bienCourant);
     m_dialogBien->exec();
 }

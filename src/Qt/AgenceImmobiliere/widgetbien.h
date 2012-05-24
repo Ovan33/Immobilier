@@ -19,8 +19,8 @@ public:
     explicit WidgetBien(QWidget *parent = 0);
     ~WidgetBien();
 
-    QPushButton getBoutonDialogBien();
-    QPushButton getBoutonSupprimerBien;
+    QPushButton* getBoutonDialogBien();
+    QPushButton* getBoutonSupprimerBien();
     int getPrixVente();
     int getSurfaceHabitable();
     int getSurfaceJardin();

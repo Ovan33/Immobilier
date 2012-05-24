@@ -42,9 +42,6 @@
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="buddy">
-          <cstring>lineEdit_BudgetMax</cstring>
-         </property>
         </widget>
        </item>
        <item row="2" column="0">
@@ -66,9 +63,6 @@
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>lineEdit_SurfHabMin</cstring>
          </property>
         </widget>
        </item>
@@ -93,7 +87,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy">
-          <cstring>comboBox_Ville_Bien</cstring>
+          <cstring>comboBox_Ville</cstring>
          </property>
         </widget>
        </item>
@@ -118,35 +112,19 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy">
-          <cstring>lineEdit_CodePostal_Bien</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_SurfHabMin">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-           <horstretch>3</horstretch>
-           <verstretch>1</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>421</width>
-           <height>16777215</height>
-          </size>
+          <cstring>lineEdit_CodePostal</cstring>
          </property>
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QPushButton" name="button_ChercherVilles_Bien">
+        <widget class="QPushButton" name="button_ChercherVilles">
          <property name="text">
           <string>Chercher les villes</string>
          </property>
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QLineEdit" name="lineEdit_CodePostal_Bien">
+        <widget class="QLineEdit" name="lineEdit_CodePostal">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
            <horstretch>3</horstretch>
@@ -162,7 +140,7 @@
         </widget>
        </item>
        <item row="6" column="1">
-        <widget class="QComboBox" name="comboBox_Ville_Bien">
+        <widget class="QComboBox" name="comboBox_Ville">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
            <horstretch>1</horstretch>
@@ -191,45 +169,10 @@
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="buddy">
-          <cstring>lineEdit_SurJardMin</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_SurJardMin">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-           <horstretch>3</horstretch>
-           <verstretch>1</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>421</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_BudgetMax">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-           <horstretch>3</horstretch>
-           <verstretch>1</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>421</width>
-           <height>16777215</height>
-          </size>
-         </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QDateEdit" name="dateEdit_MiseVente"/>
+        <widget class="QDateEdit" name="dateEdit_DateMiseVente"/>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_DateMiseVente">
@@ -241,6 +184,45 @@
          </property>
          <property name="text">
           <string>Date de mise en vente</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinBox_prixVente">
+         <property name="font">
+          <font>
+           <family>Liberation Sans</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+         <property name="maximum">
+          <number>100000000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QSpinBox" name="spinBox_SurfaceHabitable">
+         <property name="font">
+          <font>
+           <family>Liberation Sans</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QSpinBox" name="spinBox_SurfaceJardin">
+         <property name="font">
+          <font>
+           <family>Liberation Sans</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+         <property name="maximum">
+          <number>100000</number>
          </property>
         </widget>
        </item>
@@ -269,7 +251,7 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QPushButton" name="button_SupprimerBien">
+        <widget class="QPushButton" name="button_Supprimer">
          <property name="text">
           <string>Supprimer Bien</string>
          </property>

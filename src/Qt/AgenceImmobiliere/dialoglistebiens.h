@@ -30,11 +30,13 @@ private:
     QList<Bien *> m_listeBiens;
     DialogBien *m_dialogBien;
     BDD *m_db;
+    Bien *m_bienCourant;
 
     void chercherBiens();
 
 public slots:
     void nouveauBien();
+    void ouvrirBien(int);
 };
 
 #endif // DIALOGLISTEBIENS_H

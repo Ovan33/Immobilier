@@ -3,7 +3,7 @@
 # - le main compilé
 # - les fichiers temporaires
 # - les fichiers objets
-# - 
+# - certains répertoires de tests
 #--------------------------------
 *.o
 *.*~
@@ -13,9 +13,16 @@ WidgetPerso-build-desktop/
 Immo-build-desktop/
 AgenceImmobiliere-build-desktop/
 ListWidget-build-desktop/
+src/Qt/Immo/
+Tests/ListWidget/
 
 # fichiers .user de Qt
 */*.user
 *.user
 *.user.*
 tests.sql
+ENCOURS.txt
+src/Qt/AgenceImmobiliere/UI_listeBiens.ui
+src/Qt/AgenceImmobiliere/UI_listeSouhaits.ui
+settings.xml
+
