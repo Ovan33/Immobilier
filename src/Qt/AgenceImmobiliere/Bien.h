@@ -53,9 +53,29 @@ public:
       */
     Bien(unsigned int numB, unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client);
 
-
+    /*!
+      \brief    Modifier le prix
+      Permet de modifier le prix de vente du bien
+      \param [in]   prix int, le nouveau prix
+      \return   void
+      */
     void setPrix(unsigned int prix);
+
+    /*!
+      \brief    Modifier la date
+      Permet de modifier la date de mise en vente du bien
+      \param [in]   date QDate, la nouvelle date
+      \return   void
+      */
     void setDate(QDate date);
+
+    /*!
+      \brief    Modifier la ville
+      Permet de modifier la ville dans laquelle se trouve le bien
+      \param [in]   ville Ville*, la nouvelle ville
+      \return   void
+      */
+    void setVille(Ville* ville);
 
     /*!
       \brief    Obtenir le prix de vente

@@ -118,3 +118,8 @@ bool Bien::sauvegarder()
     return res;
     m_db->close();
 }
+
+void Bien::setVille(Ville *ville)
+{
+    this->m_ville = ville;
+}

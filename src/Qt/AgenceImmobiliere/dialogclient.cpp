@@ -107,8 +107,8 @@ void DialogClient::fermer()
 {
     if (changed)
     {
-        int reponse = QMessageBox::warning(this,"Données modifiées","Des données ont été modifiées sans être sauvegardées. Voulez vous vraiment fermer la fenêtre ?",QMessageBox::Yes | QMessageBox::No);
-        if (reponse == QMessageBox::Yes)
+        int reponse = QMessageBox::warning(this,"Données modifiées","Des données ont été modifiées sans être sauvegardées. Voulez vous les sauvegarder maintenant ?",QMessageBox::Yes | QMessageBox::No);
+        if (reponse == QMessageBox::No)
             this->close();
         else
             this->valider();

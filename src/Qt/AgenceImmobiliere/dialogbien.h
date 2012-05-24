@@ -27,10 +27,17 @@ private:
     Bien *m_bien;
     BDD *m_db;
     QList <Ville *> m_listeVilles;
+    bool changed;
+    bool checkData();
+    Ville* chercherVille();
 
 public slots:
     void chercherVilles();
     void enableRechercherVilles(QString);
+    void setEtat(QString);
+    void setEtat(QDate);
+    void fermer();
+    void valider();
 };
 
 #endif // DIALOGBIEN_H
