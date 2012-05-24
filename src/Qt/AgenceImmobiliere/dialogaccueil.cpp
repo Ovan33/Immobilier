@@ -28,6 +28,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     m_menu.pushButton_2->setToolTip("Quitter l'application");
     //Préparation de l'interface
     ui->button_Ajouter->setToolTip("Créer un nouveau client");
+    ui->button_Ajouter->setEnabled(false);
     ui->button_Effacer->setToolTip("Effacer la zone de recherche");
     ui->button_Ok->setToolTip("Lancer la recherche");
     ui->tableWidget_resultats->setColumnCount(1);
@@ -59,6 +60,7 @@ void DialogAccueil::reset()
 
 void DialogAccueil::chercherClients()
 {
+    ui->button_Ajouter->setEnabled(true);
     QString client = ui->lineEdit_Recherche->text().toUpper();
     if (client.isEmpty())
         QMessageBox::information(this,"Recherche client", "Merci de saisir au moins une lettre dans la zone de recherche");
