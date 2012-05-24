@@ -56,6 +56,7 @@ void DialogAccueil::reset()
     ui->tableWidget_resultats->clearContents();
     ui->tableWidget_resultats->clear();
     ui->tableWidget_resultats->setRowCount(0);
+    ui->button_Ajouter->setEnabled(false);
 }
 
 void DialogAccueil::chercherClients()
