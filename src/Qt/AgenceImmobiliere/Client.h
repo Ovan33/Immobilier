@@ -8,7 +8,7 @@
 
 /*!
   \file Client.h
-  \brief Client permet de décrire un client. Il permet la communication avec
+  \brief Client permet de décrire un client de l'agence, qu'il soit acheteur ou vendeur.
   \author Gilles Coulais
   \version 1.0
   */
