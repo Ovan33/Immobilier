@@ -31,7 +31,9 @@ DialogBien::DialogBien(Bien *bien, QWidget *parent) :
     ui->spinBox_SurfaceHabitable->setValue(m_bien->getSurfHabitable());
     ui->spinBox_SurfaceJardin->setValue(m_bien->getSurfJardin());
     ui->dateEdit_DateMiseVente->setDate(m_bien->getDate());
-    ui->comboBox_Ville->setCurrentIndex(0);
+    //ui->comboBox_Ville->setCurrentIndex(0);
+    //ui->comboBox_Ville->setItemText(0);
+    ui->comboBox_Ville->addItem(m_bien->getVille()->getNom());
     ui->button_ModifierBien->setVisible(false);
     ui->button_Supprimer->setVisible(false);
     ui->button_ChercherVilles->setEnabled(false);
