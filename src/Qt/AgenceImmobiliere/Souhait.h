@@ -16,18 +16,20 @@ private:
     QList<Ville *> m_listeVilles;
 
 public:
-    enum typeSurf {habitation,jardin};
+   // enum typeSurf {habitation,jardin};
 
    // explicit Souhait(QObject *parent = 0);
     Souhait(unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, Ville *m_ville);
   //  ~Souhait();
 
     int getBudget();
-    int getSurface(typeSurf);
+    int getSurfaceHabitable();
+    int getSurfaceJardin();
     QList<Ville *> getVilles();
 
     void setBudget(unsigned int budget);
-    void setSurface(typeSurf, unsigned int surf);
+    void setSurfaceHabitable(unsigned int surf);
+    void setSurfaceJardin(unsigned int surf);
     bool modifierVilles();
 
 signals:

@@ -18,12 +18,21 @@ int Souhait::getBudget()
     return this->m_budgetMax;
 }
 
-int Souhait::getSurface(typeSurf)
+//int Souhait::getSurface(typeSurf)
+//{
+//    if (habitation)
+//        return this->m_surfaceHabitableMinimum;
+//    else if (jardin)
+//        return this->m_surfaceJardinMinimum;
+//}
+int Souhait::getSurfaceHabitable()
 {
-    if (habitation)
-        return this->m_surfaceHabitableMinimum;
-    else if (jardin)
-        return this->m_surfaceJardinMinimum;
+    return this->m_surfaceHabitableMinimum;
+}
+
+int Souhait::getSurfaceJardin()
+{
+    return this->m_surfaceJardinMinimum;
 }
 
 //QList<Ville *> getVilles();
@@ -33,12 +42,22 @@ void Souhait::setBudget(unsigned int budget)
     this->m_budgetMax = budget;
 }
 
-void Souhait::setSurface(typeSurf, unsigned int surf)
+void Souhait::setSurfaceHabitable(unsigned int surf)
 {
-    if (habitation)
-        this->m_surfaceHabitableMinimum = surf;
-    else if (jardin)
-        this->m_surfaceJardinMinimum = surf;
+    this->m_surfaceHabitableMinimum = surf;
 }
+
+void Souhait::setSurfaceJardin(unsigned int surf)
+{
+    this->m_surfaceJardinMinimum = surf;
+}
+
+//void Souhait::setSurface(typeSurf, unsigned int surf)
+//{
+//    if (habitation)
+//        this->m_surfaceHabitableMinimum = surf;
+//    else if (jardin)
+//        this->m_surfaceJardinMinimum = surf;
+//}
 
 //bool modifierVilles();
