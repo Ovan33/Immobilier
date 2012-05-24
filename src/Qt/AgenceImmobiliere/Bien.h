@@ -22,19 +22,21 @@ private:
     Client *m_client;
 
 public:
-    enum typeSurf {habitation,jardin};
 
   //  explicit Bien(QObject *parent = 0);
     Bien(unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client);
-
+    Bien(unsigned int numB, unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client);
     void setPrix(unsigned int prix);
     void setDate(QDate date);
-    void setSurf(typeSurf, unsigned int surf);
-
     int getPrix();
-    int getSurf(typeSurf);
+    int getSurfHabitable();
+    int getSurfJardin();
+    void setSurfHabitable(int surf);
+    void setSurfJardin(int surf);
+
     Client* getClient();
     QDate getDate();
+    Ville* getVille();
 
 signals:
 

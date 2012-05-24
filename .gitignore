@@ -24,4 +24,5 @@ tests.sql
 ENCOURS.txt
 src/Qt/AgenceImmobiliere/UI_listeBiens.ui
 src/Qt/AgenceImmobiliere/UI_listeSouhaits.ui
+settings.xml
 

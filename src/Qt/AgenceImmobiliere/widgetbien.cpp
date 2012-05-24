@@ -38,4 +38,7 @@ QDateEdit* WidgetBien::getBoutonDate()
     return ui->dateEdit_dateMiseVente;
 }
 
-
+QPushButton * WidgetBien::getBoutonDialogBien()
+{
+    return ui->pushButton_modifierBien;
+}

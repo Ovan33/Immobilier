@@ -43,6 +43,9 @@ DialogClient::DialogClient(Client *client, QWidget *parent) :
     ui->lineEdit_Telephone->setText(m_client->getTel());
     ui->comboBox_Villes->addItem(m_client->getVille()->getNom());
 
+    ui->button_Biens->setEnabled(false);
+    ui->button_Souhaits->setEnabled(false);
+
     // Signaux et Slots
     // Boutons de menu
     QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(valider()));
