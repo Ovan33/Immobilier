@@ -2,7 +2,7 @@
 #define DIALOGSOUHAIT_H
 
 #include <QDialog>
-#include <Client.h>
+#include <Souhait.h>
 
 namespace Ui {
     class DialogSouhait;
@@ -14,12 +14,13 @@ class DialogSouhait : public QDialog
 
 public:
     explicit DialogSouhait(QWidget *parent = 0);
-    // DialogSouhait(Bien *bien, QWidget *parent=0);
-    // DialogSouhait(Client *client);
+    DialogSouhait(Souhait *souhait, QWidget *parent = 0);
     ~DialogSouhait();
 
 private:
     Ui::DialogSouhait *ui;
+    Souhait *m_souhait;
+
 };
 
 #endif // DIALOGSOUHAIT_H

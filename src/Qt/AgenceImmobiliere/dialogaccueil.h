@@ -13,6 +13,7 @@
 #include <Client.h>
 #include <QList>
 #include <dialoglistebiens.h>
+#include <dialoglistesouhait.h>
 
 namespace Ui {
     class DialogAccueil;
@@ -36,6 +37,7 @@ private:
     DialogListeBiens *m_dialogListeBiens;
     DialogBien *m_dialogBien;
     DialogSouhait *m_dialogSouhait;
+    DialogListeSouhait *m_dialogListeSouhaits;
     Client *m_clientCourant;
     QList<Client *> m_listeClients;
 
