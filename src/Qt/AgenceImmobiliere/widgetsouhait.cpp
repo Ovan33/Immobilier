@@ -62,3 +62,8 @@ int WidgetSouhait::getSurfaceJardinSouhaitee()
 {
     return ui->label_SurfaceJardinSouhaitee->text().toInt();
 }
+
+QPushButton * WidgetSouhait::getBoutonSupprimer()
+{
+    return ui->pushButton_supprimerSouhait;
+}

@@ -27,6 +27,7 @@ public:
     int getSurfaceJardinSouhaitee();
 
     QPushButton* getBoutonDialogSouhait();
+    QPushButton* getBoutonSupprimer();
     
 private:
     Ui::WidgetSouhait *ui;
