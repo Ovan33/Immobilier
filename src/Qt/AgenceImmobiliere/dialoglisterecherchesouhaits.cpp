@@ -40,6 +40,7 @@ void DialogListeRechercheSouhaits::rechercherSouhaits()
     if (m_db->ouvrir())
     {
         // Manque le jardin //
+
         QSqlQuery requete(m_db->getDb());
         QString reqText = "select souhaits.num_s, souhaits.num_c, souhaits.budget_max_s, souhaits.surface_hab_min_s, souhaits.surface_jardin_min_s, ";
         reqText += " villes_souhaitees.num_v, villes.nom_v, villes.code_postal_v, ";
@@ -47,6 +48,7 @@ void DialogListeRechercheSouhaits::rechercherSouhaits()
         reqText += " from souhaits";
         reqText += " inner join villes_souhaitees on souhaits.num_s=villes_souhaitees.num_s";
         reqText += " inner join villes on villes.num_v=villes_souhaitees.num_v";
+        reqText += " inner join clients on clients.num_c=souhaits.num_c";
         reqText += " where budget_max_s < :prixMax";
         reqText += " and budget_max_s > :prixMin";
         reqText += " and surface_hab_min_s < :surfHabMinMax";
@@ -61,29 +63,48 @@ void DialogListeRechercheSouhaits::rechercherSouhaits()
         requete.bindValue(":prixMin",prixMin);
         requete.bindValue(":surfHabMinMax",surfHabMinMax);
         requete.bindValue(":surfHabMinMin",surfHabMinMin);
+        qDebug() << "Requete : " << reqText;
         if (requete.exec())
         {
             while (requete.next())
             {
+                // debug INFOS
+                qDebug() << "numS : " << requete.value(0).toString() << endl
+                        << ", numC : "<< requete.value(1).toString() << endl
+                        << ", budgetMax : "<< requete.value(2).toString() << endl
+                        << ", surfHab : "<< requete.value(3).toString() << endl
+                        << ", surfJard : "<< requete.value(4).toString() << endl
+                        << ", numV : "<< requete.value(5).toString() << endl
+                        << ", nomV : "<< requete.value(6).toString() << endl
+                        << ", codePostal_S: "<< requete.value(7).toString() << endl
+                        << ", nomC : "<< requete.value(8).toString() << endl
+                        << ", adresseC : "<< requete.value(9).toString() << endl
+                        << ", telC : "<< requete.value(10).toString() << endl
+                        << ", numV_C : "<< requete.value(11).toString() << endl
+                        << ", numA_C : "<< requete.value(12).toString() << endl;
+
+                // FIN
+
                 Souhait* souhaitCourant;
                 QList<Ville *> listeVilles;
                 QSqlQuery req_ville(m_db->getDb());
                 req_ville.prepare("select * from villes where num_v=:numVille");
                 req_ville.bindValue(":numVille",requete.value(11).toInt());
                 if (req_ville.exec())
-                    souhaitCourant = new Souhait(requete.value(0).toUInt(),
-                                                 requete.value(2).toUInt(),
-                                                 requete.value(3).toUInt(),
-                                                 requete.value(4).toUInt(),
-                                                 listeVilles,
-                                                 new Client(requete.value(1).toInt(),
-                                                            requete.value(8).toString(),
-                                                            requete.value(9).toString(),
-                                                            requete.value(10).toString(),
-                                                            new Ville(req_ville.value(0).toUInt(),
-                                                                      req_ville.value(1).toString(),
-                                                                      req_ville.value(2).toString()),
-                                                            requete.value(12).toInt()));
+                    if (req_ville.next())
+                        souhaitCourant = new Souhait(requete.value(0).toUInt(),
+                                                     requete.value(2).toUInt(),
+                                                     requete.value(3).toUInt(),
+                                                     requete.value(4).toUInt(),
+                                                     listeVilles,
+                                                     new Client(requete.value(1).toInt(),
+                                                                requete.value(8).toString(),
+                                                                requete.value(9).toString(),
+                                                                requete.value(10).toString(),
+                                                                new Ville(req_ville.value(0).toUInt(),
+                                                                          req_ville.value(1).toString(),
+                                                                          req_ville.value(2).toString()),
+                                                                requete.value(12).toInt()));
                 // liste non vide
                 // ajout souhait ou ajout ville à souhait existant
                 if (m_listeSouhaits.size() > 0)
