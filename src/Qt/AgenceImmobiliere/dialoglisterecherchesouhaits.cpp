@@ -22,6 +22,9 @@ DialogListeRechercheSouhaits::DialogListeRechercheSouhaits(Bien* bien, QWidget *
     ui->label_SurfJard->setText(QString::number(m_bien->getSurfJardin()));
     ui->label_Ville->setText(m_bien->getVille()->getNom()+"("+m_bien->getVille()->getCodePostal()+")");
     ui->tableWidget_ListeSouhaits->setColumnCount(1);
+    ui->tableWidget_ListeSouhaits->verticalHeader()->hide();
+    ui->tableWidget_ListeSouhaits->horizontalHeader()->hide();
+
     //Signaux et slots
     QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
 
@@ -174,6 +177,7 @@ void DialogListeRechercheSouhaits::creerWidget(Souhait* souhait)
     souhaitUi->setBudgetMax(souhait->getBudget());
     souhaitUi->setSurfaceHabitableSouhaitee(souhait->getSurfaceHabitable());
     souhaitUi->setSurfaceJardinSouhaitee(souhait->getSurfaceJardin());
+    souhaitUi->getBoutonSupprimer()->setVisible(false);
 
     qDebug() << "budget " << souhaitUi->getBudgetMax() << endl
             << "surfHab " << souhaitUi->getSurfaceHabitableSouhaitee() << endl
