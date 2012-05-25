@@ -29,6 +29,10 @@
         <file alias="add_96">images/ajouter_96x96.png</file>
         <file alias="back48">images/back48.png</file>
         <file alias="back96">images/back96.png</file>
+        <file alias="gotoBiens48">images/gotoBiens_48.png</file>
+        <file alias="gotoBiens96">images/gotoBiens_96.png</file>
+        <file alias="gotoSouhaits48">images/gotoSouhaits_48.png</file>
+        <file alias="gotoSouhaits96">images/gotoSouhaits_96.png</file>
 		<file alias="settings">ressources/settings.xml</file>
     </qresource>
 </RCC>

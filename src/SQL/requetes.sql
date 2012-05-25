@@ -44,3 +44,15 @@ INNER JOIN villes_souhaitees ON souhaits.num_s = villes_souhaitees.num_s
 INNER JOIN villes ON villes_souhaitees.num_v = villes.num_v
 Where souhaits.num_s = 2;
 
+/* Recherche de souhaits selon des critères (hors villes)*/
+select souhaits.num_s, souhaits.num_c, souhaits.budget_max_s, souhaits.budget_max_s, souhaits.surface_hab_min_s, souhaits.surface_jardin_min_s,
+	villes_souhaitees.num_v, villes.nom_v
+from souhaits
+inner join villes_souhaitees on souhaits.num_s=villes_souhaitees.num_s
+inner join villes on villes.num_v=villes_souhaitees.num_v
+where budget_max_s < 251000
+and budget_max_s >210000
+and surface_hab_min_s <210
+and surface_hab_min_s >110
+order by num_s
+
