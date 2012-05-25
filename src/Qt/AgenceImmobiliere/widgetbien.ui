@@ -165,19 +165,6 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>51</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="0" column="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -207,26 +194,39 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_supprimerBien">
+      <widget class="QPushButton" name="pushButton_listeSouhaits">
        <property name="maximumSize">
         <size>
-         <width>71</width>
+         <width>100</width>
          <height>61</height>
         </size>
        </property>
        <property name="icon">
         <iconset resource="ressources.qrc">
-         <normaloff>:/app/annuler48</normaloff>:/app/annuler48</iconset>
+         <normaloff>:/app/gotoSouhaits48</normaloff>:/app/gotoSouhaits48</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>46</width>
+         <width>92</width>
          <height>46</height>
         </size>
        </property>
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="0" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

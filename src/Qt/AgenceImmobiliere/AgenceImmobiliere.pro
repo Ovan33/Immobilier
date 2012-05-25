@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     Bien.cpp \
     Souhait.cpp \
     widgetsouhait.cpp \
-    dialoglistesouhait.cpp
+    dialoglistesouhait.cpp \
+    dialoglisterecherchesouhaits.cpp
 
 HEADERS  +=     dialogaccueil.h \
     dialogclient.h \
@@ -44,7 +45,8 @@ HEADERS  +=     dialogaccueil.h \
     Bien.h \
     Souhait.h \
     widgetsouhait.h \
-    dialoglistesouhait.h
+    dialoglistesouhait.h \
+    dialoglisterecherchesouhaits.h
 
 FORMS    += mainwindow.ui \
     barreMenuFiche.ui \
@@ -59,6 +61,7 @@ FORMS    += mainwindow.ui \
     dialogrecherchebiens.ui \
     widgetbien.ui \
     widgetsouhait.ui \
-    dialoglistesouhait.ui
+    dialoglistesouhait.ui \
+    dialoglisterecherchesouhaits.ui
 
 RESOURCES += ressources.qrc

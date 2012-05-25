@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>630</width>
-    <height>320</height>
+    <height>214</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,7 +41,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Prix de vente</string>
+        <string>Prix</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -62,21 +62,8 @@
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QLineEdit" name="lineEdit_RechercheMinPrixVente">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-         <horstretch>3</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>421</width>
-         <height>16777215</height>
-        </size>
+       <property name="buddy">
+        <cstring>spinBox</cstring>
        </property>
       </widget>
      </item>
@@ -94,25 +81,12 @@
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-      </widget>
-     </item>
-     <item row="0" column="4">
-      <widget class="QLineEdit" name="lineEdit_RechercheMaxPrixVente">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-         <horstretch>3</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>421</width>
-         <height>16777215</height>
-        </size>
+       <property name="buddy">
+        <cstring>spinBox_2</cstring>
        </property>
       </widget>
      </item>
-     <item row="0" column="5" colspan="2">
+     <item row="0" column="5">
       <widget class="QLabel" name="label_Recherche_euros">
        <property name="font">
         <font>
@@ -148,9 +122,6 @@
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-       <property name="buddy">
-        <cstring>lineEdit_SurfHabMin</cstring>
-       </property>
       </widget>
      </item>
      <item row="1" column="1">
@@ -167,21 +138,8 @@
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QLineEdit" name="lineEdit_RechercheMinSurHab">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-         <horstretch>3</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>421</width>
-         <height>16777215</height>
-        </size>
+       <property name="buddy">
+        <cstring>spinBox_3</cstring>
        </property>
       </widget>
      </item>
@@ -199,25 +157,12 @@
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-      </widget>
-     </item>
-     <item row="1" column="4" colspan="2">
-      <widget class="QLineEdit" name="lineEdit_RechercheMaxSurHab">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-         <horstretch>3</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>421</width>
-         <height>16777215</height>
-        </size>
+       <property name="buddy">
+        <cstring>spinBox_4</cstring>
        </property>
       </widget>
      </item>
-     <item row="1" column="6">
+     <item row="1" column="5">
       <widget class="QLabel" name="label_Recherche_mCarre">
        <property name="font">
         <font>
@@ -253,9 +198,6 @@
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-       <property name="buddy">
-        <cstring>lineEdit_SurJardMin</cstring>
-       </property>
       </widget>
      </item>
      <item row="2" column="1">
@@ -272,21 +214,8 @@
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLineEdit" name="lineEdit_RechercheMinSurJard">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-         <horstretch>3</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>421</width>
-         <height>16777215</height>
-        </size>
+       <property name="buddy">
+        <cstring>spinBox_5</cstring>
        </property>
       </widget>
      </item>
@@ -304,25 +233,12 @@
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-      </widget>
-     </item>
-     <item row="2" column="4" colspan="2">
-      <widget class="QLineEdit" name="lineEdit_RechercheMaxSurJard">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-         <horstretch>3</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>421</width>
-         <height>16777215</height>
-        </size>
+       <property name="buddy">
+        <cstring>spinBox_6</cstring>
        </property>
       </widget>
      </item>
-     <item row="2" column="6">
+     <item row="2" column="5">
       <widget class="QLabel" name="label_Recherche_mCarre_2">
        <property name="font">
         <font>
@@ -338,6 +254,77 @@
        </property>
       </widget>
      </item>
+     <item row="0" column="2">
+      <widget class="QSpinBox" name="spinBox">
+       <property name="maximum">
+        <number>1000000</number>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QSpinBox" name="spinBox_2">
+       <property name="maximum">
+        <number>1000000</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QSpinBox" name="spinBox_3">
+       <property name="maximum">
+        <number>10000</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QSpinBox" name="spinBox_4">
+       <property name="maximum">
+        <number>10000</number>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QSpinBox" name="spinBox_5">
+       <property name="maximum">
+        <number>100000</number>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="4">
+      <widget class="QSpinBox" name="spinBox_6">
+       <property name="maximum">
+        <number>100000</number>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_Localisation">
+       <property name="font">
+        <font>
+         <family>Liberation Sans</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Localisation</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_localisation</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1" colspan="5">
+      <widget class="QLineEdit" name="lineEdit_localisation">
+       <property name="font">
+        <font>
+         <family>Liberation Sans</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -348,134 +335,39 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>40</height>
+       <height>6</height>
       </size>
      </property>
     </spacer>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_CodePostal">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Liberation Sans</family>
-           <pointsize>18</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Code Postal</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_CodePostal_Recherche_Bien">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-           <horstretch>3</horstretch>
-           <verstretch>1</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>421</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="button_ChercherVilles_Bien_2">
-         <property name="text">
-          <string>Chercher les villes</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QPushButton" name="button_AjouterVilleAChercher">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="ressources.qrc">
-           <normaloff>:/app/add_48</normaloff>:/app/add_48</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_Ville">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-           <horstretch>1</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Liberation Sans</family>
-           <pointsize>18</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Ville</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>comboBox_Ville_Bien</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="comboBox_Ville_Recherche_Bien">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>1</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QPushButton" name="button_LancerRechercheBiens">
-       <property name="text">
-        <string>Rechercher</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QPushButton" name="button_LancerRechercheBiens">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Lancer la recherche</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>lineEdit_RechercheMinPrixVente</tabstop>
-  <tabstop>lineEdit_RechercheMaxPrixVente</tabstop>
-  <tabstop>lineEdit_RechercheMinSurHab</tabstop>
-  <tabstop>lineEdit_RechercheMaxSurHab</tabstop>
-  <tabstop>lineEdit_RechercheMinSurJard</tabstop>
-  <tabstop>lineEdit_RechercheMaxSurJard</tabstop>
-  <tabstop>lineEdit_CodePostal_Recherche_Bien</tabstop>
-  <tabstop>button_ChercherVilles_Bien_2</tabstop>
-  <tabstop>comboBox_Ville_Recherche_Bien</tabstop>
-  <tabstop>button_AjouterVilleAChercher</tabstop>
+  <tabstop>spinBox</tabstop>
+  <tabstop>spinBox_2</tabstop>
+  <tabstop>spinBox_3</tabstop>
+  <tabstop>spinBox_4</tabstop>
+  <tabstop>spinBox_5</tabstop>
+  <tabstop>spinBox_6</tabstop>
+  <tabstop>lineEdit_localisation</tabstop>
   <tabstop>button_LancerRechercheBiens</tabstop>
  </tabstops>
- <resources>
-  <include location="ressources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
