@@ -28,19 +28,6 @@
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="2">
-      <widget class="QLabel" name="label_EtiquetteSurfaceJardinSouhaitee">
-       <property name="font">
-        <font>
-         <family>Liberation Sans</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Surface jardin souhaitée</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="1">
       <widget class="QLabel" name="label_BudgetMax">
        <property name="font">
@@ -51,19 +38,6 @@
        </property>
        <property name="text">
         <string>BudgetMax</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <widget class="QLabel" name="label_SurfaceHabitableSouhaitee">
-       <property name="font">
-        <font>
-         <family>Liberation Sans</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>SurfaceH</string>
        </property>
       </widget>
      </item>
@@ -80,7 +54,46 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="3">
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_EtiquetteSurfaceHabitableSouhaitee">
+       <property name="font">
+        <font>
+         <family>Liberation Sans</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Surface habitable souhaitée</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_SurfaceHabitableSouhaitee">
+       <property name="font">
+        <font>
+         <family>Liberation Sans</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>SurfaceH</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_EtiquetteSurfaceJardinSouhaitee">
+       <property name="font">
+        <font>
+         <family>Liberation Sans</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Surface jardin souhaitée</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
       <widget class="QLabel" name="label_SurfaceJardinSouhaitee">
        <property name="font">
         <font>
@@ -94,19 +107,6 @@
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QLabel" name="label_EtiquetteSurfaceHabitableSouhaitee">
-       <property name="font">
-        <font>
-         <family>Liberation Sans</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Surface habitable souhaitée</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
       <widget class="QLabel" name="label_EtiquetteVille">
        <property name="font">
         <font>
@@ -119,8 +119,8 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="3">
-      <widget class="QComboBox" name="comboBox_Villes"/>
+     <item row="1" column="2" rowspan="2">
+      <widget class="QTextEdit" name="textEdit_Villes"/>
      </item>
     </layout>
    </item>

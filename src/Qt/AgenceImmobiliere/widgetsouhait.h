@@ -31,6 +31,8 @@ public:
 private:
     Ui::WidgetSouhait *ui;
     Souhait *m_souhait;
+
+    QList<Ville *> m_listeVilles;
 };
 
 #endif // WIDGETSOUHAIT_H

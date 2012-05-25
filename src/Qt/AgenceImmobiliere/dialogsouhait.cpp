@@ -21,7 +21,12 @@ DialogSouhait::DialogSouhait(Souhait *souhait, QWidget *parent) :
     ui->lineEdit_BudgetMax->setText(QString::number(m_souhait->getBudget()));
     ui->lineEdit_SurfHabMin->setText(QString::number(m_souhait->getSurfaceHabitable()));
     ui->lineEdit_SurJardMin->setText(QString::number(m_souhait->getSurfaceJardin()));
-//    ui->lineEdit_CodePostal_Souhait->setText(m_souhait->);
+
+    m_listeVilles = m_souhait->getVilles();
+    for (int i=0; i<m_listeVilles.size(); i++)
+    {
+        ui->textEdit_Villes->append(m_listeVilles[i]->getNom()+" ("+m_listeVilles[i]->getCodePostal()+")");
+    }
 
 
 }

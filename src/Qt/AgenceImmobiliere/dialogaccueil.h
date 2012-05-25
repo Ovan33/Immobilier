@@ -50,6 +50,7 @@ public slots:
     void ouvrirClient(int);
     void ouvrirListeSouhaits(int);
     void ouvrirListeBiens(int);
+    void nouveauSouhait(int);
 };
 
 #endif // DIALOGACCUEIL_H

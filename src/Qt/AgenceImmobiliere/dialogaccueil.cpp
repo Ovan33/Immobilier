@@ -116,8 +116,11 @@ void DialogAccueil::chercherClients()
                         {
                             clientUi->setImageSouhait(QPixmap(":/app/add_souhait96"));
                             clientUi->getBoutonSouhait()->setToolTip("Créer un nouveau souhait pour ce client");
-                            m_dialogSouhait = new DialogSouhait();
-                            QObject::connect(clientUi->getBoutonSouhait(),SIGNAL(clicked()),m_dialogSouhait,SLOT(exec()));
+                            QSignalMapper *mapperSouhait = new QSignalMapper(this);
+                            QObject::connect(clientUi->getBoutonSouhait(),SIGNAL(clicked()),mapperSouhait,SLOT(map()));
+                            mapperSouhait->setMapping(clientUi->getBoutonSouhait(),this->m_listeClients.indexOf(client));
+                            connect(mapperSouhait,SIGNAL(mapped(int)),this,SLOT(nouveauSouhait(int)));
+
                         } else {
                             clientUi->getBoutonSouhait()->setToolTip("Accéder à la liste des souhaits de ce client");
                             QSignalMapper *mapperSouhait = new QSignalMapper(this);
@@ -210,4 +213,13 @@ void DialogAccueil::nouveauBien(int indexClient)
     Bien *bien = new Bien(0,0,date,0,0,new Ville(),m_clientCourant);
     this->m_dialogBien = new DialogBien(bien);
     m_dialogBien->exec();
+}
+
+void DialogAccueil::nouveauSouhait(int indexClient)
+{
+    m_clientCourant = this->m_listeClients[indexClient];
+    QList<Ville *> listeVilles;
+    Souhait *newSouhait = new Souhait(0,0,0,0, listeVilles,m_clientCourant);
+    m_dialogSouhait = new DialogSouhait(newSouhait, this);
+    m_dialogSouhait->exec();
 }

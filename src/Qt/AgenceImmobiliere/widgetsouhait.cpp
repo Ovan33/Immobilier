@@ -14,6 +14,13 @@ WidgetSouhait::WidgetSouhait(Souhait *souhait, QWidget *parent) :
 {
     ui->setupUi(this);
     this->m_souhait = souhait;
+
+    m_listeVilles = m_souhait->getVilles();
+
+    for (int i=0; i<m_listeVilles.size(); i++)
+    {
+        ui->textEdit_Villes->append(m_listeVilles[i]->getNom()+" ("+m_listeVilles[i]->getCodePostal()+")");
+    }
 }
 
 WidgetSouhait::~WidgetSouhait()
