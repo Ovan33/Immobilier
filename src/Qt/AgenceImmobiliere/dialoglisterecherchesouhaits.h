@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <widgetsouhait.h>
 #include <Souhait.h>
+#include <Bien.h>
 #include <BDD.h>
 
 namespace Ui {
@@ -15,11 +16,12 @@ class DialogListeRechercheSouhaits : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogListeRechercheSouhaits(QWidget *parent = 0);
+    explicit DialogListeRechercheSouhaits(Bien* bien, QWidget *parent = 0);
     ~DialogListeRechercheSouhaits();
 
 private:
     Ui::DialogListeRechercheSouhaits *ui;
+    Bien* m_bien;
     BDD *m_db;
     QList<Souhait *> m_listeSouhaits;
 
@@ -27,8 +29,7 @@ private:
     void rechercherSouhaits();
     int souhaitExistant(Souhait* souhait);
     WidgetSouhait* creerWidget(Souhait souhait);
-    //BDD* getDb();
-
+    Souhait* creerSouhait();
 };
 
 #endif // DIALOGLISTERECHERCHESOUHAITS_H
