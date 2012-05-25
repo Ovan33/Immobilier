@@ -5,13 +5,19 @@
 //{
 //}
 
-Souhait::Souhait(unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, Ville *ville, Client *client)
+Souhait::Souhait(unsigned int numSouhait, unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, QList<Ville *> ville, Client *client)
 {
+    this->m_numSouhait = numSouhait;
     this->m_budgetMax = budgetMax;
     this->m_surfaceHabitableMinimum = surfHabMin;
     this->m_surfaceJardinMinimum = surfJardMin;
-    //this->m_listeVilles.append(m_ville);
+    this->m_listeVilles = ville;
     this->m_client = client;
+}
+
+int Souhait::getNum()
+{
+    return this->m_numSouhait;
 }
 
 int Souhait::getBudget()
@@ -34,7 +40,15 @@ Client* Souhait::getClient()
     return this->m_client;
 }
 
-//QList<Ville *> getVilles();
+QList<Ville *> Souhait::getVilles()
+{
+    return this->m_listeVilles;
+}
+
+void Souhait::setNum(unsigned int numSouhait)
+{
+    this->m_numSouhait = numSouhait;
+}
 
 void Souhait::setBudget(unsigned int budget)
 {
@@ -51,4 +65,7 @@ void Souhait::setSurfaceJardin(unsigned int surf)
     this->m_surfaceJardinMinimum = surf;
 }
 
-//bool modifierVilles();
+void Souhait::modifierVilles(Ville *ville)
+{
+    this->m_listeVilles.append(ville);
+}

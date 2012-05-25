@@ -10,7 +10,7 @@ class Souhait : public QObject
 //    Q_OBJECT
 
 private:
-    unsigned int m_num;
+    unsigned int m_numSouhait;
     unsigned int m_budgetMax;
     unsigned int m_surfaceHabitableMinimum;
     unsigned int m_surfaceJardinMinimum;
@@ -18,22 +18,26 @@ private:
     Client *m_client;
 
 public:
-   // enum typeSurf {habitation,jardin};
 
-   // explicit Souhait(QObject *parent = 0);
-    Souhait(unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, Ville *ville, Client *client);
-  //  ~Souhait();
+//    Souhait(unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, Ville *ville, Client *client);
+    Souhait(unsigned int numSouhait,unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, QList<Ville *> ville, Client *client);
 
+    //  ~Souhait();
+
+    int getNum();
     int getBudget();
     int getSurfaceHabitable();
     int getSurfaceJardin();
     Client *getClient();
-    QList<Ville *> getVilles();
 
+    QList<Ville *> getVilles();
+    //QList<Ville *> Souhait::getVilles()
+
+    void setNum(unsigned int numSouhait);
     void setBudget(unsigned int budget);
     void setSurfaceHabitable(unsigned int surf);
     void setSurfaceJardin(unsigned int surf);
-    bool modifierVilles();
+    void modifierVilles(Ville *ville);
 
 signals:
 
