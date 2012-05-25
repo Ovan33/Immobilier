@@ -47,3 +47,18 @@ QPushButton *WidgetSouhait::getBoutonDialogSouhait()
 {
     return ui->pushButton_modifierSouhait;
 }
+
+int WidgetSouhait::getBudgetMax()
+{
+    return ui->label_BudgetMax->text().toInt();
+}
+
+int WidgetSouhait::getSurfaceHabitableSouhaitee()
+{
+    return ui->label_SurfaceHabitableSouhaitee->text().toInt();
+}
+
+int WidgetSouhait::getSurfaceJardinSouhaitee()
+{
+    return ui->label_SurfaceJardinSouhaitee->text().toInt();
+}
