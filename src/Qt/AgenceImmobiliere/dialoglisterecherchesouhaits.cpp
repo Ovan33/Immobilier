@@ -11,6 +11,7 @@ DialogListeRechercheSouhaits::DialogListeRechercheSouhaits(Bien* bien, QWidget *
     this->setWindowTitle("Gestion de biens immobiliers");
     m_bien = bien;
     m_menu.setupUi(ui->widget_barreMenu);
+    m_nbLigne = 0;
     m_menu.label_fenetre->setText("Correspondance bien - souhaits");
     m_menu.pushButton_3->setVisible(false);
     m_menu.pushButton_2->setVisible(false);
@@ -20,7 +21,7 @@ DialogListeRechercheSouhaits::DialogListeRechercheSouhaits(Bien* bien, QWidget *
     ui->label_SurfHab->setText(QString::number(m_bien->getSurfHabitable()));
     ui->label_SurfJard->setText(QString::number(m_bien->getSurfJardin()));
     ui->label_Ville->setText(m_bien->getVille()->getNom()+"("+m_bien->getVille()->getCodePostal()+")");
-
+    ui->tableWidget_ListeSouhaits->setColumnCount(1);
     //Signaux et slots
     QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
 
@@ -30,6 +31,7 @@ DialogListeRechercheSouhaits::DialogListeRechercheSouhaits(Bien* bien, QWidget *
 
 DialogListeRechercheSouhaits::~DialogListeRechercheSouhaits()
 {
+    delete m_db;
     delete ui;
 }
 
@@ -82,11 +84,10 @@ void DialogListeRechercheSouhaits::rechercherSouhaits()
                         << ", telC : "<< requete.value(10).toString() << endl
                         << ", numV_C : "<< requete.value(11).toString() << endl
                         << ", numA_C : "<< requete.value(12).toString() << endl;
-
                 // FIN
-
                 Souhait* souhaitCourant;
                 QList<Ville *> listeVilles;
+                listeVilles.append(new Ville(requete.value(5).toInt(),requete.value(6).toString(),requete.value(7).toString()));
                 QSqlQuery req_ville(m_db->getDb());
                 req_ville.prepare("select * from villes where num_v=:numVille");
                 req_ville.bindValue(":numVille",requete.value(11).toInt());
@@ -137,14 +138,18 @@ void DialogListeRechercheSouhaits::rechercherSouhaits()
 
 void DialogListeRechercheSouhaits::remplirListeSouhaits()
 {
-    int ligne = 0;
     rechercherSouhaits();
     if(m_listeSouhaits.size()<1)
         QMessageBox::information(this,"Liste de souhaits","Aucun souhait correspondant à ce bien");
     else
     {
+        ui->tableWidget_ListeSouhaits->setRowCount(m_listeSouhaits.count());
+        qDebug() << "Nombre de lignes " << ui->tableWidget_ListeSouhaits->rowCount();
         foreach(Souhait* s, m_listeSouhaits)
-            creerWidget(s,ligne++);
+        {
+            creerWidget(s);
+            m_nbLigne++;
+        }
     }
 }
 
@@ -163,16 +168,22 @@ void DialogListeRechercheSouhaits::ajouterSouhait(Souhait *s)
     m_listeSouhaits.append(s);
 }
 
-void DialogListeRechercheSouhaits::creerWidget(Souhait* souhait, int ligne)
+void DialogListeRechercheSouhaits::creerWidget(Souhait* souhait)
 {
     WidgetSouhait *souhaitUi = new WidgetSouhait(souhait);
     souhaitUi->setBudgetMax(souhait->getBudget());
     souhaitUi->setSurfaceHabitableSouhaitee(souhait->getSurfaceHabitable());
     souhaitUi->setSurfaceJardinSouhaitee(souhait->getSurfaceJardin());
 
+    qDebug() << "budget " << souhaitUi->getBudgetMax() << endl
+            << "surfHab " << souhaitUi->getSurfaceHabitableSouhaitee() << endl
+            << "surfJard " << souhaitUi->getSurfaceJardinSouhaitee();
+
     ui->tableWidget_ListeSouhaits->setColumnWidth(0,souhaitUi->width());
-    ui->tableWidget_ListeSouhaits->setRowHeight(ligne,souhaitUi->height());
-    ui->tableWidget_ListeSouhaits->setCellWidget(ligne,0,souhaitUi);
+    ui->tableWidget_ListeSouhaits->setRowHeight(m_nbLigne,souhaitUi->height());
+    ui->tableWidget_ListeSouhaits->setCellWidget(m_nbLigne,0,souhaitUi);
+
+    qDebug() << "tableWidgetSize " << ui->tableWidget_ListeSouhaits->rowCount() << endl;
 
     /* SIGNAUX et SLOTS à ajouter */
 }

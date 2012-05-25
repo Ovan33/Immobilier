@@ -26,12 +26,13 @@ private:
     Bien* m_bien;
     BDD *m_db;
     QList<Souhait *> m_listeSouhaits;
+    int m_nbLigne;
 
     void remplirListeSouhaits();
     void rechercherSouhaits();
     int souhaitExistant(Souhait* souhait);
     // WidgetSouhait* creerWidget(Souhait* souhait, int ligne);
-    void creerWidget(Souhait* souhait, int ligne);
+    void creerWidget(Souhait* souhait);
     Souhait* creerSouhait();
     void ajouterSouhait(Souhait* s);
 };
