@@ -67,10 +67,19 @@ void DialogListeSouhait::chercherSouhait()
                     {
                         for (int i =0; i< m_listeSouhaits.size(); i++)
                         {
+                            // Si je suis sur le même souhait
                             if(m_listeSouhaits[i]->getNum() == requete.value(0).toInt())
                             {
-                               Ville *ville = new Ville(requete.value(6).toInt(),requete.value(5).toString(),requete.value(7).toString());
-                               m_listeSouhaits[i]->modifierVilles(ville);
+                                foreach (Ville *v, m_listeSouhaits[i]->getVilles())
+                                {
+                                    if (v->getNum() != requete.value(6).toInt())
+                                    {
+                                        Ville *ville = new Ville(requete.value(6).toInt(),requete.value(5).toString(),requete.value(7).toString());
+                                        m_listeSouhaits[i]->modifierVilles(ville);
+                                    }
+
+                                }
+
                             }
                             else
                             {
@@ -83,8 +92,6 @@ void DialogListeSouhait::chercherSouhait()
 
                             }
                         }
-
-
                     }
                     else
                     {
@@ -94,7 +101,6 @@ void DialogListeSouhait::chercherSouhait()
                         Souhait *souhait = new Souhait(requete.value(0).toInt(), requete.value(2).toInt(), requete.value(3).toInt(), requete.value(4).toInt()
                                                        ,m_listeVilles, m_client);
                         this->m_listeSouhaits.append(souhait);
-
 
                     }
                 }

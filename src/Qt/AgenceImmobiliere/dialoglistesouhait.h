@@ -33,6 +33,7 @@ private:
     BDD *m_db;
     Souhait *m_souhaitCourant;
     QList<Souhait *> m_listeSouhaits;
+    QList<Ville *> m_listeVilles;
 
     void chercherSouhait();
 //   void creationWidget( QSqlQuery requete, int ligne);

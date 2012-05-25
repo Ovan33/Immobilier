@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <Souhait.h>
+#include <Ville.h>
 
 namespace Ui {
     class DialogSouhait;
@@ -20,6 +21,7 @@ public:
 private:
     Ui::DialogSouhait *ui;
     Souhait *m_souhait;
+    QList<Ville *> m_listeVilles;
 
 };
 
