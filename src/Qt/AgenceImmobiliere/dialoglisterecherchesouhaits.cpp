@@ -1,5 +1,6 @@
 #include "dialoglisterecherchesouhaits.h"
 #include "ui_dialoglisterecherchesouhaits.h"
+#include <QMessageBox>
 #include <QSqlQuery>
 
 DialogListeRechercheSouhaits::DialogListeRechercheSouhaits(Bien* bien, QWidget *parent) :
@@ -7,7 +8,24 @@ DialogListeRechercheSouhaits::DialogListeRechercheSouhaits(Bien* bien, QWidget *
     ui(new Ui::DialogListeRechercheSouhaits)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Gestion de biens immobiliers");
     m_bien = bien;
+    m_menu.setupUi(ui->widget_barreMenu);
+    m_menu.label_fenetre->setText("Correspondance bien - souhaits");
+    m_menu.pushButton_3->setVisible(false);
+    m_menu.pushButton_2->setVisible(false);
+    m_menu.pushButton_1->setToolTip("fermer la fenêtre");
+    m_menu.pushButton_1->setIcon(QIcon(":/app/back96"));
+    ui->label_Prix->setText(QString::number(m_bien->getPrix()));
+    ui->label_SurfHab->setText(QString::number(m_bien->getSurfHabitable()));
+    ui->label_SurfJard->setText(QString::number(m_bien->getSurfJardin()));
+    ui->label_Ville->setText(m_bien->getVille()->getNom()+"("+m_bien->getVille()->getCodePostal()+")");
+
+    //Signaux et slots
+    QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
+
+    //Remplissage de la liste des souhaits
+    remplirListeSouhaits();
 }
 
 DialogListeRechercheSouhaits::~DialogListeRechercheSouhaits()
@@ -45,68 +63,68 @@ void DialogListeRechercheSouhaits::rechercherSouhaits()
         requete.bindValue(":surfHabMinMin",surfHabMinMin);
         if (requete.exec())
         {
-            Souhait* souhaitCourant;
-            QList<Ville *> listeVilles;
-            QSqlQuery req_ville(m_db->getDb());
-            req_ville.prepare("select * from villes where num_v=:numVille");
-            req_ville.bindValue(":numVille",requete.value(11).toInt());
-            if (req_ville.exec())
-                souhaitCourant = new Souhait(requete.value(0).toUInt(),
-                                             requete.value(2).toUInt(),
-                                             requete.value(3).toUInt(),
-                                             requete.value(4).toUInt(),
-                                             listeVilles,
-                                             new Client(requete.value(1).toInt(),
-                                                        requete.value(8).toString(),
-                                                        requete.value(9).toString(),
-                                                        requete.value(10).toString(),
-                                                        new Ville(req_ville.value(0).toUInt(),
-                                                                  req_ville.value(1).toString(),
-                                                                  req_ville.value(2).toString()),
-                                                        requete.value(12).toInt()));
-            if (m_listeSouhaits.size() > 0)
+            while (requete.next())
             {
-                for (int i =0; i< m_listeSouhaits.size(); i++)
+                Souhait* souhaitCourant;
+                QList<Ville *> listeVilles;
+                QSqlQuery req_ville(m_db->getDb());
+                req_ville.prepare("select * from villes where num_v=:numVille");
+                req_ville.bindValue(":numVille",requete.value(11).toInt());
+                if (req_ville.exec())
+                    souhaitCourant = new Souhait(requete.value(0).toUInt(),
+                                                 requete.value(2).toUInt(),
+                                                 requete.value(3).toUInt(),
+                                                 requete.value(4).toUInt(),
+                                                 listeVilles,
+                                                 new Client(requete.value(1).toInt(),
+                                                            requete.value(8).toString(),
+                                                            requete.value(9).toString(),
+                                                            requete.value(10).toString(),
+                                                            new Ville(req_ville.value(0).toUInt(),
+                                                                      req_ville.value(1).toString(),
+                                                                      req_ville.value(2).toString()),
+                                                            requete.value(12).toInt()));
+                // liste non vide
+                // ajout souhait ou ajout ville à souhait existant
+                if (m_listeSouhaits.size() > 0)
                 {
-                    if(m_listeSouhaits[i]->getNum() == souhaitCourant->getNum())
-                    {
-                       Ville *ville = new Ville(requete.value(6).toInt(),requete.value(5).toString(),requete.value(7).toString());
-                       m_listeSouhaits[i]->modifierVilles(ville);
-                    }
+                    int i = souhaitExistant(souhaitCourant);
+                    if (i == -1)
+                        ajouterSouhait(souhaitCourant);
                     else
                     {
-                        QList<Ville *> m_listeVilles;
-                        Ville *ville = new Ville(requete.value(6).toInt(),requete.value(5).toString(),requete.value(7).toString());
-                        m_listeVilles.append(ville);
-
-
-//Souhait(unsigned int numSouhait(0),unsigned int budgetMax(2), unsigned int surfHabMin(3), unsigned int surfJardMin(4), QList<Ville *> ville, Client *client);
-                        // Souhait *souhait = new Souhait(requete.value(0).toInt(), requete.value(2).toInt(), requete.value(3).toInt(), requete.value(4).toInt(),m_listeVilles, m_client);
-                        // this->m_listeSouhaits.append(souhait);
+                        foreach (Ville *v, m_listeSouhaits[i]->getVilles())
+                        {
+                            if (v->getNum() != souhaitCourant->getVilles().at(i)->getNum())
+                            {
+                                Ville *ville = new Ville(requete.value(6).toInt(),requete.value(5).toString(),requete.value(7).toString());
+                                m_listeSouhaits[i]->modifierVilles(ville);
+                            }
+                        }
                     }
                 }
-
-                    // récupérer le numéro du souhait
-                    // comparer aux souhaits de la liste
-                        // si existant ajouter la ville dans la liste de ville du souhait
-                        // sinon créer nouveauSouhait
-                //  Sinon créer nouveauSouhait (souhait0)
-
-            }
-            else
-            {
-                Souhait* souhait = creerSouhait();
-                m_listeSouhaits.append(souhait);
+                // liste vide : ajout souhait
+                else
+                {
+                    ajouterSouhait(souhaitCourant);
+                }
             }
         }
     }
     m_db->close();
-    // return m_listeSouhaits;
 }
 
 void DialogListeRechercheSouhaits::remplirListeSouhaits()
 {
-
+    int ligne = 0;
+    rechercherSouhaits();
+    if(m_listeSouhaits.size()<1)
+        QMessageBox::information(this,"Liste de souhaits","Aucun souhait correspondant à ce bien");
+    else
+    {
+        foreach(Souhait* s, m_listeSouhaits)
+            creerWidget(s,ligne++);
+    }
 }
 
 int DialogListeRechercheSouhaits::souhaitExistant(Souhait* souhait)
@@ -119,8 +137,22 @@ int DialogListeRechercheSouhaits::souhaitExistant(Souhait* souhait)
     return -1;
 }
 
-Souhait * DialogListeRechercheSouhaits::creerSouhait()
+void DialogListeRechercheSouhaits::ajouterSouhait(Souhait *s)
 {
-    // Souhait* s = new Souhait();
+    m_listeSouhaits.append(s);
+}
+
+void DialogListeRechercheSouhaits::creerWidget(Souhait* souhait, int ligne)
+{
+    WidgetSouhait *souhaitUi = new WidgetSouhait(souhait);
+    souhaitUi->setBudgetMax(souhait->getBudget());
+    souhaitUi->setSurfaceHabitableSouhaitee(souhait->getSurfaceHabitable());
+    souhaitUi->setSurfaceJardinSouhaitee(souhait->getSurfaceJardin());
+
+    ui->tableWidget_ListeSouhaits->setColumnWidth(0,souhaitUi->width());
+    ui->tableWidget_ListeSouhaits->setRowHeight(ligne,souhaitUi->height());
+    ui->tableWidget_ListeSouhaits->setCellWidget(ligne,0,souhaitUi);
+
+    /* SIGNAUX et SLOTS à ajouter */
 }
 

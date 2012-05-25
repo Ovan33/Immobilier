@@ -8,6 +8,7 @@
 #include <Bien.h>
 #include <dialogbien.h>
 #include <BDD.h>
+#include <dialoglisterecherchesouhaits.h>
 
 namespace Ui {
     class DialogListeBiens;
@@ -29,6 +30,7 @@ private:
     Client *m_client;
     QList<Bien *> m_listeBiens;
     DialogBien *m_dialogBien;
+    DialogListeRechercheSouhaits *m_listeSouhaits;
     BDD *m_db;
     Bien *m_bienCourant;
 
@@ -37,6 +39,7 @@ private:
 public slots:
     void nouveauBien();
     void ouvrirBien(int);
+    void ouvrirListeSouhaits(int);
 };
 
 #endif // DIALOGLISTEBIENS_H

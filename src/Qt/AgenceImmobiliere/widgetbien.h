@@ -20,7 +20,7 @@ public:
     ~WidgetBien();
 
     QPushButton* getBoutonDialogBien();
-    QPushButton* getBoutonSupprimerBien();
+    QPushButton* getBoutonListeSouhaits();
     int getPrixVente();
     int getSurfaceHabitable();
     int getSurfaceJardin();

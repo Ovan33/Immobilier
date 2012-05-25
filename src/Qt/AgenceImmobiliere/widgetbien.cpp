@@ -48,3 +48,8 @@ void WidgetBien::setVille(QString ville)
     ui->label_Ville->setText(ville);
 }
 
+QPushButton * WidgetBien::getBoutonListeSouhaits()
+{
+    return ui->pushButton_listeSouhaits;
+}
+

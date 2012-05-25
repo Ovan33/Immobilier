@@ -105,12 +105,15 @@ void DialogListeBiens::chercherBiens()
                     ui->tableWidget_listeBiens->setRowHeight(ligne,bienUi->height());
                     ui->tableWidget_listeBiens->setCellWidget(ligne,0,bienUi);
 
-                    QSignalMapper *mapper = new QSignalMapper(this);
-                    QObject::connect(bienUi->getBoutonDialogBien(),SIGNAL(clicked()),mapper,SLOT(map()));
-                    //mapper->setMapping(clientUi->getBoutonClient(),this->m_listeClients.indexOf(client));
-                    mapper->setMapping(bienUi->getBoutonDialogBien(),this->m_listeBiens.indexOf(bien));
-                    connect(mapper,SIGNAL(mapped(int)),this,SLOT(ouvrirBien(int)));
+                    QSignalMapper *mapperBien = new QSignalMapper(this);
+                    QObject::connect(bienUi->getBoutonDialogBien(),SIGNAL(clicked()),mapperBien,SLOT(map()));
+                    mapperBien->setMapping(bienUi->getBoutonDialogBien(),this->m_listeBiens.indexOf(bien));
+                    connect(mapperBien,SIGNAL(mapped(int)),this,SLOT(ouvrirBien(int)));
 
+                    QSignalMapper *mapperSouhaits = new QSignalMapper(this);
+                    QObject::connect(bienUi->getBoutonListeSouhaits(),SIGNAL(clicked()),mapperSouhaits,SLOT(map()));
+                    mapperSouhaits->setMapping(bienUi->getBoutonListeSouhaits(),this->m_listeBiens.indexOf(bien));
+                    connect(mapperSouhaits,SIGNAL(mapped(int)),this,SLOT(ouvrirListeSouhaits(int)));
                     ligne++;
                 }
             }
@@ -133,4 +136,11 @@ void DialogListeBiens::ouvrirBien(int indexBien)
     m_bienCourant = this->m_listeBiens[indexBien];
     this->m_dialogBien = new DialogBien(m_bienCourant);
     m_dialogBien->exec();
+}
+
+void DialogListeBiens::ouvrirListeSouhaits(int indexBien)
+{
+    m_bienCourant = this->m_listeBiens[indexBien];
+    this->m_listeSouhaits = new DialogListeRechercheSouhaits(m_bienCourant);
+    m_listeSouhaits->exec();
 }
