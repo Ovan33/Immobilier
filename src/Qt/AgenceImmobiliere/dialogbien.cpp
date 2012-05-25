@@ -35,7 +35,7 @@ DialogBien::DialogBien(Bien *bien, QWidget *parent) :
     //ui->comboBox_Ville->setItemText(0);
     ui->comboBox_Ville->addItem(m_bien->getVille()->getNom());
     ui->button_ModifierBien->setVisible(false);
-    ui->button_Supprimer->setVisible(false);
+       ui->button_Supprimer->setVisible(false);
     ui->button_ChercherVilles->setEnabled(false);
     ui->button_ChercherVilles->setToolTip("Rechercher les villes correspondant au code postal");
     // SIGNAUX et SLOTS
