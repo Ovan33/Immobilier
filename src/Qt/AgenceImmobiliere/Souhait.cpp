@@ -1,10 +1,5 @@
 #include "Souhait.h"
 
-//Souhait::Souhait(QObject *parent) :
-//    QObject(parent)
-//{
-//}
-
 Souhait::Souhait(unsigned int numSouhait, unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, QList<Ville *> ville, Client *client)
 {
     this->m_numSouhait = numSouhait;
@@ -13,6 +8,10 @@ Souhait::Souhait(unsigned int numSouhait, unsigned int budgetMax, unsigned int s
     this->m_surfaceJardinMinimum = surfJardMin;
     this->m_listeVilles = ville;
     this->m_client = client;
+}
+
+Souhait::~Souhait()
+{
 }
 
 int Souhait::getNum()
@@ -69,3 +68,44 @@ void Souhait::modifierVilles(Ville *ville)
 {
     this->m_listeVilles.append(ville);
 }
+
+bool Souhait::sauvegarder()
+{
+    m_db = new BDD();
+    bool res;
+    if (m_db->ouvrir())
+    {
+        QSqlQuery requete(m_db->getDb());
+
+        switch(this->getNum())
+        {
+        case (0):
+            //INSERT INTO souhaits(
+            //num_s, num_c, budget_max_s, surface_hab_min_s, surface_jardin_min_s)
+            //VALUES (?, ?, ?, ?, ?);
+            requete.prepare("INSERT INTO souhaits(default,:numClient,:budgetMax,:surfH,:surfJ");
+            requete.bindValue(":numClient", this->getClient()->getNum());
+            requete.bindValue(":budgetMax", this->getBudget());
+            requete.bindValue(":surfH", this->getSurfaceHabitable());
+            requete.bindValue(":surfJ", this->getSurfaceJardin());
+            break;
+        default:
+            //UPDATE souhaits
+            //   SET num_s=?, num_c=?, budget_max_s=?, surface_hab_min_s=?, surface_jardin_min_s=?
+            // WHERE <condition>;
+            requete.prepare("UPDATE souhaits SET num_c=:numClient,budget_max_s=:budgetMax,surface_hab_min_s=:surfH,surface_jardin_min_s=:surfJ WHERE num_s=:numSouhait");
+            requete.bindValue(":numSouhait", this->getNum());
+            requete.bindValue(":numClient", this->getClient()->getNum());
+            requete.bindValue(":budgetMax", this->getBudget());
+            requete.bindValue(":surfH", this->getSurfaceHabitable());
+            requete.bindValue(":surfJ", this->getSurfaceJardin());
+        }
+        if (requete.exec())
+            res = true;
+        else
+            res = false;
+    }
+    return res;
+    m_db->close();
+}
+

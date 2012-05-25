@@ -4,6 +4,7 @@
 #include <QObject>
 #include "Ville.h"
 #include "Client.h"
+#include <BDD.h>
 
 class Souhait : public QObject
 {
@@ -16,13 +17,14 @@ private:
     unsigned int m_surfaceJardinMinimum;
     QList<Ville *> m_listeVilles;
     Client *m_client;
+    BDD *m_db;
 
 public:
 
-//    Souhait(unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, Ville *ville, Client *client);
     Souhait(unsigned int numSouhait,unsigned int budgetMax, unsigned int surfHabMin, unsigned int surfJardMin, QList<Ville *> ville, Client *client);
 
-    //  ~Souhait();
+
+    ~Souhait();
 
     int getNum();
     int getBudget();
@@ -31,13 +33,14 @@ public:
     Client *getClient();
 
     QList<Ville *> getVilles();
-    //QList<Ville *> Souhait::getVilles()
 
     void setNum(unsigned int numSouhait);
     void setBudget(unsigned int budget);
     void setSurfaceHabitable(unsigned int surf);
     void setSurfaceJardin(unsigned int surf);
     void modifierVilles(Ville *ville);
+
+    bool sauvegarder();
 
 signals:
 
