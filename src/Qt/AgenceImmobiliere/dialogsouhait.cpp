@@ -17,6 +17,7 @@ DialogSouhait::DialogSouhait(Souhait *souhait, QWidget *parent) :
     ui->setupUi(this);
     m_souhait = souhait;
     this->setWindowTitle("Liste des souhaits");
+    ui->label_NomClient->setText((m_souhait->getClient())->getNom());
 
 
 }
