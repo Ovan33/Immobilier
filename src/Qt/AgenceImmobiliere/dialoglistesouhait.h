@@ -9,6 +9,7 @@
 #include <Souhait.h>
 #include <widgetsouhait.h>
 #include <Ville.h>
+#include <dialogsouhait.h>
 
 namespace Ui {
 class DialogListeSouhait;
@@ -28,9 +29,13 @@ private:
     Ui::barreMenuFiche m_menu;
 
     Client *m_client;
+    DialogSouhait *m_dialogSouhait;
     BDD *m_db;
 
     void chercherSouhait();
+
+public slots:
+    void nouveauSouhait();
 };
 
 #endif // DIALOGLISTESOUHAIT_H

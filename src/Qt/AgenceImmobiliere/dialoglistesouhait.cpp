@@ -37,7 +37,7 @@ DialogListeSouhait::DialogListeSouhait(Client *client, QWidget *parent):
     // SIGNAUX et SLOTS
     QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(close()));
     QObject::connect(m_menu.pushButton_2,SIGNAL(clicked()),qApp,SLOT(quit()));
-    //QObject::connect(ui->pushButton_ajouterBien, SIGNAL(clicked()),this,SLOT(nouveauBien()));
+    QObject::connect(ui->pushButton_ajouterSouhait, SIGNAL(clicked()),this,SLOT(nouveauSouhait()));
 }
 
 DialogListeSouhait::~DialogListeSouhait()
@@ -51,7 +51,8 @@ void DialogListeSouhait::chercherSouhait()
     if (m_db->ouvrir())
     {
         QSqlQuery requete(m_db->getDb());
-        requete.prepare("select * from souhaits where num_c=:numClient");
+        requete.prepare("SELECT souhaits.num_s, souhaits.num_c, souhaits.budget_max_s, souhaits.surface_hab_min_s, souhaits.surface_jardin_min_s, villes.nom_v, villes.num_v, villes.code_postal_v, clients.nom_c FROM souhaits INNER JOIN clients ON souhaits.num_c = clients.num_c INNER JOIN villes_souhaitees ON souhaits.num_s = villes_souhaitees.num_s INNER JOIN villes ON villes_souhaitees.num_v = villes.num_v Where clients.num_c =:numClient");
+
         requete.bindValue(":numClient", QString::number(m_client->getNum()));
         if (requete.exec())
         {
@@ -65,28 +66,21 @@ void DialogListeSouhait::chercherSouhait()
                 while (requete.next())
                 {
                     WidgetSouhait *souhaitUi = new WidgetSouhait();
-                    /*
-                    // Debug Infos
-                    qDebug()    << requete.value(0) << endl
-                                << requete.value(1) << endl
-                                << requete.value(2) << endl
-                                << requete.value(3) << endl
-                                << requete.value(4) << endl;
-                                //<< requete.value(5) << endl;
-                    //Fin*/
-                    // num_s, num_c, budget_max_s, surface_hab_min_s, surface_jardin_min_s
-
-                    Ville *ville = new Ville();
-                    Souhait *souhait = new Souhait(requete.value(2).toInt(), requete.value(3).toInt(), requete.value(4).toInt(),ville);
-
+                    Ville *ville = new Ville(requete.value(6).toInt(),requete.value(5).toString(),requete.value(7).toString());
+                    Souhait *souhait = new Souhait(requete.value(2).toInt(), requete.value(3).toInt(), requete.value(4).toInt(), ville, m_client);
                     souhaitUi->setBudgetMax(souhait->getBudget());
                     souhaitUi->setSurfaceHabitableSouhaitee(souhait->getSurfaceHabitable());
                     souhaitUi->setSurfaceJardinSouhaitee(souhait->getSurfaceJardin());
 
+//                    int largeur = ui->tableWidget_listeSouhaits->width();
+//                    souhaitUi->setMinimumWidth(largeur);
 
-                    ui->tableWidget_listeSouhaits->setColumnWidth(0,ui->tableWidget_listeSouhaits->width());
+                    ui->tableWidget_listeSouhaits->setColumnWidth(0,souhaitUi->width());
                     ui->tableWidget_listeSouhaits->setRowHeight(ligne,souhaitUi->height());
                     ui->tableWidget_listeSouhaits->setCellWidget(ligne,0,souhaitUi);
+                    //ui->tableWidget_listeSouhaits->setAlternatingRowColors(true);
+                    //ui->tableWidget_listeSouhaits->setStyleSheet("alternate-background-color: yellow;background-color: gray;");
+
                     ligne++;
 
                 }
@@ -94,4 +88,12 @@ void DialogListeSouhait::chercherSouhait()
         }
         m_db->close();
     }
+}
+
+void DialogListeSouhait::nouveauSouhait()
+{
+    Ville *newVille = new Ville();
+    Souhait *newSouhait = new Souhait(0,0,0,newVille,m_client);
+    m_dialogSouhait = new DialogSouhait(newSouhait, this);
+    m_dialogSouhait->exec();
 }

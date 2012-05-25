@@ -8,6 +8,14 @@ WidgetSouhait::WidgetSouhait(QWidget *parent) :
     ui->setupUi(this);
 }
 
+WidgetSouhait::WidgetSouhait(Souhait *souhait, QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::WidgetSouhait)
+{
+    ui->setupUi(this);
+    this->m_souhait = souhait;
+}
+
 WidgetSouhait::~WidgetSouhait()
 {
     delete ui;
@@ -26,4 +34,9 @@ void WidgetSouhait::setSurfaceHabitableSouhaitee(unsigned int surf)
 void WidgetSouhait::setSurfaceJardinSouhaitee(unsigned int surf)
 {
     ui->label_SurfaceJardinSouhaitee->setText(QString::number(surf));
+}
+
+QPushButton *WidgetSouhait::getBoutonDialogSouhait()
+{
+    return ui->pushButton_modifierSouhait;
 }
