@@ -7,7 +7,6 @@ DialogSouhait::DialogSouhait(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Ajouter un nouveau souhait");
-   // ui->label_NomClient->setText();
 }
 
 DialogSouhait::DialogSouhait(Souhait *souhait, QWidget *parent) :
@@ -46,7 +45,6 @@ DialogSouhait::DialogSouhait(Souhait *souhait, QWidget *parent) :
     QObject::connect(ui->lineEdit_BudgetMax,SIGNAL(textChanged(QString)), this, SLOT(setEtat(QString)));
     QObject::connect(ui->lineEdit_SurfHabMin,SIGNAL(textChanged(QString)), this, SLOT(setEtat(QString)));
     QObject::connect(ui->lineEdit_SurJardMin,SIGNAL(textChanged(QString)), this, SLOT(setEtat(QString)));
-
     QObject::connect(ui->comboBox_Ville,SIGNAL(activated(QString)), this, SLOT(copierVille(QString)));
 
 }
@@ -99,10 +97,45 @@ void DialogSouhait::valider()
         m_souhait->setBudget(ui->lineEdit_BudgetMax->text().toInt());
         m_souhait->setSurfaceHabitable(ui->lineEdit_SurfHabMin->text().toInt());
         m_souhait->setSurfaceJardin(ui->lineEdit_SurJardMin->text().toInt());
-
-        // Sauvegarder le bien
-          if (m_souhait->sauvegarder())
+        // recuperer les villes
+        foreach (Ville *v, m_listeVilles)
         {
+            m_souhait->modifierVilles(v);
+        }
+    }
+    // Sauvegarder le souhait
+    if (m_souhait->sauvegarderSouhait())
+    {
+//-------------------------------------------------
+        // vu que le souhait est sauvegardé
+        // recupéré son numéro pour pouvoir l'associer à la ville dans la table villes_souhaitées
+        int numSouhait;
+        m_db = new BDD();
+
+        if (m_db->ouvrir())
+        {
+            QSqlQuery requeteNumSouhait(m_db->getDb());
+            requeteNumSouhait.prepare("SELECT num_s FROM souhaits WHERE num_c=:numClient");
+            requeteNumSouhait.bindValue(":numClient", m_souhait->getClient()->getNum());
+            if (requeteNumSouhait.exec())
+            {
+                qDebug() << "Requete numSouhait ok";
+                while (requeteNumSouhait.next())
+                    numSouhait = requeteNumSouhait.value(0).toInt();
+                qDebug() << numSouhait;
+
+            }
+            //a la sortie de la boucle, numSouhait correspond au numero du souhait enregistré dans la base
+//---------------------------------
+
+            // sauvegarder les villes associées
+            foreach (Ville *v, m_listeVilles)
+            {
+                qDebug() << numSouhait
+                         << v->getNum();
+                m_souhait->sauvegarderVillesSouhaitees(numSouhait,v->getNum());
+            }
+
             QMessageBox::information(this,"Données sauvegardées","Bien sauvegardé");
             this->close();
         }

@@ -40,7 +40,8 @@ public:
     void setSurfaceJardin(unsigned int surf);
     void modifierVilles(Ville *ville);
 
-    bool sauvegarder();
+    bool sauvegarderSouhait();
+    bool sauvegarderVillesSouhaitees(int, int);
 
 signals:
 
