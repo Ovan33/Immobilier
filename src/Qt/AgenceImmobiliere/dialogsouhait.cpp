@@ -21,7 +21,7 @@ DialogSouhait::DialogSouhait(Souhait *souhait, QWidget *parent) :
 
     // Création de la barre de menu
     m_menu.setupUi(ui->widget_barreMenu);
-    m_menu.label_fenetre->setText("Bien");
+    m_menu.label_fenetre->setText("Souhait");
     m_menu.image_fenetre->setPixmap(QPixmap(":/app/bien96"));
     m_menu.pushButton_1->setToolTip("Valider");
     m_menu.pushButton_2->setToolTip("Annuler");
@@ -40,11 +40,23 @@ DialogSouhait::DialogSouhait(Souhait *souhait, QWidget *parent) :
 
     // Signaux & slots
     QObject::connect(m_menu.pushButton_2,SIGNAL(clicked()),this,SLOT(fermer()));
+    QObject::connect(m_menu.pushButton_1,SIGNAL(clicked()),this,SLOT(valider()));
+    QObject::connect(ui->button_ChercherVilles,SIGNAL(clicked()),this,SLOT(chercherVilles()));
 
     QObject::connect(ui->lineEdit_BudgetMax,SIGNAL(textChanged(QString)), this, SLOT(setEtat(QString)));
     QObject::connect(ui->lineEdit_SurfHabMin,SIGNAL(textChanged(QString)), this, SLOT(setEtat(QString)));
     QObject::connect(ui->lineEdit_SurJardMin,SIGNAL(textChanged(QString)), this, SLOT(setEtat(QString)));
+
+    QObject::connect(ui->comboBox_Ville,SIGNAL(activated(QString)), this, SLOT(copierVille(QString)));
+
 }
+
+void DialogSouhait::copierVille(QString ville)
+{
+    ui->textEdit_Villes->append(ville+" "+ui->lineEdit_CodePostal->text());
+    ui->comboBox_Ville->clear();
+}
+
 
 DialogSouhait::~DialogSouhait()
 {
@@ -107,4 +119,38 @@ bool DialogSouhait::checkData()
     if (ui->lineEdit_BudgetMax->text().isEmpty() || ui->lineEdit_SurfHabMin->text().isEmpty()|| ui->lineEdit_SurJardMin->text().isEmpty())
         return true;
     else return false;
+}
+
+void DialogSouhait::chercherVilles()
+{
+    if (ui->lineEdit_CodePostal->text().isEmpty())
+        QMessageBox::information(this,"Données incorrectes","Merci de renseigner le code postal");
+    else
+    {
+        QString requete = "select * from VILLES where CODE_POSTAL_V='" + ui->lineEdit_CodePostal->text();
+        requete += "' order by nom_v";
+        qDebug() << requete;
+        // pour chaque res, création d'une ville
+        m_db = new BDD();
+        if (m_db->ouvrir())
+        {
+            QSqlQuery resultat;
+            if (resultat.exec(requete))
+            {
+                if (resultat.size() < 1)
+                    QMessageBox::information(this,"Recherche client", "Aucune ville ne correspond à ce code postal");
+                else
+                {
+                    while (resultat.next())
+                    {
+                        Ville *ville = new Ville(resultat.value(0).toInt(), resultat.value(1).toString(), resultat.value(2).toString());
+                        m_listeVilles.append(ville);
+                        qDebug() << ville->getNom();
+                        ui->comboBox_Ville->addItem(ville->getNom());
+                    }
+                }
+            }
+        }
+        m_db->close();
+    }
 }
