@@ -115,8 +115,8 @@ bool Bien::sauvegarder()
         else
             res = false;
     }
-    return res;
     m_db->close();
+    return res;
 }
 
 void Bien::setVille(Ville *ville)

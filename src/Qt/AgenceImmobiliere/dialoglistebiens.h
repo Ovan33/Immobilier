@@ -35,6 +35,7 @@ private:
     Bien *m_bienCourant;
 
     void chercherBiens();
+    void reset();
 
 public slots:
     void nouveauBien();

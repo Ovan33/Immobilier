@@ -7,26 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>97</height>
+    <height>100</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>600</width>
-    <height>0</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
       <widget class="QLabel" name="label_PrixdeVenteEtiquette">
@@ -37,7 +25,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Prix de vente</string>
+        <string>Prix</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -46,6 +34,12 @@
      </item>
      <item row="0" column="1">
       <widget class="QLabel" name="label_PrixdeVente">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Liberation Sans</family>
@@ -54,6 +48,9 @@
        </property>
        <property name="text">
         <string>Prix</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -75,6 +72,12 @@
      </item>
      <item row="0" column="3">
       <widget class="QLabel" name="label_SurfaceHabitable">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Liberation Sans</family>
@@ -84,10 +87,19 @@
        <property name="text">
         <string>SurfaceH</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_DatedeMiseenVenteEtiquette">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Liberation Sans</family>
@@ -103,7 +115,17 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QDateEdit" name="dateEdit_dateMiseVente"/>
+      <widget class="QDateEdit" name="dateEdit_dateMiseVente">
+       <property name="font">
+        <font>
+         <family>Liberation Sans</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </item>
      <item row="1" column="2">
       <widget class="QLabel" name="label_SurfaceJardinEtiquette">
@@ -123,6 +145,12 @@
      </item>
      <item row="1" column="3">
       <widget class="QLabel" name="label_SurfaceJardin">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Liberation Sans</family>
@@ -131,6 +159,9 @@
        </property>
        <property name="text">
         <string>SurfaceJ</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -152,6 +183,12 @@
      </item>
      <item row="2" column="3">
       <widget class="QLabel" name="label_Ville">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Liberation Sans</family>
@@ -161,11 +198,27 @@
        <property name="text">
         <string>Ville</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="0" column="2">
+   <item>
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>43</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="pushButton_modifierBien">
@@ -181,52 +234,41 @@
          <height>61</height>
         </size>
        </property>
+       <property name="text">
+        <string/>
+       </property>
        <property name="icon">
         <iconset resource="ressources.qrc">
-         <normaloff>:/app/bien48</normaloff>:/app/bien48</iconset>
+         <normaloff>:/app/bien96</normaloff>:/app/bien96</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>46</width>
-         <height>46</height>
+         <width>48</width>
+         <height>48</height>
         </size>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_listeSouhaits">
-       <property name="maximumSize">
+       <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>71</width>
          <height>61</height>
         </size>
        </property>
-       <property name="icon">
-        <iconset resource="ressources.qrc">
-         <normaloff>:/app/gotoSouhaits48</normaloff>:/app/gotoSouhaits48</iconset>
-       </property>
-       <property name="iconSize">
+       <property name="maximumSize">
         <size>
-         <width>92</width>
-         <height>46</height>
+         <width>71</width>
+         <height>61</height>
         </size>
+       </property>
+       <property name="text">
+        <string>Voir</string>
        </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>
