@@ -199,16 +199,22 @@ void DialogAccueil::ouvrirClient(int indexClient)
 void DialogAccueil::ouvrirListeSouhaits(int indexClient)
 {
     m_clientCourant = this->m_listeClients[indexClient];
-    this->m_dialogListeSouhaits= new DialogListeSouhait(m_clientCourant);
+    this->m_dialogListeSouhaits= new DialogListeSouhait(m_clientCourant,this);
     m_dialogListeSouhaits->exec();
+    reset();
+    ui->lineEdit_Recherche->setText(m_clientCourant->getNom());
+    chercherClients();
 }
 
 void DialogAccueil::ouvrirListeBiens(int indexClient)
 {
     qDebug() << m_listeClients[indexClient]->getNom() << " " << m_listeClients[indexClient]->getNum();
     m_clientCourant = this->m_listeClients[indexClient];
-    this->m_dialogListeBiens = new DialogListeBiens(m_clientCourant);
+    this->m_dialogListeBiens = new DialogListeBiens(m_clientCourant,this);
     m_dialogListeBiens->exec();
+    reset();
+    ui->lineEdit_Recherche->setText(m_clientCourant->getNom());
+    chercherClients();
 }
 
 void DialogAccueil::nouveauBien(int indexClient)
@@ -217,8 +223,11 @@ void DialogAccueil::nouveauBien(int indexClient)
     m_clientCourant = this->m_listeClients[indexClient];
     QDate date = QDate::currentDate();
     Bien *bien = new Bien(0,0,date,0,0,new Ville(),m_clientCourant);
-    this->m_dialogBien = new DialogBien(bien);
+    this->m_dialogBien = new DialogBien(bien,this);
     m_dialogBien->exec();
+    reset();
+    ui->lineEdit_Recherche->setText(m_clientCourant->getNom());
+    chercherClients();
 }
 
 void DialogAccueil::nouveauSouhait(int indexClient)
@@ -228,4 +237,7 @@ void DialogAccueil::nouveauSouhait(int indexClient)
     Souhait *newSouhait = new Souhait(0,0,0,0, listeVilles,m_clientCourant);
     m_dialogSouhait = new DialogSouhait(newSouhait, this);
     m_dialogSouhait->exec();
+    reset();
+    ui->lineEdit_Recherche->setText(m_clientCourant->getNom());
+    chercherClients();
 }
