@@ -19,6 +19,7 @@ public:
     explicit DialogClient(QWidget *parent = 0);
     DialogClient(Client *client, QWidget *parent=0);
     ~DialogClient();
+    Client* getClient();
 
 private:
     Ui::DialogClient *ui;

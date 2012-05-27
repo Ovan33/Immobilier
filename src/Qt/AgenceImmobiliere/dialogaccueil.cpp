@@ -170,9 +170,12 @@ void DialogAccueil::chercherClients()
 void DialogAccueil::nouveauClient()
 {
     Ville *ville = new Ville();
-    m_clientCourant = new Client(0,ui->lineEdit_Recherche->text(),QString(""),QString(""),ville,0);
-    this->m_dialogClient = new DialogClient(m_clientCourant);
+    m_clientCourant = new Client(0,ui->lineEdit_Recherche->text(),QString(""),QString(""),ville,0);    
+    this->m_dialogClient = new DialogClient(m_clientCourant,this);
     m_dialogClient->exec();
+    reset();
+    ui->lineEdit_Recherche->setText(m_dialogClient->getClient()->getNom());
+    chercherClients();
 }
 
 void DialogAccueil::ouvrirClient(int indexClient)

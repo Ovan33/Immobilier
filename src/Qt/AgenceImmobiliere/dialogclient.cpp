@@ -95,10 +95,10 @@ void DialogClient::valider()
 bool DialogClient::checkData()
 {
     if (ui->lineEdit_Adresse->text().isEmpty()
-        || ui->label_CodePostal->text().isEmpty()
-        || ui->lineEdit_Nom->text().isEmpty()
-        || ui->label_Telephone->text().isEmpty()
-        || ui->comboBox_Villes->currentText().isEmpty())
+            || ui->label_CodePostal->text().isEmpty()
+            || ui->lineEdit_Nom->text().isEmpty()
+            || ui->label_Telephone->text().isEmpty()
+            || ui->comboBox_Villes->currentText().isEmpty())
         return false;
     else return true;
 }
@@ -206,4 +206,9 @@ Ville* DialogClient::chercherVille()
     }
     m_db->close();
     return ville;
+}
+
+Client * DialogClient::getClient()
+{
+    return this->m_client;
 }
