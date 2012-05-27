@@ -15,7 +15,6 @@
 #include <dialoglistebiens.h>
 #include <dialoglistesouhait.h>
 
-
 namespace Ui {
     class DialogAccueil;
 }
@@ -39,8 +38,12 @@ private:
     DialogBien *m_dialogBien;
     DialogSouhait *m_dialogSouhait;
     DialogListeSouhait *m_dialogListeSouhaits;
+
+
     Client *m_clientCourant;
     QList<Client *> m_listeClients;
+
+//    QList<Agent *> m_listeAgents;
 
 public slots:
     void reset();
@@ -51,6 +54,8 @@ public slots:
     void ouvrirListeSouhaits(int);
     void ouvrirListeBiens(int);
     void nouveauSouhait(int);
+
+//    void gestionAgents();
 };
 
 #endif // DIALOGACCUEIL_H

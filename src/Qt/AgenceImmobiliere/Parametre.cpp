@@ -11,20 +11,20 @@ Parametre::Parametre()
     }
     if( !doc.setContent( &file ) )
     {
-      file.close();
-      return;
+        file.close();
+        return;
     }
     file.close();
 
     QDomElement root = doc.documentElement();
     if( root.tagName() != "ParametreConnexion" )
     {
-         return;
+        return;
     }
     QDomNode n = root.firstChild();
     while( !n.isNull() )
     {
-      QDomElement e = n.toElement();
+        QDomElement e = n.toElement();
         if( !e.isNull() )
         {
             if( e.tagName() == "TypeConnection" )
@@ -53,7 +53,7 @@ Parametre::Parametre()
                 password = e.text();
                 n = n.nextSibling();
             }
-         }
+        }
     }
 }
 
