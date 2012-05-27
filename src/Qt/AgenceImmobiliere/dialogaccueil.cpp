@@ -189,8 +189,11 @@ void DialogAccueil::ouvrirClient(int indexClient)
                 << "NumVille : " << m_listeClients[indexClient]->getVille()->getNum();
     //Fin
     m_clientCourant = this->m_listeClients[indexClient];
-    this->m_dialogClient = new DialogClient(m_clientCourant);
+    this->m_dialogClient = new DialogClient(m_clientCourant, this);
     m_dialogClient->exec();
+    reset();
+    ui->lineEdit_Recherche->setText(m_clientCourant->getNom());
+    chercherClients();
 }
 
 void DialogAccueil::ouvrirListeSouhaits(int indexClient)
