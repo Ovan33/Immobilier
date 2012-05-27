@@ -25,12 +25,6 @@ BDD::~BDD()
     QSqlDatabase::removeDatabase("immo");
 }
 
-bool BDD::isConnectionActive()
-{
-    return (m_db.open());
-
-}
-
 bool BDD::isValid()
 {
     return (m_db.isValid());
