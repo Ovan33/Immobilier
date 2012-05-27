@@ -19,7 +19,11 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     m_menu.label_fenetre->setText("Accueil");
     m_menu.image_fenetre->setPixmap(QPixmap(":/app/accueil"));
     // Masquage du 3e bouton de la barre de menu
+    // Edit demasquage pour test Agent
     m_menu.pushButton_3->setVisible(false);
+//    m_menu.pushButton_3->setIcon(QIcon(":/app/personnes"));
+//    m_menu.pushButton_3->setToolTip("Gestion des Agents");
+
     // Bouton de reset
     m_menu.pushButton_1->setIcon(QIcon(":/app/rafraichir96"));
     m_menu.pushButton_1->setToolTip("Reset");
@@ -37,6 +41,7 @@ DialogAccueil::DialogAccueil(QWidget *parent) :
     // SIGNAUX et SLOTS
     QObject::connect(m_menu.pushButton_2, SIGNAL(clicked()), qApp, SLOT(quit()));
     QObject::connect(m_menu.pushButton_1, SIGNAL(clicked()), this, SLOT(reset()));
+//    QObject::connect(m_menu.pushButton_3,SIGNAL(clicked()), this, SLOT(gestionAgents()));
     QObject::connect(ui->button_Effacer, SIGNAL(clicked()), ui->lineEdit_Recherche, SLOT(clear()));
     QObject::connect(ui->button_Ok, SIGNAL(clicked()), this, SLOT(chercherClients()));
     QObject::connect(ui->button_Ajouter, SIGNAL(clicked()),this,SLOT(nouveauClient()));
@@ -241,3 +246,56 @@ void DialogAccueil::nouveauSouhait(int indexClient)
     ui->lineEdit_Recherche->setText(m_clientCourant->getNom());
     chercherClients();
 }
+
+//void DialogAccueil::gestionAgents()
+//{
+//    QString requete = "SELECT * FROM agents INNER JOIN clients On agents.num_a = clients.num_a ORDER BY agents.num_a";
+//    m_db = new BDD();
+//    if (m_db->ouvrir())
+//    {
+//        QSqlQuery resultat;
+//        if (resultat.exec(requete))
+//        {
+//            if (resultat.size() < 1)
+//                QMessageBox::information(this, "Recherche Agent", "Aucun agent trouvé");
+//            else
+//            {
+//                ui->tableWidget_resultats->setRowCount(resultat.size());
+//                int ligne = 0;
+//                while (resultat.next())
+//                {
+//                    if (m_listeAgents.size() > 0)
+//                    {
+//                        for (int i =0; i< m_listeAgents.size(); i++)
+//                        {
+//                            // Si je suis sur le même agent
+//                            if(m_listeAgents[i]->getNum() == resultat.value(0).toInt())
+//                            {
+//                              // faire qq chose
+//                            }
+//                        }
+//                    }
+//                    else
+//                    {
+//                        // Je créer le nouvel agent
+//                        WidgetAgent *agentUi = new WidgetAgent();
+//                        Agent *agent = new Agent(resultat.value(0).toInt(), resultat.value(1).toString());
+//                        this->m_listeAgents.append(agent);
+//                        agentUi->setNom(agent->getNom());
+
+
+//                        ui->tableWidget_resultats->setColumnWidth(0,ui->tableWidget_resultats->width()-15);
+//                        ui->tableWidget_resultats->setRowHeight(ligne,agentUi->height());
+//                        ui->tableWidget_resultats->setCellWidget(ligne,0,agentUi);
+//                        ligne++;
+
+
+//                    }
+
+
+
+//                }
+//            }
+//        }
+//    }
+//}

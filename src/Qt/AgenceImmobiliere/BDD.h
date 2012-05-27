@@ -1,32 +1,66 @@
 #ifndef CONNEXIONSQL_H
 #define CONNEXIONSQL_H
 
+/*!
+  \file BDD.h
+  \brief BDD permet de décrire un base de données.
+  \author Icham Sirat
+  \version 1.0
+  */
+
+
 #include <QtSql>
 #include "Parametre.h"
 
 class BDD
 {
 public:
-    // Constructeur par défaut
+
+    /*!
+      \brief    Constructeur par defaut
+      */
     BDD();
 
-    // Construit un objet de type QSqlDatabase
+    /*!
+      \brief    Constructeur
+      \param [in]   typeConnection QString, le type de connexion de la base de données
+      \param [in]   host QString, l'adresse de la machine d'hébergement
+      \param [in]   database QString, le nom de la base de données
+      \param [in]   user QString, le nom du propiétaire de la base de données
+      \param [in]   password QSting, le mot de passe de la base de données
+      */
     BDD(QString typeConnection ,QString host, QString database, QString user, QString password);
 
-    // Destructeur
+    /*!
+      \brief    Destructeur par defaut
+      */
     ~BDD();
 
-    // Renvoie "true" si la connexion est établie. Utilise la méthode QSqlDatabase::open().
-    bool isConnectionActive();
-
-    // Renvoie "true" si la connexion est valide. utilise la méthode QSqlDatabase::isValid()
+    /*!
+      \brief    Tester la validité de la connexion à la base de données
+      Permet de tester la validité de la base de données. Utilise la méthode QSqlDatabase::isValid().
+      \return   bool    vrai si la base de données est valide
+      */
     bool isValid();
 
-    // Ferme la connexion. Utilise QSqlDatabase::close()
+    /*!
+      \brief    Fermer la connexion à la base de données
+      Permet de fermer la base de données. Utilise la méthode QSqlDatabase::close().
+      */
     void close();
 
-    // Ouvre la connection
+    /*!
+      \brief    Ouvrir la connexion à la base de données
+      Permet d'ouvrir la base de données. Utilise la méthode QSqlDatabase::open().
+      \return   bool    vrai si l'ouverture de la base de données s'est correctement déroulée
+      */
     bool ouvrir();
+
+    /*!
+      \brief    Obtenir la base de données
+      Permet d'obtenir la base de données.
+      \return   QSqlDatabase    la base de données
+      */
 
     QSqlDatabase getDb();
 
