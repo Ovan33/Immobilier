@@ -14,9 +14,6 @@
 #include <QList>
 #include <dialoglistebiens.h>
 #include <dialoglistesouhait.h>
-#include <widgetagent.h>
-#include <Agent.h>
-
 
 namespace Ui {
     class DialogAccueil;
