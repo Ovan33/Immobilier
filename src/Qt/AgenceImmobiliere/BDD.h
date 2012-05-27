@@ -24,7 +24,7 @@ public:
     /*!
       \brief    Constructeur
       \param [in]   typeConnection QString, le type de connexion de la base de données
-      \param [in]   host QString, l'adresse de la base de données
+      \param [in]   host QString, l'adresse de la machine d'hébergement
       \param [in]   database QString, le nom de la base de données
       \param [in]   user QString, le nom du propiétaire de la base de données
       \param [in]   password QSting, le mot de passe de la base de données
