@@ -48,6 +48,13 @@ DialogListeBiens::~DialogListeBiens()
     delete ui;
 }
 
+void DialogListeBiens::reset()
+{
+    ui->tableWidget_listeBiens->clearContents();
+    ui->tableWidget_listeBiens->clear();
+    ui->tableWidget_listeBiens->setRowCount(0);
+}
+
 void DialogListeBiens::chercherBiens()
 {
     m_db = new BDD();
@@ -122,23 +129,28 @@ void DialogListeBiens::chercherBiens()
 
 void DialogListeBiens::nouveauBien()
 {
-    // Bien(unsigned int prix, QDate &date, unsigned int surfHab, unsigned int surfJar, Ville *ville, Client *client);
     QDate date = QDate::currentDate();
-    Bien *bien = new Bien(0,date,0,0, new Ville(),m_client);
+    Bien *bien = new Bien(0,0,date,0,0,new Ville(),m_client);
     m_dialogBien = new DialogBien(bien,this);
     m_dialogBien->exec();
+    reset();
+    chercherBiens();
 }
 
 void DialogListeBiens::ouvrirBien(int indexBien)
 {
     m_bienCourant = this->m_listeBiens[indexBien];
-    this->m_dialogBien = new DialogBien(m_bienCourant);
+    this->m_dialogBien = new DialogBien(m_bienCourant,this);
     m_dialogBien->exec();
+    reset();
+    chercherBiens();
 }
 
 void DialogListeBiens::ouvrirListeSouhaits(int indexBien)
 {
     m_bienCourant = this->m_listeBiens[indexBien];
-    this->m_listeSouhaits = new DialogListeRechercheSouhaits(m_bienCourant);
+    this->m_listeSouhaits = new DialogListeRechercheSouhaits(m_bienCourant,this);
     m_listeSouhaits->exec();
+    reset();
+    chercherBiens();
 }
