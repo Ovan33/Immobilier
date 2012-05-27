@@ -46,7 +46,7 @@ private:
     Client *m_clientCourant;
     QList<Client *> m_listeClients;
 
-    QList<Agent *> m_listeAgents;
+//    QList<Agent *> m_listeAgents;
 
 public slots:
     void reset();
@@ -58,7 +58,7 @@ public slots:
     void ouvrirListeBiens(int);
     void nouveauSouhait(int);
 
-    void gestionAgents();
+//    void gestionAgents();
 };
 
 #endif // DIALOGACCUEIL_H

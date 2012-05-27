@@ -29,8 +29,8 @@ SOURCES += main.cpp\
     widgetsouhait.cpp \
     dialoglistesouhait.cpp \
     dialoglisterecherchesouhaits.cpp \
-    Agent.cpp \
-    widgetagent.cpp
+#    Agent.cpp \
+#    widgetagent.cpp
 
 HEADERS  +=     dialogaccueil.h \
     dialogclient.h \
@@ -49,8 +49,8 @@ HEADERS  +=     dialogaccueil.h \
     widgetsouhait.h \
     dialoglistesouhait.h \
     dialoglisterecherchesouhaits.h \
-    Agent.h \
-    widgetagent.h
+#    Agent.h \
+#    widgetagent.h
 
 FORMS    += mainwindow.ui \
     barreMenuFiche.ui \
@@ -67,6 +67,6 @@ FORMS    += mainwindow.ui \
     widgetsouhait.ui \
     dialoglistesouhait.ui \
     dialoglisterecherchesouhaits.ui \
-    widgetagent.ui
+#    widgetagent.ui
 
 RESOURCES += ressources.qrc
