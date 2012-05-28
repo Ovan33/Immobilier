@@ -29,6 +29,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
@@ -75,6 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li><a class="el" href="class_dialog_bien.html">DialogBien</a></li>
 <li><a class="el" href="class_dialog_client.html">DialogClient</a></li>
 <li><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></li>
+<li><a class="el" href="class_dialog_liste_recherche_souhaits.html">DialogListeRechercheSouhaits</a></li>
 <li><a class="el" href="class_dialog_liste_souhait.html">DialogListeSouhait</a></li>
 <li><a class="el" href="class_dialog_recherche_biens.html">DialogRechercheBiens</a></li>
 <li><a class="el" href="class_dialog_souhait.html">DialogSouhait</a></li>
@@ -84,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li><a class="el" href="class_ville.html">Ville</a></li>
 <li><a class="el" href="class_widget_bien.html">WidgetBien</a></li>
 <li><a class="el" href="class_widget_client.html">WidgetClient</a></li>
-<li><a class="el" href="classwidget_souhait.html">widgetSouhait</a></li>
+<li><a class="el" href="class_widget_souhait.html">WidgetSouhait</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -92,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed May 23 2012 11:48:05 for Agence Immobilière by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon May 28 2012 10:14:54 for Agence Immobilière by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

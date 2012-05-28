@@ -29,6 +29,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
@@ -59,28 +60,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>widgetsouhait.h</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef WIDGETSOUHAIT_H</span>
+<a href="widgetsouhait_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef WIDGETSOUHAIT_H</span>
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define WIDGETSOUHAIT_H</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
-<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;QWidget&gt;</span>
-<a name="l00005"></a>00005 
-<a name="l00006"></a>00006 <span class="keyword">namespace </span>Ui {
-<a name="l00007"></a>00007 <span class="keyword">class </span><a class="code" href="classwidget_souhait.html">widgetSouhait</a>;
-<a name="l00008"></a>00008 }
-<a name="l00009"></a>00009 
-<a name="l00010"></a><a class="code" href="classwidget_souhait.html">00010</a> <span class="keyword">class </span><a class="code" href="classwidget_souhait.html">widgetSouhait</a> : <span class="keyword">public</span> QWidget
-<a name="l00011"></a>00011 {
-<a name="l00012"></a>00012     Q_OBJECT
-<a name="l00013"></a>00013     
-<a name="l00014"></a>00014 <span class="keyword">public</span>:
-<a name="l00015"></a>00015     <span class="keyword">explicit</span> <a class="code" href="classwidget_souhait.html">widgetSouhait</a>(QWidget *parent = 0);
-<a name="l00016"></a>00016     ~<a class="code" href="classwidget_souhait.html">widgetSouhait</a>();
-<a name="l00017"></a>00017     
-<a name="l00018"></a>00018 <span class="keyword">private</span>:
-<a name="l00019"></a>00019     Ui::widgetSouhait *ui;
-<a name="l00020"></a>00020 };
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="preprocessor">#endif // WIDGETSOUHAIT_H</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;QWidget&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;QPushButton&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;<a class="code" href="_souhait_8h.html" title="Souhait permet de décrire un souhait d&amp;#39;un client acheteur de l&amp;#39;agence.">Souhait.h</a>&gt;</span>
+<a name="l00015"></a>00015 
+<a name="l00020"></a>00020 <span class="keyword">namespace </span>Ui {
+<a name="l00021"></a>00021     <span class="keyword">class </span><a class="code" href="class_widget_souhait.html" title="Composant graphique du so)uhait.">WidgetSouhait</a>;
+<a name="l00022"></a>00022 }
+<a name="l00023"></a>00023 
+<a name="l00036"></a><a class="code" href="class_widget_souhait.html">00036</a> <span class="keyword">class </span><a class="code" href="class_widget_souhait.html" title="Composant graphique du so)uhait.">WidgetSouhait</a> : <span class="keyword">public</span> QWidget
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038     Q_OBJECT
+<a name="l00039"></a>00039     
+<a name="l00040"></a>00040 <span class="keyword">public</span>:
+<a name="l00044"></a>00044     <span class="keyword">explicit</span> <a class="code" href="class_widget_souhait.html#a1711d0de409d03807ccc04c411daaf9d" title="Constructeur par défaut.">WidgetSouhait</a>(QWidget *parent = 0);
+<a name="l00045"></a>00045 
+<a name="l00051"></a>00051     <a class="code" href="class_widget_souhait.html#a1711d0de409d03807ccc04c411daaf9d" title="Constructeur par défaut.">WidgetSouhait</a>(<a class="code" href="class_souhait.html" title="Cette classe décrit le souhait.">Souhait</a> *souhait, QWidget *parent = 0);
+<a name="l00052"></a>00052 
+<a name="l00056"></a>00056     <a class="code" href="class_widget_souhait.html#a89d3312adf169739d0b36fc53de8eea1" title="Destructeur.">~WidgetSouhait</a>();
+<a name="l00057"></a>00057 
+<a name="l00065"></a>00065     <span class="keywordtype">void</span> <a class="code" href="class_widget_souhait.html#a37c6eb56d2c7802b0e8cfa5756c0f309" title="Modifier le budget maximum.">setBudgetMax</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> budget);
+<a name="l00066"></a>00066 
+<a name="l00074"></a>00074     <span class="keywordtype">void</span> <a class="code" href="class_widget_souhait.html#a0e5d6f1bfda8a50e1a5bb342d927db36" title="Modifier la surface habitable souhaitée.">setSurfaceHabitableSouhaitee</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> surf);
+<a name="l00075"></a>00075 
+<a name="l00083"></a>00083     <span class="keywordtype">void</span> <a class="code" href="class_widget_souhait.html#a21818dffb8c6cecca1e1f6b8e114b7e5" title="Modifier la surface de jardin souhaitée.">setSurfaceJardinSouhaitee</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> surf);
+<a name="l00084"></a>00084 
+<a name="l00091"></a>00091     <span class="keywordtype">int</span> <a class="code" href="class_widget_souhait.html#a61036303d7ec3cb016f5f327b7bbd3ba" title="Obtenir le budget maximum.">getBudgetMax</a>();
+<a name="l00092"></a>00092 
+<a name="l00099"></a>00099     <span class="keywordtype">int</span> <a class="code" href="class_widget_souhait.html#ae9f88d7dfb4722ae9f4fa20c422a9de4" title="Obtenir la surface habitable souhaitée.">getSurfaceHabitableSouhaitee</a>();
+<a name="l00100"></a>00100 
+<a name="l00107"></a>00107     <span class="keywordtype">int</span> <a class="code" href="class_widget_souhait.html#a5bdcbbf08de766321477e48366732882" title="Obtenir la surface de jardin souhaitée.">getSurfaceJardinSouhaitee</a>();
+<a name="l00108"></a>00108 
+<a name="l00117"></a>00117     QPushButton* <a class="code" href="class_widget_souhait.html#a1caba580d321e946add12ede2434d896" title="Obtenir le bouton de détail du souhait.">getBoutonDialogSouhait</a>();
+<a name="l00118"></a>00118 
+<a name="l00127"></a>00127     QPushButton* <a class="code" href="class_widget_souhait.html#aa6c129a8a892f9a5d1de57061836d586" title="Obtenir le bouton de suppression du souhait.">getBoutonSupprimer</a>();
+<a name="l00128"></a>00128     
+<a name="l00129"></a>00129 <span class="keyword">private</span>:
+<a name="l00130"></a>00130     Ui::WidgetSouhait *ui;
+<a name="l00131"></a>00131     <a class="code" href="class_souhait.html" title="Cette classe décrit le souhait.">Souhait</a> *m_souhait;
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133     QList&lt;Ville *&gt; m_listeVilles;
+<a name="l00134"></a>00134 };
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136 <span class="preprocessor">#endif // WIDGETSOUHAIT_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -88,7 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed May 23 2012 11:48:05 for Agence Immobilière by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon May 28 2012 11:54:33 for Agence Immobilière by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

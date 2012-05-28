@@ -29,6 +29,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
@@ -53,7 +54,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -64,16 +64,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 This is the complete list of members for <a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a>, including all inherited members.<table>
-  <tr bgcolor="#f0f0f0"><td><b>DialogListeBiens</b>(QWidget *parent=0) (defined in <a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a>)</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td><code> [explicit]</code></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>DialogListeBiens</b>(Client *client, QWidget *parent=0) (defined in <a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a>)</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>~DialogListeBiens</b>() (defined in <a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a>)</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dialog_liste_biens.html#a2df24782ff4436dc0aebc02500aea424">DialogListeBiens</a>(QWidget *parent=0)</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td><code> [explicit]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dialog_liste_biens.html#a73975302a3cf55dc3e6ca1e0e66148f0">DialogListeBiens</a>(Client *client, QWidget *parent=0)</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dialog_liste_biens.html#a42409ea87bc9d193071addae2bd8a500">nouveauBien</a>()</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td><code> [slot]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dialog_liste_biens.html#a10282e7784b31a9bd7c48a16a5796aa5">ouvrirBien</a>(int)</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td><code> [slot]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dialog_liste_biens.html#ad71aa163b3e6651a8ffda3f09cca5e2c">ouvrirListeSouhaits</a>(int)</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td><code> [slot]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dialog_liste_biens.html#ada7b18859e7cf2ddc0c07fc833d09abd">~DialogListeBiens</a>()</td><td><a class="el" href="class_dialog_liste_biens.html">DialogListeBiens</a></td><td></td></tr>
 </table></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,7 +85,7 @@ This is the complete list of members for <a class="el" href="class_dialog_liste_
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed May 23 2012 11:48:05 for Agence Immobilière by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon May 28 2012 11:54:34 for Agence Immobilière by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
